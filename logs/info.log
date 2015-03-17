@@ -1,0 +1,404 @@
+2015-03-16 20:53:44 [ main:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2015-03-16 20:53:44 [ main:109 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Mon Mar 16 20:53:44 CST 2015]; root of context hierarchy
+2015-03-16 20:53:44 [ main:172 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-03-16 20:53:45 [ main:437 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 20:53:45 [ main:615 ] - [ INFO ]  HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2015-03-16 20:53:45 [ main:615 ] - [ INFO ]  HHH000412: Hibernate Core {4.3.0.Beta3}
+2015-03-16 20:53:45 [ main:631 ] - [ INFO ]  HHH000206: hibernate.properties not found
+2015-03-16 20:53:45 [ main:631 ] - [ INFO ]  HHH000021: Bytecode provider name : javassist
+2015-03-16 20:53:45 [ main:646 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 20:53:45 [ main:646 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 20:53:45 [ main:677 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 20:53:45 [ main:756 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 20:53:45 [ main:756 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 20:53:45 [ main:756 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 20:53:45 [ main:756 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 20:53:45 [ main:756 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 20:53:45 [ main:990 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 20:53:45 [ main:1115 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 20:53:45 [ main:1115 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 20:53:46 [ main:1365 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 20:53:46 [ main:1365 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 20:53:46 [ main:1365 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 20:53:46 [ main:1396 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 20:53:46 [ main:1396 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 20:53:46 [ main:1396 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 20:53:46 [ main:1396 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 20:53:46 [ main:1396 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 20:53:46 [ main:1521 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:1693 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 20:53:44 CST 2015]; root of context hierarchy
+2015-03-16 20:53:46 [ main:1709 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 20:53:44 CST 2015]; root of context hierarchy
+2015-03-16 20:53:46 [ main:1787 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 1787 ms
+2015-03-16 20:53:46 [ main:1864 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization started
+2015-03-16 20:53:46 [ main:1865 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:53:46 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:53:46 [ main:1865 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/oil-data-manager-servlet.xml]
+2015-03-16 20:53:46 [ main:1959 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 20:53:46 [ main:1975 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 20:53:46 [ main:1990 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 20:53:46 [ main:1990 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 20:53:46 [ main:1990 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 20:53:46 [ main:2006 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 20:53:46 [ main:2006 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 20:53:46 [ main:2006 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 20:53:46 [ main:2022 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 20:53:46 [ main:2022 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 20:53:46 [ main:2022 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 20:53:46 [ main:2022 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 20:53:46 [ main:2022 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 20:53:46 [ main:2037 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 20:53:46 [ main:2053 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:53:46 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:53:46 [ main:2053 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:53:46 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:53:46 [ main:2084 ] - [ INFO ]  Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2015-03-16 20:53:46 [ main:2084 ] - [ INFO ]  Mapped URL path [/style/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/script/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/static/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/i18n/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+2015-03-16 20:53:46 [ main:2100 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 20:53:46 [ main:2147 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization completed in 283 ms
+2015-03-16 20:57:12 [ main:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2015-03-16 20:57:12 [ main:59 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Mon Mar 16 20:57:12 CST 2015]; root of context hierarchy
+2015-03-16 20:57:12 [ main:90 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-03-16 20:57:12 [ main:340 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 20:57:12 [ main:481 ] - [ INFO ]  HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2015-03-16 20:57:12 [ main:481 ] - [ INFO ]  HHH000412: Hibernate Core {4.3.0.Beta3}
+2015-03-16 20:57:12 [ main:481 ] - [ INFO ]  HHH000206: hibernate.properties not found
+2015-03-16 20:57:12 [ main:481 ] - [ INFO ]  HHH000021: Bytecode provider name : javassist
+2015-03-16 20:57:12 [ main:497 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 20:57:12 [ main:497 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 20:57:12 [ main:528 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 20:57:12 [ main:590 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 20:57:12 [ main:606 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 20:57:12 [ main:606 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 20:57:12 [ main:606 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 20:57:12 [ main:606 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 20:57:12 [ main:872 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 20:57:13 [ main:981 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 20:57:13 [ main:981 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 20:57:13 [ main:1231 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 20:57:13 [ main:1231 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 20:57:13 [ main:1231 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 20:57:13 [ main:1262 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 20:57:13 [ main:1262 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 20:57:13 [ main:1262 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 20:57:13 [ main:1262 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 20:57:13 [ main:1262 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 20:57:13 [ main:1387 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1544 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 20:57:12 CST 2015]; root of context hierarchy
+2015-03-16 20:57:13 [ main:1575 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 20:57:12 CST 2015]; root of context hierarchy
+2015-03-16 20:57:13 [ main:1637 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 20:57:13 [ main:1637 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 1637 ms
+2015-03-16 20:57:13 [ main:1715 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization started
+2015-03-16 20:57:13 [ main:1723 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:57:13 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:57:13 [ main:1723 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/oil-data-manager-servlet.xml]
+2015-03-16 20:57:13 [ main:1770 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 20:57:13 [ main:1785 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 20:57:13 [ main:1801 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 20:57:13 [ main:1817 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 20:57:13 [ main:1817 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 20:57:13 [ main:1817 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 20:57:13 [ main:1817 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 20:57:13 [ main:1817 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 20:57:13 [ main:1848 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 20:57:13 [ main:1848 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 20:57:13 [ main:1848 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 20:57:13 [ main:1848 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 20:57:13 [ main:1848 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 20:57:13 [ main:1863 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 20:57:13 [ main:1879 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:57:13 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:57:13 [ main:1879 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 20:57:13 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 20:57:14 [ main:1910 ] - [ INFO ]  Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2015-03-16 20:57:14 [ main:1910 ] - [ INFO ]  Mapped URL path [/style/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/script/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/static/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/i18n/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+2015-03-16 20:57:14 [ main:1926 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 20:57:14 [ main:1973 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization completed in 251 ms
+2015-03-16 21:04:51 [ main:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2015-03-16 21:04:52 [ main:74 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Mon Mar 16 21:04:52 CST 2015]; root of context hierarchy
+2015-03-16 21:04:52 [ main:111 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-03-16 21:04:52 [ main:391 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:04:52 [ main:543 ] - [ INFO ]  HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2015-03-16 21:04:52 [ main:550 ] - [ INFO ]  HHH000412: Hibernate Core {4.3.0.Beta3}
+2015-03-16 21:04:52 [ main:552 ] - [ INFO ]  HHH000206: hibernate.properties not found
+2015-03-16 21:04:52 [ main:553 ] - [ INFO ]  HHH000021: Bytecode provider name : javassist
+2015-03-16 21:04:52 [ main:569 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:04:52 [ main:569 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:04:52 [ main:605 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:04:52 [ main:687 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:04:52 [ main:693 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:04:52 [ main:694 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:04:52 [ main:694 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:04:52 [ main:694 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:04:52 [ main:939 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:04:53 [ main:1084 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:04:53 [ main:1090 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:04:53 [ main:1364 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:04:53 [ main:1364 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:04:53 [ main:1366 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:04:53 [ main:1393 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:04:53 [ main:1394 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:04:53 [ main:1394 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:04:53 [ main:1394 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:04:53 [ main:1394 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:04:53 [ main:1556 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:04:53 [ main:1557 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:04:53 [ main:1558 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:1713 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:04:52 CST 2015]; root of context hierarchy
+2015-03-16 21:04:53 [ main:1743 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:04:52 CST 2015]; root of context hierarchy
+2015-03-16 21:04:53 [ main:1798 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:04:53 [ main:1802 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 1801 ms
+2015-03-16 21:04:53 [ main:1880 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization started
+2015-03-16 21:04:53 [ main:1883 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:04:53 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:04:53 [ main:1883 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/oil-data-manager-servlet.xml]
+2015-03-16 21:04:53 [ main:1941 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:04:53 [ main:1951 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:04:53 [ main:1951 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:04:53 [ main:1965 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:04:53 [ main:1969 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:04:53 [ main:1971 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:04:53 [ main:1971 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:04:53 [ main:1971 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:04:53 [ main:1971 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:04:53 [ main:1984 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:04:53 [ main:1995 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:04:53 [ main:1996 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:04:53 [ main:2000 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:04:53 [ main:2000 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:04:53 [ main:2001 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:04:53 [ main:2015 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:04:53 [ main:2015 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:04:53 [ main:2015 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:04:53 [ main:2015 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:04:53 [ main:2015 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:2029 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:04:53 [ main:2030 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:04:53 [ main:2030 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:04:53 [ main:2042 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:04:53 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:04:53 [ main:2052 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:04:53 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:04:54 [ main:2076 ] - [ INFO ]  Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2015-03-16 21:04:54 [ main:2078 ] - [ INFO ]  Mapped URL path [/style/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2015-03-16 21:04:54 [ main:2080 ] - [ INFO ]  Mapped URL path [/script/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2015-03-16 21:04:54 [ main:2082 ] - [ INFO ]  Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2015-03-16 21:04:54 [ main:2084 ] - [ INFO ]  Mapped URL path [/static/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+2015-03-16 21:04:54 [ main:2088 ] - [ INFO ]  Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+2015-03-16 21:04:54 [ main:2090 ] - [ INFO ]  Mapped URL path [/i18n/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+2015-03-16 21:04:54 [ main:2092 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:04:54 [ main:2141 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization completed in 260 ms
+2015-03-16 21:05:50 [ main:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2015-03-16 21:05:50 [ main:63 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Mon Mar 16 21:05:50 CST 2015]; root of context hierarchy
+2015-03-16 21:05:50 [ main:91 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-03-16 21:05:50 [ main:346 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:05:50 [ main:509 ] - [ INFO ]  HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2015-03-16 21:05:50 [ main:518 ] - [ INFO ]  HHH000412: Hibernate Core {4.3.0.Beta3}
+2015-03-16 21:05:50 [ main:521 ] - [ INFO ]  HHH000206: hibernate.properties not found
+2015-03-16 21:05:50 [ main:523 ] - [ INFO ]  HHH000021: Bytecode provider name : javassist
+2015-03-16 21:05:50 [ main:544 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:05:50 [ main:544 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:05:50 [ main:578 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:05:51 [ main:640 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:05:51 [ main:644 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:05:51 [ main:645 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:05:51 [ main:645 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:05:51 [ main:645 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:05:51 [ main:918 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:05:51 [ main:1048 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:05:51 [ main:1052 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:05:51 [ main:1337 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:05:51 [ main:1337 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:05:51 [ main:1339 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:05:51 [ main:1361 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:05:51 [ main:1362 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:05:51 [ main:1362 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:05:51 [ main:1362 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:05:51 [ main:1362 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:05:51 [ main:1525 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:05:51 [ main:1525 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:05:51 [ main:1526 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:05:52 [ main:1680 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:05:50 CST 2015]; root of context hierarchy
+2015-03-16 21:05:52 [ main:1713 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:05:50 CST 2015]; root of context hierarchy
+2015-03-16 21:05:52 [ main:1778 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:05:52 [ main:1783 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 1782 ms
+2015-03-16 21:05:52 [ main:1837 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization started
+2015-03-16 21:05:52 [ main:1842 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:05:52 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:05:52 [ main:1843 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/oil-data-manager-servlet.xml]
+2015-03-16 21:05:52 [ main:1908 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:05:52 [ main:1917 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:05:52 [ main:1917 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:05:52 [ main:1921 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:05:52 [ main:1924 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:05:52 [ main:1924 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:05:52 [ main:1925 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:05:52 [ main:1925 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:05:52 [ main:1925 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:05:52 [ main:1937 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:05:52 [ main:1949 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:05:52 [ main:1950 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:05:52 [ main:1954 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:05:52 [ main:1954 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:05:52 [ main:1955 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:05:52 [ main:1971 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:05:52 [ main:1971 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:05:52 [ main:1971 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:05:52 [ main:1971 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:05:52 [ main:1971 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:05:52 [ main:1989 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:05:52 [ main:1989 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:05:52 [ main:1989 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:05:52 [ main:1990 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:05:52 [ main:1990 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:05:52 [ main:1990 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:05:52 [ main:1990 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:05:52 [ main:1990 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:05:52 [ main:2003 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:05:52 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:05:52 [ main:2014 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:05:52 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:05:52 [ main:2051 ] - [ INFO ]  Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2015-03-16 21:05:52 [ main:2053 ] - [ INFO ]  Mapped URL path [/style/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2015-03-16 21:05:52 [ main:2057 ] - [ INFO ]  Mapped URL path [/script/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2015-03-16 21:05:52 [ main:2059 ] - [ INFO ]  Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2015-03-16 21:05:52 [ main:2061 ] - [ INFO ]  Mapped URL path [/static/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+2015-03-16 21:05:52 [ main:2066 ] - [ INFO ]  Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+2015-03-16 21:05:52 [ main:2068 ] - [ INFO ]  Mapped URL path [/i18n/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+2015-03-16 21:05:52 [ main:2070 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:05:52 [ main:2114 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization completed in 277 ms
+2015-03-16 21:27:47 [ main:0 ] - [ INFO ]  Root WebApplicationContext: initialization started
+2015-03-16 21:27:47 [ main:47 ] - [ INFO ]  Refreshing Root WebApplicationContext: startup date [Mon Mar 16 21:27:47 CST 2015]; root of context hierarchy
+2015-03-16 21:27:47 [ main:78 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-03-16 21:27:47 [ main:344 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:27:48 [ main:516 ] - [ INFO ]  HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2015-03-16 21:27:48 [ main:532 ] - [ INFO ]  HHH000412: Hibernate Core {4.3.0.Beta3}
+2015-03-16 21:27:48 [ main:532 ] - [ INFO ]  HHH000206: hibernate.properties not found
+2015-03-16 21:27:48 [ main:532 ] - [ INFO ]  HHH000021: Bytecode provider name : javassist
+2015-03-16 21:27:48 [ main:547 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:27:48 [ main:547 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:27:48 [ main:594 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:27:48 [ main:657 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:27:48 [ main:672 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:27:48 [ main:672 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:27:48 [ main:672 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:27:48 [ main:672 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:27:48 [ main:907 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:27:48 [ main:1016 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:27:48 [ main:1016 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:27:48 [ main:1266 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:27:48 [ main:1266 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:27:48 [ main:1282 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:27:48 [ main:1297 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:27:48 [ main:1297 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:27:48 [ main:1297 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:27:48 [ main:1297 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:27:48 [ main:1297 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1453 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:27:49 [ main:1610 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:27:47 CST 2015]; root of context hierarchy
+2015-03-16 21:27:49 [ main:1641 ] - [ INFO ]  Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Mar 16 21:27:47 CST 2015]; root of context hierarchy
+2015-03-16 21:27:49 [ main:1703 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:27:49 [ main:1703 ] - [ INFO ]  Root WebApplicationContext: initialization completed in 1703 ms
+2015-03-16 21:27:49 [ main:1750 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization started
+2015-03-16 21:27:49 [ main:1764 ] - [ INFO ]  Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:27:49 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:27:49 [ main:1764 ] - [ INFO ]  Loading XML bean definitions from ServletContext resource [/WEB-INF/oil-data-manager-servlet.xml]
+2015-03-16 21:27:49 [ main:1811 ] - [ INFO ]  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000040: Configuration resource: hibernate.cfg.xml
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000041: Configured SessionFactory: null
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000115: Hibernate connection pool size: 20
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000006: Autocommit mode: false
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/oil_manager]
+2015-03-16 21:27:49 [ main:1826 ] - [ INFO ]  HHH000046: Connection properties: {autoReconnect=true, is-connection-validation-required=true, user=root, password=****, autoReconnectForPools=true, characterEncoding=utf-8, pool.size=140}
+2015-03-16 21:27:49 [ main:1842 ] - [ INFO ]  HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-03-16 21:27:49 [ main:1858 ] - [ INFO ]  HHH000399: Using default transaction strategy (direct JDBC transactions)
+2015-03-16 21:27:49 [ main:1858 ] - [ INFO ]  HHH000397: Using ASTQueryTranslatorFactory
+2015-03-16 21:27:49 [ main:1858 ] - [ INFO ]  HHH000228: Running hbm2ddl schema update
+2015-03-16 21:27:49 [ main:1858 ] - [ INFO ]  HHH000102: Fetching database metadata
+2015-03-16 21:27:49 [ main:1858 ] - [ INFO ]  HHH000396: Updating schema
+2015-03-16 21:27:49 [ main:1873 ] - [ INFO ]  HHH000261: Table found: oil_manager.wellbasedata
+2015-03-16 21:27:49 [ main:1873 ] - [ INFO ]  HHH000037: Columns: [tubinginnerdiameter, casinginnerdiameter, welldepth, tubingoutterdiameter, casingoutterdiameter, reservoirtemperature, id]
+2015-03-16 21:27:49 [ main:1873 ] - [ INFO ]  HHH000108: Foreign keys: []
+2015-03-16 21:27:49 [ main:1873 ] - [ INFO ]  HHH000126: Indexes: [primary]
+2015-03-16 21:27:49 [ main:1873 ] - [ INFO ]  HHH000232: Schema update complete
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertIndicatorWeightDistribution],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertIndicatorWeightDistribution(java.lang.String,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellBaseData(double,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertRodStringDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStringDesignParameters(double,byte,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/queryAllWellBaseData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<org.oil.manager.model.WellBaseDataModel> org.oil.manager.api.BaseDataController.queryAllWellBaseData()
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertWellDesignParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellDesignParameters(double,double,double,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertWellProductData],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertWellProductData(java.lang.String,double,double,double,double,int,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertFluidPhysicalParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertFluidPhysicalParameters(double,double,double,double,double,double)
+2015-03-16 21:27:49 [ main:1889 ] - [ INFO ]  Mapped "{[/insertRodStructureParameters],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public boolean org.oil.manager.api.BaseDataController.insertRodStructureParameters(byte,double,double)
+2015-03-16 21:27:49 [ main:1904 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:27:49 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:27:49 [ main:1920 ] - [ INFO ]  Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Mon Mar 16 21:27:49 CST 2015]; parent: Root WebApplicationContext
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/style/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/script/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/static/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/i18n/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+2015-03-16 21:27:49 [ main:1951 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-03-16 21:27:49 [ main:1983 ] - [ INFO ]  FrameworkServlet 'dispatcherServlet': initialization completed in 220 ms
