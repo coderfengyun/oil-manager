@@ -39,7 +39,7 @@ $('.btn-setting').click(function(e) {
 
 function submitWellBaseData() {
 	var table = $('#wellBaseDataTable');
-	$.post("insertWellBaseData", {
+	$.post("/well/insertWellBaseData", {
 		"wellDepth" : $("#wellDepth").val(),
 		"casingOutterDiameter" : $("#casingOutterDiameter").val(),
 		"casingInnerDiameter" : $("#casingInnerDiameter").val(),
@@ -57,9 +57,22 @@ function submitWellBaseData() {
 	});
 }
 function loadWellBaseDatas(table) {
+	var checkbox = "<input id='checkAll' type='checkbox'>";
+	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option>"
+			+ "油井生产数据-WellProductData"
+			+ "</option><option>"
+			+ "流体物性参数-FluidPhysicalParameter"
+			+ "</option><option>"
+			+ "油井设计工作参数-WellDesignParameter"
+			+ "</option><option>"
+			+ "抽油杆柱设计工作参数-RodStringDesignParameter"
+			+ "</option><option>"
+			+ "抽油杆结构参数-RodStructureParameter"
+			+ "</option><option>"
+			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
 	$
-			.post(
-					"queryAllWellBaseData",
+			.get(
+					"/well/baseData",
 					{},
 					function(data) {
 						if (data != null) {
@@ -68,15 +81,17 @@ function loadWellBaseDatas(table) {
 								var tr = table.row
 										.add(
 												[
-														,
+														checkbox,
 														wellBaseData.wellDepth,
 														wellBaseData.casingOutterDiameter,
 														wellBaseData.casingInnerDiameter,
 														wellBaseData.reservoirTemperature,
 														wellBaseData.tubingOutterDiameter,
-														wellBaseData.tubingInnerDiameter ])
+														wellBaseData.tubingInnerDiameter,
+														allowedOperations ])
 										.draw().node();
 								$(tr).attr("id", wellBaseData.id);
+								$(tr).attr("instance", wellBaseData);
 							}
 						} else {
 							information("data is null!")
@@ -86,6 +101,38 @@ function loadWellBaseDatas(table) {
 					function() {
 						information("There is something wrong when get all the well base data!")
 					});
+}
+
+function onSelectChange(select) {
+	var tr = select.closest("tr");
+	var id = tr.attr("id");
+	switch (value) {
+	case "WellBaseData":
+		editWellBaseData();
+		break;
+	case "WellProductData":
+		editWellProductData();
+		break;
+	case "FluidPhysicalParameter":
+		editFluidPhysicalParameter();
+		break;
+	case "WellDesignParameter":
+		editWellDesignParameter();
+		break;
+	case "RodStringDesignParameter":
+		ediRodStringDesignParameter();
+		break;
+	case "RodStructureParameter":
+		editRodStructureParameter();
+		break;
+	case "IndicatorWeightDistribution":
+		editIndicatorWeightDistribution();
+		break;
+	}
+}
+
+function editWellProductData() {
+	$("#")
 }
 
 function deleteWellBaseData(id, row) {

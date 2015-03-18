@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +18,11 @@ public class IndicatorWeightDistribution implements Aggregate {
 	private double production;
 	private double econemicBenifits;
 	private double utilization;
+	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -29,7 +31,7 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.id = id;
 	}
 
-	@Column(name = "productionCoordination", nullable = false)
+	@Column(name = "productionCoordination")
 	public String getProductionCoordination() {
 		return productionCoordination;
 	}
@@ -38,7 +40,7 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.productionCoordination = productionCoordination;
 	}
 
-	@Column(name = "pumpEffeciency", nullable = false)
+	@Column(name = "pumpEffeciency")
 	public double getPumpEffeciency() {
 		return pumpEffeciency;
 	}
@@ -47,7 +49,7 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.pumpEffeciency = pumpEffeciency;
 	}
 
-	@Column(name = "systemEffeciency", nullable = false)
+	@Column(name = "systemEffeciency")
 	public double getSystemEffeciency() {
 		return systemEffeciency;
 	}
@@ -56,7 +58,7 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.systemEffeciency = systemEffeciency;
 	}
 
-	@Column(name = "production", nullable = false)
+	@Column(name = "production")
 	public double getProduction() {
 		return production;
 	}
@@ -65,7 +67,7 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.production = production;
 	}
 
-	@Column(name = "econemicBenifits", nullable = false)
+	@Column(name = "econemicBenifits")
 	public double getEconemicBenifits() {
 		return econemicBenifits;
 	}
@@ -74,13 +76,22 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.econemicBenifits = econemicBenifits;
 	}
 
-	@Column(name = "utilization", nullable = false)
+	@Column(name = "utilization")
 	public double getUtilization() {
 		return utilization;
 	}
 
 	public void setUtilization(double utilization) {
 		this.utilization = utilization;
+	}
+
+	@OneToOne(mappedBy = "indicatorWeightDistribution")
+	public WellBaseData getWellBaseData() {
+		return wellBaseData;
+	}
+
+	public void setWellBaseData(WellBaseData wellBaseData) {
+		this.wellBaseData = wellBaseData;
 	}
 
 	public static IndicatorWeightDistribution buildWithoutId(

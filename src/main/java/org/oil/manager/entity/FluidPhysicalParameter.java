@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +18,11 @@ public class FluidPhysicalParameter implements Aggregate {
 	private double crudeOilViscosity;
 	private double formationWaterDensity;
 	private double gasPhaseRelativeDensity;
+	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -29,7 +31,7 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.id = id;
 	}
 
-	@Column(name = "saturationPressure", nullable = false)
+	@Column(name = "saturationPressure")
 	public double getSaturationPressure() {
 		return saturationPressure;
 	}
@@ -38,7 +40,7 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.saturationPressure = saturationPressure;
 	}
 
-	@Column(name = "reservoirPressure", nullable = false)
+	@Column(name = "reservoirPressure")
 	public double getReservoirPressure() {
 		return reservoirPressure;
 	}
@@ -47,7 +49,7 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.reservoirPressure = reservoirPressure;
 	}
 
-	@Column(name = "crudeOilDensity", nullable = false)
+	@Column(name = "crudeOilDensity")
 	public double getCrudeOilDensity() {
 		return crudeOilDensity;
 	}
@@ -56,7 +58,7 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.crudeOilDensity = crudeOilDensity;
 	}
 
-	@Column(name = "crudeOilViscosity", nullable = false)
+	@Column(name = "crudeOilViscosity")
 	public double getCrudeOilViscosity() {
 		return crudeOilViscosity;
 	}
@@ -65,7 +67,7 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.crudeOilViscosity = crudeOilViscosity;
 	}
 
-	@Column(name = "formationWaterDensity", nullable = false)
+	@Column(name = "formationWaterDensity")
 	public double getFormationWaterDensity() {
 		return formationWaterDensity;
 	}
@@ -74,13 +76,22 @@ public class FluidPhysicalParameter implements Aggregate {
 		this.formationWaterDensity = formationWaterDensity;
 	}
 
-	@Column(name = "gasPhaseRelativeDensity", nullable = false)
+	@Column(name = "gasPhaseRelativeDensity")
 	public double getGasPhaseRelativeDensity() {
 		return gasPhaseRelativeDensity;
 	}
 
 	public void setGasPhaseRelativeDensity(double gasPhaseRelativeDensity) {
 		this.gasPhaseRelativeDensity = gasPhaseRelativeDensity;
+	}
+
+	@OneToOne(mappedBy = "fluidPhysicalParameter")
+	public WellBaseData getWellBaseData() {
+		return wellBaseData;
+	}
+
+	public void setWellBaseData(WellBaseData wellBaseData) {
+		this.wellBaseData = wellBaseData;
 	}
 
 	public static FluidPhysicalParameter buildWithoutId(

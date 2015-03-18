@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "wellBaseData")
+@Table(name = "wellProductData")
 public class WellProductData implements Aggregate {
 	private int id;
 	private String pumpingMachineType;
@@ -22,10 +23,11 @@ public class WellProductData implements Aggregate {
 	private double volumetricMoistureContent;
 	private double workingFluidLevel;
 	private double sternTubeLength;
+	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -34,7 +36,7 @@ public class WellProductData implements Aggregate {
 		this.id = id;
 	}
 
-	@Column(name = "pumpingMachineType", nullable = false)
+	@Column(name = "pumpingMachineType")
 	public String getPumpingMachineType() {
 		return pumpingMachineType;
 	}
@@ -43,7 +45,7 @@ public class WellProductData implements Aggregate {
 		this.pumpingMachineType = pumpingMachineType;
 	}
 
-	@Column(name = "producingOilRate", nullable = false)
+	@Column(name = "producingOilRate")
 	public double getProducingOilRate() {
 		return producingOilRate;
 	}
@@ -52,7 +54,7 @@ public class WellProductData implements Aggregate {
 		this.producingOilRate = producingOilRate;
 	}
 
-	@Column(name = "production", nullable = false)
+	@Column(name = "production")
 	public double getProduction() {
 		return production;
 	}
@@ -61,7 +63,7 @@ public class WellProductData implements Aggregate {
 		this.production = production;
 	}
 
-	@Column(name = "pumpDiameter", nullable = false)
+	@Column(name = "pumpDiameter")
 	public double getPumpDiameter() {
 		return pumpDiameter;
 	}
@@ -70,7 +72,7 @@ public class WellProductData implements Aggregate {
 		this.pumpDiameter = pumpDiameter;
 	}
 
-	@Column(name = "stroke", nullable = false)
+	@Column(name = "stroke")
 	public double getStroke() {
 		return stroke;
 	}
@@ -79,7 +81,7 @@ public class WellProductData implements Aggregate {
 		this.stroke = stroke;
 	}
 
-	@Column(name = "bluntTimes", nullable = false)
+	@Column(name = "bluntTimes")
 	public int getBluntTimes() {
 		return bluntTimes;
 	}
@@ -88,7 +90,7 @@ public class WellProductData implements Aggregate {
 		this.bluntTimes = bluntTimes;
 	}
 
-	@Column(name = "wellHeadCasingPressure", nullable = false)
+	@Column(name = "wellHeadCasingPressure")
 	public double getWellHeadCasingPressure() {
 		return wellHeadCasingPressure;
 	}
@@ -97,7 +99,7 @@ public class WellProductData implements Aggregate {
 		this.wellHeadCasingPressure = wellHeadCasingPressure;
 	}
 
-	@Column(name = "pumpDepth", nullable = false)
+	@Column(name = "pumpDepth")
 	public double getPumpDepth() {
 		return pumpDepth;
 	}
@@ -106,7 +108,7 @@ public class WellProductData implements Aggregate {
 		this.pumpDepth = pumpDepth;
 	}
 
-	@Column(name = "volumetricMoistureContent", nullable = false)
+	@Column(name = "volumetricMoistureContent")
 	public double getVolumetricMoistureContent() {
 		return volumetricMoistureContent;
 	}
@@ -115,7 +117,7 @@ public class WellProductData implements Aggregate {
 		this.volumetricMoistureContent = volumetricMoistureContent;
 	}
 
-	@Column(name = "workingFluidLevel", nullable = false)
+	@Column(name = "workingFluidLevel")
 	public double getWorkingFluidLevel() {
 		return workingFluidLevel;
 	}
@@ -124,13 +126,22 @@ public class WellProductData implements Aggregate {
 		this.workingFluidLevel = workingFluidLevel;
 	}
 
-	@Column(name = "sternTubeLength", nullable = false)
+	@Column(name = "sternTubeLength")
 	public double getSternTubeLength() {
 		return sternTubeLength;
 	}
 
 	public void setSternTubeLength(double sternTubeLength) {
 		this.sternTubeLength = sternTubeLength;
+	}
+
+	@OneToOne(mappedBy = "wellDesignParameter")
+	public WellBaseData getWellBaseData() {
+		return wellBaseData;
+	}
+
+	public void setWellBaseData(WellBaseData wellBaseData) {
+		this.wellBaseData = wellBaseData;
 	}
 
 	public static WellProductData buildWithoutId(String pumpingMachineType,

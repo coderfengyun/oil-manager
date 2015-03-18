@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +16,11 @@ public class WellDesignParameter implements Aggregate {
 	private double moistureRatio;
 	private double minProducedFluidVolume;
 	private double minPumpEfficiency;
+	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -27,7 +29,7 @@ public class WellDesignParameter implements Aggregate {
 		this.id = id;
 	}
 
-	@Column(name = "producedFluidVolume", nullable = false)
+	@Column(name = "producedFluidVolume")
 	public double getProducedFluidVolume() {
 		return producedFluidVolume;
 	}
@@ -36,7 +38,7 @@ public class WellDesignParameter implements Aggregate {
 		this.producedFluidVolume = producedFluidVolume;
 	}
 
-	@Column(name = "moistureRatio", nullable = false)
+	@Column(name = "moistureRatio")
 	public double getMoistureRatio() {
 		return moistureRatio;
 	}
@@ -45,7 +47,7 @@ public class WellDesignParameter implements Aggregate {
 		this.moistureRatio = moistureRatio;
 	}
 
-	@Column(name = "minProducedFluidVolume", nullable = false)
+	@Column(name = "minProducedFluidVolume")
 	public double getMinProducedFluidVolume() {
 		return minProducedFluidVolume;
 	}
@@ -54,13 +56,22 @@ public class WellDesignParameter implements Aggregate {
 		this.minProducedFluidVolume = minProducedFluidVolume;
 	}
 
-	@Column(name = "minPumpEfficiency", nullable = false)
+	@Column(name = "minPumpEfficiency")
 	public double getMinPumpEfficiency() {
 		return minPumpEfficiency;
 	}
 
 	public void setMinPumpEfficiency(double minPumpEfficiency) {
 		this.minPumpEfficiency = minPumpEfficiency;
+	}
+
+	@OneToOne(mappedBy = "wellDesignParameter")
+	public WellBaseData getWellBaseData() {
+		return wellBaseData;
+	}
+
+	public void setWellBaseData(WellBaseData wellBaseData) {
+		this.wellBaseData = wellBaseData;
 	}
 
 	public static WellDesignParameter build(double producedFluidVolume,

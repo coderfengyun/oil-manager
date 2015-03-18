@@ -1,10 +1,13 @@
 package org.oil.manager.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,12 @@ public class WellBaseData implements Aggregate {
 	private double reservoirTemperature;
 	private double tubingOutterDiameter;
 	private double tubingInnerDiameter;
+	private FluidPhysicalParameter fluidPhysicalParameter;
+	private IndicatorWeightDistribution indicatorWeightDistribution;
+	private RodStringDesignParameter rodStringDesignParameter;
+	private RodStructureParameter rodStructureParameter;
 	private WellDesignParameter wellDesignParameter;
+	private WellProductData wellProductData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,6 +90,70 @@ public class WellBaseData implements Aggregate {
 
 	public void setTubingInnerDiameter(double tubingInnerDiameter) {
 		this.tubingInnerDiameter = tubingInnerDiameter;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fluidPhysicalParameterId")
+	public FluidPhysicalParameter getFluidPhysicalParameter() {
+		return fluidPhysicalParameter;
+	}
+
+	public void setFluidPhysicalParameter(
+			FluidPhysicalParameter fluidPhysicalParameter) {
+		this.fluidPhysicalParameter = fluidPhysicalParameter;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "indicatorWeightDistributionId")
+	public IndicatorWeightDistribution getIndicatorWeightDistribution() {
+		return indicatorWeightDistribution;
+	}
+
+	public void setIndicatorWeightDistribution(
+			IndicatorWeightDistribution indicatorWeightDistribution) {
+		this.indicatorWeightDistribution = indicatorWeightDistribution;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "rodStringDesignParameterId")
+	public RodStringDesignParameter getRodStringDesignParameter() {
+		return rodStringDesignParameter;
+	}
+
+	public void setRodStringDesignParameter(
+			RodStringDesignParameter rodStringDesignParameter) {
+		this.rodStringDesignParameter = rodStringDesignParameter;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "rodStructureParameterId")
+	public RodStructureParameter getRodStructureParameter() {
+		return rodStructureParameter;
+	}
+
+	public void setRodStructureParameter(
+			RodStructureParameter rodStructureParameter) {
+		this.rodStructureParameter = rodStructureParameter;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "wellDesignParameterId")
+	public WellDesignParameter getWellDesignParameter() {
+		return wellDesignParameter;
+	}
+
+	public void setWellDesignParameter(WellDesignParameter wellDesignParameter) {
+		this.wellDesignParameter = wellDesignParameter;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "wellProductDataId")
+	public WellProductData getWellProductData() {
+		return wellProductData;
+	}
+
+	public void setWellProductData(WellProductData wellProductData) {
+		this.wellProductData = wellProductData;
 	}
 
 	public static WellBaseData buildWithoutId(double wellDepth,

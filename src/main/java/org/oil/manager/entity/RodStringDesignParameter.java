@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +15,11 @@ public class RodStringDesignParameter implements Aggregate {
 	private double safetyFactor;
 	private byte poleLevel;
 	private double minRodDiameter;
+	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -26,7 +28,7 @@ public class RodStringDesignParameter implements Aggregate {
 		this.id = id;
 	}
 
-	@Column(name = "safetyFactor", nullable = false)
+	@Column(name = "safetyFactor")
 	public double getSafetyFactor() {
 		return safetyFactor;
 	}
@@ -35,7 +37,7 @@ public class RodStringDesignParameter implements Aggregate {
 		this.safetyFactor = safetyFactor;
 	}
 
-	@Column(name = "poleLevel", nullable = false)
+	@Column(name = "poleLevel")
 	public byte getPoleLevel() {
 		return poleLevel;
 	}
@@ -44,13 +46,22 @@ public class RodStringDesignParameter implements Aggregate {
 		this.poleLevel = poleLevel;
 	}
 
-	@Column(name = "minRodDiameter", nullable = false)
+	@Column(name = "minRodDiameter")
 	public double getMinRodDiameter() {
 		return minRodDiameter;
 	}
 
 	public void setMinRodDiameter(double minRodDiameter) {
 		this.minRodDiameter = minRodDiameter;
+	}
+
+	@OneToOne(mappedBy = "rodStringDesignParameter")
+	public WellBaseData getWellBaseData() {
+		return wellBaseData;
+	}
+
+	public void setWellBaseData(WellBaseData wellBaseData) {
+		this.wellBaseData = wellBaseData;
 	}
 
 	public static RodStringDesignParameter buildWithoutId(double safetyFactor,

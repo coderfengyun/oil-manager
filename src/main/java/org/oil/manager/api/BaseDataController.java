@@ -22,10 +22,12 @@ import org.oil.manager.service.WellProductDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/well")
 public class BaseDataController {
 	@Autowired
 	private WellBaseDataService wellBaseDataService;
@@ -42,7 +44,8 @@ public class BaseDataController {
 	@Autowired
 	private IndicatorWeightDistributionService indicatorWeightDistributionService;
 
-	@RequestMapping("/insertWellBaseData")
+	@RequestMapping(value = "/insertWellBaseData", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertWellBaseData(@RequestParam double wellDepth,
 			@RequestParam double casingOutterDiameter,
@@ -57,14 +60,15 @@ public class BaseDataController {
 						tubingOutterDiameter, tubingInnerDiameter);
 	}
 
-	@RequestMapping("/queryAllWellBaseData")
+	@RequestMapping(value = "/baseData", method = RequestMethod.GET)
 	@ResponseBody
 	public List<WellBaseDataModel> queryAllWellBaseData() {
 		System.out.println("enter queryAllWellBaseData");
 		return this.wellBaseDataService.queryAllWellBaseData();
 	}
 
-	@RequestMapping("/insertWellProductData")
+	@RequestMapping(value = "/insertWellProductData", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertWellProductData(
 			@RequestParam String pumpingMachineType,
@@ -82,7 +86,7 @@ public class BaseDataController {
 				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
 	}
 
-	@RequestMapping("/queryAllWellProductData")
+	@RequestMapping(value = "/productData", method = RequestMethod.GET)
 	@ResponseBody
 	public List<WellProductDataModel> queryAllWellProductData() {
 		return convert2(this.wellProductDataService.findAll());
@@ -103,7 +107,8 @@ public class BaseDataController {
 		return result;
 	}
 
-	@RequestMapping("/insertFluidPhysicalParameters")
+	@RequestMapping(value = "/insertFluidPhysicalParameters", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertFluidPhysicalParameters(
 			@RequestParam double saturationPressure,
@@ -118,7 +123,7 @@ public class BaseDataController {
 				gasPhaseRelativeDensity);
 	}
 
-	@RequestMapping("/queryAllFluidPhysicalParameter")
+	@RequestMapping(value = "/fluidPhysicalParameter", method = RequestMethod.GET)
 	@ResponseBody
 	public List<FluidPhysicalParameterModel> queryAllFluidPhysicalParameter() {
 		return convert2FluidPhysicalParameterMode(this.fluidPhysicalParameterService
@@ -138,7 +143,8 @@ public class BaseDataController {
 		return result;
 	}
 
-	@RequestMapping("/insertWellDesignParameters")
+	@RequestMapping(value = "/insertWellDesignParameters", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertWellDesignParameters(
 			@RequestParam double producedFluidVolume,
@@ -150,13 +156,14 @@ public class BaseDataController {
 				minPumpEfficiency);
 	}
 
-	@RequestMapping("/queryAllWellDesignParameter")
+	@RequestMapping(value = "/wellDesignParameter", method = RequestMethod.GET)
 	@ResponseBody
 	public List<WellDesignParameter> queryAllWellDesignParameter() {
 		return this.wellDesignParameterService.findAll();
 	}
 
-	@RequestMapping("/insertRodStringDesignParameters")
+	@RequestMapping(value = "/insertRodStringDesignParameters", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertRodStringDesignParameters(
 			@RequestParam double safetyFactor, @RequestParam byte poleLevel,
@@ -166,12 +173,13 @@ public class BaseDataController {
 		return true;
 	}
 
-	@RequestMapping("/queryAllRodStringDesignParameter")
+	@RequestMapping(value = "/rodStringDesignParameter", method = RequestMethod.GET)
 	public List<RodStringDesignParameter> queryAllRodStringDesignParameter() {
 		return this.rodStringDesignParameterService.findAll();
 	}
 
-	@RequestMapping("/insertRodStructureParameters")
+	@RequestMapping(value = "/insertRodStructureParameters", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertRodStructureParameters(@RequestParam byte poleLevel,
 			@RequestParam double rodDiameter, @RequestParam double rodLength) {
@@ -179,13 +187,14 @@ public class BaseDataController {
 				poleLevel, rodDiameter, rodLength);
 	}
 
-	@RequestMapping("/queryAllRodStructureParameter")
+	@RequestMapping(value = "/rodStructureParameter", method = RequestMethod.GET)
 	@ResponseBody
 	public List<RodStructureParameter> queryAllRodStructureParameter() {
 		return this.rodStructureParameterSerice.findAll();
 	}
 
-	@RequestMapping("/insertIndicatorWeightDistribution")
+	@RequestMapping(value = "/insertIndicatorWeightDistribution", method = {
+			RequestMethod.POST, RequestMethod.PUT })
 	@ResponseBody
 	public boolean insertIndicatorWeightDistribution(
 			@RequestParam String productionCoordination,
@@ -200,7 +209,7 @@ public class BaseDataController {
 						econemicBenifits, utilization);
 	}
 
-	@RequestMapping("/queryAllIndicatorWeightDistribution")
+	@RequestMapping(value = "/indicatorWeightDistribution", method = RequestMethod.GET)
 	public List<IndicatorWeightDistribution> queryAllIndicatorWeightDistribution() {
 		return this.indicatorWeightDistributionService.findAll();
 	}

@@ -13,6 +13,7 @@
 <link rel="shortcut icon" href="images/bench4q.png">
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
+<link href="lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
 </head>
 <body>
 	<fmt:bundle basename="i18n">
@@ -28,7 +29,16 @@
 						<a class="btn btn-round" id="agentList"><i class="icon-list"></i></a>
 						<a class="btn btn-minimize btn-round"><i
 							class="icon-chevron-up"></i></a>
-
+						<!-- <select class='selectpicker'
+							onchange='onSelectChange(this.value)'>
+							<option>operations</option>
+							<option value="WellProductData">油井生产数据</option>
+							<option value="FluidPhysicalParameter">流体物性参数</option>
+							<option value="WellDesignParameter">油井设计工作参数</option>
+							<option value="RodStringDesignParameter">抽油杆柱设计工作参数</option>
+							<option value="RodStructureParameter">抽油杆结构参数</option>
+							<option value="IndicatorWeightDistribution">指标权重分配</option>
+						</select> -->
 					</div>
 				</div>
 				<div class="box-content">
@@ -43,6 +53,7 @@
 								<th><fmt:message key="reservoirTemperature" /></th>
 								<th><fmt:message key="tubingOutterDiameter" /></th>
 								<th><fmt:message key="tubingInnerDiameter" /></th>
+								<th><fmt:message key="allowed-operation" /></th>
 							</tr>
 						</thead>
 						<tbody>
