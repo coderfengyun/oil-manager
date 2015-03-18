@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class FluidPhysicalParameterRepository extends
 		AbstractRepository<FluidPhysicalParameter> {
-	public boolean attatch(FluidPhysicalParameter dumEntity) {
+	public boolean attach(FluidPhysicalParameter dumEntity) {
 		return attachCore(dumEntity);
 	}
 
 	public List<FluidPhysicalParameter> findAll() {
 		return findAll(FluidPhysicalParameter.class);
 	}
+
 }

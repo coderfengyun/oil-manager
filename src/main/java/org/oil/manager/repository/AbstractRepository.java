@@ -9,7 +9,7 @@ import org.oil.manager.entity.Aggregate;
 import org.oil.manager.helper.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AbstractRepository<Entity> {
+public abstract class AbstractRepository<Entity> {
 	private SessionHelper sessionHelper;
 	private Logger logger = Logger.getLogger(this.getClass());
 
@@ -55,4 +55,8 @@ public class AbstractRepository<Entity> {
 		result = session.createCriteria(resultClazz).list();
 		return result;
 	}
+
+	public abstract boolean attach(Entity dumEntity);
+
+	public abstract List<Entity> findAll();
 }

@@ -17,6 +17,7 @@ public class WellBaseData implements Aggregate {
 	private double reservoirTemperature;
 	private double tubingOutterDiameter;
 	private double tubingInnerDiameter;
+	private WellDesignParameter wellDesignParameter;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

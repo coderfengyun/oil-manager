@@ -4,14 +4,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.oil.manager.entity.FluidPhysicalParameter;
+import org.oil.manager.entity.IndicatorWeightDistribution;
 import org.oil.manager.entity.RodStringDesignParameter;
+import org.oil.manager.entity.RodStructureParameter;
 import org.oil.manager.entity.WellDesignParameter;
 import org.oil.manager.entity.WellProductData;
 import org.oil.manager.model.FluidPhysicalParameterModel;
 import org.oil.manager.model.WellBaseDataModel;
 import org.oil.manager.model.WellProductDataModel;
 import org.oil.manager.service.FluidPhysicalParameterService;
+import org.oil.manager.service.IndicatorWeightDistributionService;
 import org.oil.manager.service.RodStringDesignParameterService;
+import org.oil.manager.service.RodStructureParameterService;
 import org.oil.manager.service.WellBaseDataService;
 import org.oil.manager.service.WellDesignParameterService;
 import org.oil.manager.service.WellProductDataService;
@@ -33,6 +37,10 @@ public class BaseDataController {
 	private RodStringDesignParameterService rodStringDesignParameterService;
 	@Autowired
 	private WellDesignParameterService wellDesignParameterService;
+	@Autowired
+	private RodStructureParameterService rodStructureParameterSerice;
+	@Autowired
+	private IndicatorWeightDistributionService indicatorWeightDistributionService;
 
 	@RequestMapping("/insertWellBaseData")
 	@ResponseBody
@@ -163,14 +171,21 @@ public class BaseDataController {
 		return this.rodStringDesignParameterService.findAll();
 	}
 
-	@RequestMapping("insertRodStructureParameters")
+	@RequestMapping("/insertRodStructureParameters")
 	@ResponseBody
 	public boolean insertRodStructureParameters(@RequestParam byte poleLevel,
 			@RequestParam double rodDiameter, @RequestParam double rodLength) {
-		return true;
+		return this.rodStructureParameterSerice.addARodStructureParameter(
+				poleLevel, rodDiameter, rodLength);
 	}
 
-	@RequestMapping("insertIndicatorWeightDistribution")
+	@RequestMapping("/queryAllRodStructureParameter")
+	@ResponseBody
+	public List<RodStructureParameter> queryAllRodStructureParameter() {
+		return this.rodStructureParameterSerice.findAll();
+	}
+
+	@RequestMapping("/insertIndicatorWeightDistribution")
 	@ResponseBody
 	public boolean insertIndicatorWeightDistribution(
 			@RequestParam String productionCoordination,
@@ -179,6 +194,14 @@ public class BaseDataController {
 			@RequestParam double production,
 			@RequestParam double econemicBenifits,
 			@RequestParam double utilization) {
-		return true;
+		return this.indicatorWeightDistributionService
+				.addAIndicatorWeightDistribution(productionCoordination,
+						pumpEffeciency, systemEffeciency, production,
+						econemicBenifits, utilization);
+	}
+
+	@RequestMapping("/queryAllIndicatorWeightDistribution")
+	public List<IndicatorWeightDistribution> queryAllIndicatorWeightDistribution() {
+		return this.indicatorWeightDistributionService.findAll();
 	}
 }

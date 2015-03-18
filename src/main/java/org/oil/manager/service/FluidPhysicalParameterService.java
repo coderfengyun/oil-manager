@@ -7,14 +7,15 @@ import org.oil.manager.repository.FluidPhysicalParameterRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FluidPhysicalParameterService {
+public class FluidPhysicalParameterService extends
+		AbstractService<FluidPhysicalParameter> {
 	private FluidPhysicalParameterRepository repo;
 
 	public boolean addAFluidPhysicalParameter(double saturationPressure,
 			double reservoirPressure, double crudeOilDensity,
 			double crudeOilViscosity, double formationWaterDensity,
 			double gasPhaseRelativeDensity) {
-		return this.repo.attatch(FluidPhysicalParameter.buildWithoutId(
+		return this.repo.attach(FluidPhysicalParameter.buildWithoutId(
 				saturationPressure, reservoirPressure, crudeOilDensity,
 				crudeOilViscosity, formationWaterDensity,
 				gasPhaseRelativeDensity));

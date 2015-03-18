@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "wellBaseData")
-public class RodStructureParameter {
+@Table(name = "rodStructureParameter")
+public class RodStructureParameter implements Aggregate {
 	private int id;
 	private byte poleLevel;
 	private double rodDiameter;

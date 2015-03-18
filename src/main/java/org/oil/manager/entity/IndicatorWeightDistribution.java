@@ -83,4 +83,17 @@ public class IndicatorWeightDistribution implements Aggregate {
 		this.utilization = utilization;
 	}
 
+	public static IndicatorWeightDistribution buildWithoutId(
+			String productionCoordination, double pumpEffeciency,
+			double systemEffeciency, double production,
+			double econemicBenifits, double utilization) {
+		IndicatorWeightDistribution result = new IndicatorWeightDistribution();
+		result.setEconemicBenifits(econemicBenifits);
+		result.setProduction(production);
+		result.setProductionCoordination(productionCoordination);
+		result.setPumpEffeciency(pumpEffeciency);
+		result.setSystemEffeciency(systemEffeciency);
+		result.setUtilization(utilization);
+		return result;
+	}
 }
