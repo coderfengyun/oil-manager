@@ -38,8 +38,13 @@ public class WellBaseDataService {
 				pumpingMachineType, producingOilRate, production, pumpDiameter,
 				stroke, bluntTimes, wellHeadCasingPressure, pumpDepth,
 				volumetricMoistureContent, workingFluidLevel, sternTubeLength));
-		this.wellBaseDataReposity.update(well);
-		return true;
+		return this.wellBaseDataReposity.update(well);
+	}
+
+	public boolean updateProductData(int wellId, WellProductData productData) {
+		WellBaseData well = this.wellBaseDataReposity.find(wellId);
+		well.setWellProductData(WellProductData.removeIdBuilder(productData));
+		return this.wellBaseDataReposity.update(well);
 	}
 
 	// private List<WellBaseDataModel> convert2(List<WellBaseData> findAll) {

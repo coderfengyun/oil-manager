@@ -22,6 +22,7 @@ import org.oil.manager.service.WellProductDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,19 +67,10 @@ public class BaseDataController {
 	@RequestMapping(value = "/{wellId}/updateProductData", method = { RequestMethod.POST })
 	@ResponseBody
 	public boolean updateProductData(@PathVariable int wellId,
-			@RequestParam String pumpingMachineType,
-			@RequestParam double producingOilRate,
-			@RequestParam double production, @RequestParam double pumpDiameter,
-			@RequestParam double stroke, @RequestParam int bluntTimes,
-			@RequestParam double wellHeadCasingPressure,
-			@RequestParam double pumpDepth,
-			@RequestParam double volumetricMoistureContent,
-			@RequestParam double workingFluidLevel,
-			@RequestParam double sternTubeLength) {
+			@RequestBody String productData) {
+		System.out.println("enter updateProductData");
 		return this.wellBaseDataService.updateProductData(wellId,
-				pumpingMachineType, producingOilRate, production, pumpDiameter,
-				stroke, bluntTimes, wellHeadCasingPressure, pumpDepth,
-				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
+				new Gson().fromJson(productData, WellProductData.class));
 	}
 
 	@RequestMapping(value = "/baseData", method = RequestMethod.GET)

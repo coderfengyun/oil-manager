@@ -140,6 +140,28 @@ function onSelectChange(select) {
 		break;
 	}
 }
+function editWellProductData(wellId, wellProductData) {
+	if ($("#WellProductParams").length <= 0) {
+		buildModalWindow("WellProductParams", "#other-modal-window", wellId,
+				new WellProductDataModel().getParamNames(),
+				wellProductData == undefined ? null : wellProductData,
+				"updateProductData(" + wellId + ")");
 
+	}
+	$("#WellProductParams").modal('show');
+}
+
+updateProductData = function(wellId, wellProductData) {
+	$.post("/" + wellId + "/updateProductData", {
+		"productData" : JSON.stringify(wellProductData),
+	}, function(data) {
+		if (data != null) {
+			information(data == true ? "succes" : "fail");
+		}
+	}, "json").error()
+	{
+		information("There is something wrong when get all the well base data!")
+	}
+}
 function deleteWellBaseData(id, row) {
 }

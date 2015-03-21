@@ -144,6 +144,13 @@ public class WellProductData implements Aggregate {
 		this.wellBaseData = wellBaseData;
 	}
 
+	public static WellProductData removeIdBuilder(WellProductData input) {
+		// I should use clone here, know about clone;
+		WellProductData result = input;
+		result.setId(0);
+		return result;
+	}
+
 	public static WellProductData buildWithoutId(String pumpingMachineType,
 			double producingOilRate, double production, double pumpDiameter,
 			double stroke, int bluntTimes, double wellHeadCasingPressure,

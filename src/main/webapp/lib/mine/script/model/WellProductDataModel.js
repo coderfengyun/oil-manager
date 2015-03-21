@@ -18,7 +18,6 @@ function WellProductDataModel() {
 WellProductDataModel.prototype.getParamNames = function() {
 	return result;
 }
-
 function editWellProductData(wellId, wellProductData) {
 	if ($("#WellProductParams").length <= 0) {
 		buildModalWindow("WellProductParams", "#other-modal-window", wellId,
@@ -30,6 +29,15 @@ function editWellProductData(wellId, wellProductData) {
 	$("#WellProductParams").modal('show');
 }
 
-updateOrInsert = function() {
-	$.post()
+updateProductData = function(wellId, wellProductData) {
+	$.post("/" + wellId + "/" + updateProductData, {
+		"productData" : wellProductData,
+	}, function(data) {
+		if (data != null) {
+			information(data == true ? "succes" : "fail");
+		}
+	}, "json").error()
+	{
+		information("There is something wrong when get all the well base data!")
+	}
 }
