@@ -170,6 +170,9 @@
 	<script src="lib/mine/script/model/WellProductDataModel.js"></script>
 	<script src="lib/mine/script/model/FluidPhysicalParameterModel.js"></script>
 	<script src="lib/mine/script/model/WellDesignParameterModel.js"></script>
+	<script src="lib/mine/script/model/RodStringDesignParameterModel.js"></script>
+	<script src="lib/mine/script/model/RodStructureParameterModel.js"></script>
+	<script src="lib/mine/script/model/IndicatorWeightDistributionModel.js"></script>
 	<script src="lib/mine/script/index.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
 </body>

@@ -130,13 +130,14 @@ function onSelectChange(select) {
 		editWellDesginParameter(id, wellData.wellDesignParameter);
 		break;
 	case "RodStringDesignParameter":
-		ediRodStringDesignParameter();
+		editRodStringDesignParameter(id, wellData.rodStringDesignParameter);
 		break;
 	case "RodStructureParameter":
-		editRodStructureParameter();
+		editRodStructureParameter(id, wellData.rodStructureParameter);
 		break;
 	case "IndicatorWeightDistribution":
-		editIndicatorWeightDistribution();
+		editIndicatorWeightDistribution(id,
+				wellData.indicatorWeightDistribution);
 		break;
 	}
 	select.options[0].selected = true;

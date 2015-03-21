@@ -57,7 +57,7 @@ public class BaseDataController {
 
 	@RequestMapping(value = "/{wellId}/updateFluidPhysicalParameter", method = { RequestMethod.POST })
 	@ResponseBody
-	public boolean insertFluidPhysicalParameters(@PathVariable int wellId,
+	public boolean updateFluidPhysicalParameter(@PathVariable int wellId,
 			@RequestParam double saturationPressure,
 			@RequestParam double reservoirPressure,
 			@RequestParam double crudeOilDensity,
