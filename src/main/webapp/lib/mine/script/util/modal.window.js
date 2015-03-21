@@ -1,5 +1,5 @@
-function buildModalWindow(divId, parentDiv, wellId, paramNameList,
-		paramValueList, onSubmitMethodString) {
+function buildModalWindow(divId, parentDiv, wellId, paramNameList, paramHolder,
+		onSubmitMethodString) {
 	var modalDiaglog = '<div class="modal hide fade" id="'
 			+ divId
 			+ '"><div class="modal-body"><form class="form-horizontal"><fieldset>';
@@ -9,8 +9,9 @@ function buildModalWindow(divId, parentDiv, wellId, paramNameList,
 				+ paramName + '</label>';
 		modalDiaglog += '<div class="controls"><input class="input-xlarge focused" id='
 				+ buildDoubleQuoteVal(paramName)
-				+ ' type="text" value=""><div id='
-				+ buildDoubleQuoteVal(paramName + '-error')
+				+ ' type="text" value="'
+				+ paramHolder != null ? paramHolder[paramName] : "";
+		+'"><div id=' + buildDoubleQuoteVal(paramName + '-error')
 				+ ' style="display: none;color: red"></div></div>';
 		modalDiaglog += '</div>';
 	}

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +15,6 @@ public class WellDesignParameter implements Aggregate {
 	private double moistureRatio;
 	private double minProducedFluidVolume;
 	private double minPumpEfficiency;
-	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,15 +61,6 @@ public class WellDesignParameter implements Aggregate {
 
 	public void setMinPumpEfficiency(double minPumpEfficiency) {
 		this.minPumpEfficiency = minPumpEfficiency;
-	}
-
-	@OneToOne(mappedBy = "wellDesignParameter")
-	public WellBaseData getWellBaseData() {
-		return wellBaseData;
-	}
-
-	public void setWellBaseData(WellBaseData wellBaseData) {
-		this.wellBaseData = wellBaseData;
 	}
 
 	public static WellDesignParameter build(double producedFluidVolume,

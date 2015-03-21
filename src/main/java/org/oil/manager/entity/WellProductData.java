@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +22,6 @@ public class WellProductData implements Aggregate {
 	private double volumetricMoistureContent;
 	private double workingFluidLevel;
 	private double sternTubeLength;
-	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -133,15 +131,6 @@ public class WellProductData implements Aggregate {
 
 	public void setSternTubeLength(double sternTubeLength) {
 		this.sternTubeLength = sternTubeLength;
-	}
-
-	@OneToOne(mappedBy = "wellDesignParameter")
-	public WellBaseData getWellBaseData() {
-		return wellBaseData;
-	}
-
-	public void setWellBaseData(WellBaseData wellBaseData) {
-		this.wellBaseData = wellBaseData;
 	}
 
 	public static WellProductData removeIdBuilder(WellProductData input) {

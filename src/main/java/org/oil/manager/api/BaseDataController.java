@@ -1,44 +1,29 @@
 package org.oil.manager.api;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import org.oil.manager.entity.FluidPhysicalParameter;
 import org.oil.manager.entity.IndicatorWeightDistribution;
 import org.oil.manager.entity.RodStringDesignParameter;
 import org.oil.manager.entity.RodStructureParameter;
 import org.oil.manager.entity.WellBaseData;
 import org.oil.manager.entity.WellDesignParameter;
-import org.oil.manager.entity.WellProductData;
-import org.oil.manager.model.FluidPhysicalParameterModel;
-import org.oil.manager.model.WellProductDataModel;
-import org.oil.manager.service.FluidPhysicalParameterService;
 import org.oil.manager.service.IndicatorWeightDistributionService;
 import org.oil.manager.service.RodStringDesignParameterService;
 import org.oil.manager.service.RodStructureParameterService;
 import org.oil.manager.service.WellBaseDataService;
 import org.oil.manager.service.WellDesignParameterService;
-import org.oil.manager.service.WellProductDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/well")
 public class BaseDataController {
 	@Autowired
 	private WellBaseDataService wellBaseDataService;
-	@Autowired
-	private WellProductDataService wellProductDataService;
-	@Autowired
-	private FluidPhysicalParameterService fluidPhysicalParameterService;
 	@Autowired
 	private RodStringDesignParameterService rodStringDesignParameterService;
 	@Autowired
@@ -83,89 +68,27 @@ public class BaseDataController {
 				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
 	}
 
-	@RequestMapping(value = "/baseData", method = RequestMethod.GET)
+	@RequestMapping(value = "/{wellId}/updateFluidPhysicalParameters", method = { RequestMethod.POST })
 	@ResponseBody
-	public List<WellBaseData> queryAllWellBaseData() {
-		System.out.println("enter queryAllWellBaseData");
-		List<WellBaseData> result = this.wellBaseDataService
-				.queryAllWellBaseData();
-		System.out.println(new Gson().toJson(result.get(0)));
-		return result;
-	}
-
-	@RequestMapping(value = "/insertWellProductData", method = {
-			RequestMethod.POST, RequestMethod.PUT })
-	@ResponseBody
-	public boolean insertWellProductData(
-			@RequestParam String pumpingMachineType,
-			@RequestParam double producingOilRate,
-			@RequestParam double production, @RequestParam double pumpDiameter,
-			@RequestParam double stroke, @RequestParam int bluntTimes,
-			@RequestParam double wellHeadCasingPressure,
-			@RequestParam double pumpDepth,
-			@RequestParam double volumetricMoistureContent,
-			@RequestParam double workingFluidLevel,
-			@RequestParam double sternTubeLength) {
-		return this.wellProductDataService.addAWellProductData(
-				pumpingMachineType, producingOilRate, production, pumpDiameter,
-				stroke, bluntTimes, wellHeadCasingPressure, pumpDepth,
-				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
-	}
-
-	@RequestMapping(value = "/productData", method = RequestMethod.GET)
-	@ResponseBody
-	public List<WellProductDataModel> queryAllWellProductData() {
-		return convert2(this.wellProductDataService.findAll());
-	}
-
-	private List<WellProductDataModel> convert2(List<WellProductData> findAll) {
-		List<WellProductDataModel> result = new LinkedList<WellProductDataModel>();
-		for (WellProductData item : findAll) {
-			result.add(WellProductDataModel.build(item.getId(),
-					item.getBluntTimes(), item.getProduction(),
-					item.getProducingOilRate(), item.getPumpDepth(),
-					item.getPumpDiameter(), item.getPumpingMachineType(),
-					item.getSternTubeLength(), item.getStroke(),
-					item.getVolumetricMoistureContent(),
-					item.getWellHeadCasingPressure(),
-					item.getWorkingFluidLevel()));
-		}
-		return result;
-	}
-
-	@RequestMapping(value = "/insertFluidPhysicalParameters", method = {
-			RequestMethod.POST, RequestMethod.PUT })
-	@ResponseBody
-	public boolean insertFluidPhysicalParameters(
+	public boolean insertFluidPhysicalParameters(@PathVariable int wellId,
 			@RequestParam double saturationPressure,
 			@RequestParam double reservoirPressure,
 			@RequestParam double crudeOilDensity,
 			@RequestParam double crudeOilViscosity,
 			@RequestParam double formationWaterDensity,
 			@RequestParam double gasPhaseRelativeDensity) {
-		return this.fluidPhysicalParameterService.addAFluidPhysicalParameter(
+		return this.wellBaseDataService.updateFluidPhysicalParameters(wellId,
 				saturationPressure, reservoirPressure, crudeOilDensity,
 				crudeOilViscosity, formationWaterDensity,
 				gasPhaseRelativeDensity);
 	}
 
-	@RequestMapping(value = "/fluidPhysicalParameter", method = RequestMethod.GET)
+	@RequestMapping(value = "/baseData", method = RequestMethod.GET)
 	@ResponseBody
-	public List<FluidPhysicalParameterModel> queryAllFluidPhysicalParameter() {
-		return convert2FluidPhysicalParameterMode(this.fluidPhysicalParameterService
-				.findAll());
-	}
-
-	private List<FluidPhysicalParameterModel> convert2FluidPhysicalParameterMode(
-			List<FluidPhysicalParameter> findAll) {
-		List<FluidPhysicalParameterModel> result = new LinkedList<FluidPhysicalParameterModel>();
-		for (FluidPhysicalParameter item : findAll) {
-			result.add(FluidPhysicalParameterModel.build(item.getId(),
-					item.getSaturationPressure(), item.getSaturationPressure(),
-					item.getCrudeOilDensity(), item.getCrudeOilViscosity(),
-					item.getFormationWaterDensity(),
-					item.getGasPhaseRelativeDensity()));
-		}
+	public List<WellBaseData> queryAllWellBaseData() {
+		System.out.println("enter queryAllWellBaseData");
+		List<WellBaseData> result = this.wellBaseDataService
+				.queryAllWellBaseData();
 		return result;
 	}
 

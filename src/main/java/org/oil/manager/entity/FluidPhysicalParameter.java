@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +17,6 @@ public class FluidPhysicalParameter implements Aggregate {
 	private double crudeOilViscosity;
 	private double formationWaterDensity;
 	private double gasPhaseRelativeDensity;
-	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,15 +81,6 @@ public class FluidPhysicalParameter implements Aggregate {
 
 	public void setGasPhaseRelativeDensity(double gasPhaseRelativeDensity) {
 		this.gasPhaseRelativeDensity = gasPhaseRelativeDensity;
-	}
-
-	@OneToOne(mappedBy = "fluidPhysicalParameter")
-	public WellBaseData getWellBaseData() {
-		return wellBaseData;
-	}
-
-	public void setWellBaseData(WellBaseData wellBaseData) {
-		this.wellBaseData = wellBaseData;
 	}
 
 	public static FluidPhysicalParameter buildWithoutId(

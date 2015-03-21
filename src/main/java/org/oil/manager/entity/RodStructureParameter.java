@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +14,6 @@ public class RodStructureParameter implements Aggregate {
 	private byte poleLevel;
 	private double rodDiameter;
 	private double rodLength;
-	private WellBaseData wellBaseData;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,15 +51,6 @@ public class RodStructureParameter implements Aggregate {
 
 	public void setRodLength(double rodLength) {
 		this.rodLength = rodLength;
-	}
-
-	@OneToOne(mappedBy = "rodStructureParameter")
-	public WellBaseData getWellBaseData() {
-		return wellBaseData;
-	}
-
-	public void setWellBaseData(WellBaseData wellBaseData) {
-		this.wellBaseData = wellBaseData;
 	}
 
 	public static RodStructureParameter buildWithoutId(byte poleLevel,

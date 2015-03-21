@@ -2,6 +2,7 @@ package org.oil.manager.service;
 
 import java.util.List;
 
+import org.oil.manager.entity.FluidPhysicalParameter;
 import org.oil.manager.entity.WellBaseData;
 import org.oil.manager.entity.WellProductData;
 import org.oil.manager.repository.WellBaseDataRepository;
@@ -41,23 +42,15 @@ public class WellBaseDataService {
 		return this.wellBaseDataReposity.update(well);
 	}
 
-	public boolean updateProductData(int wellId, WellProductData productData) {
+	public boolean updateFluidPhysicalParameters(int wellId,
+			double saturationPressure, double reservoirPressure,
+			double crudeOilDensity, double crudeOilViscosity,
+			double formationWaterDensity, double gasPhaseRelativeDensity) {
 		WellBaseData well = this.wellBaseDataReposity.find(wellId);
-		well.setWellProductData(WellProductData.removeIdBuilder(productData));
+		well.setFluidPhysicalParameter(FluidPhysicalParameter.buildWithoutId(
+				saturationPressure, reservoirPressure, crudeOilDensity,
+				crudeOilViscosity, formationWaterDensity,
+				gasPhaseRelativeDensity));
 		return this.wellBaseDataReposity.update(well);
 	}
-
-	// private List<WellBaseDataModel> convert2(List<WellBaseData> findAll) {
-	// List<WellBaseDataModel> result = new LinkedList<WellBaseDataModel>();
-	// for (WellBaseData item : findAll) {
-	// result.add(WellBaseDataModel.build(item.getId(),
-	// item.getWellDepth(), item.getCasingOutterDiameter(),
-	// item.getCasingInnerDiameter(),
-	// item.getReservoirTemperature(),
-	// item.getTubingOutterDiameter(),
-	// item.getTubingInnerDiameter()));
-	// }
-	// return result;
-	// }
-
 }

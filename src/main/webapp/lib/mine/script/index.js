@@ -10,17 +10,16 @@ $(document).ready(function() {
 			deleteWellBaseData(id, row);
 		}
 	});
-
 	loadWellBaseDatas(table);
 });
 
 var wellDataList = new Array();
 function get(id) {
 	return wellDataList[id];
-}
+};
 function put(id, instance) {
 	wellDataList[id] = instance;
-}
+};
 
 $("#wellBaseDataTable").dataTable(
 		{
@@ -63,7 +62,8 @@ function submitWellBaseData() {
 	}, "json").error(function() {
 		information($.i18n.prop('failed-connect-server'));
 	});
-}
+};
+
 function loadWellBaseDatas(table) {
 	var jsInstance = this;
 	var checkbox = "<input id='checkAll' type='checkbox'>";
@@ -110,7 +110,7 @@ function loadWellBaseDatas(table) {
 					function() {
 						information("There is something wrong when get all the well base data!")
 					});
-}
+};
 
 function onSelectChange(select) {
 	var tr = select.closest("tr");
@@ -139,39 +139,7 @@ function onSelectChange(select) {
 		editIndicatorWeightDistribution();
 		break;
 	}
-}
-function editWellProductData(wellId, wellProductData) {
-	if ($("#WellProductParams").length <= 0) {
-		buildModalWindow("WellProductParams", "#other-modal-window", wellId,
-				new WellProductDataModel().getParamNames(),
-				wellProductData == undefined ? null : wellProductData,
-				"updateProductData(" + wellId + ")");
-
-	}
-	$("#WellProductParams").modal('show');
-}
-
-updateProductData = function(wellId) {
-	$.post("/" + wellId + "/updateProductData", {
-		"pumpingMachineType" : $("#pumpingMachineType").val(),
-		"producingOilRate" : $("#producingOilRate").val(),
-		"production" : $("#production").val(),
-		"pumpDiameter" : $("#pumpDiameter").val(),
-		"stroke" : $("#stroke").val(),
-		"bluntTimes" : $("#bluntTimes").val(),
-		"wellHeadCasingPressure" : $("#wellHeadCasingPressure").val(),
-		"pumpDepth" : $("#pumpDepth").val(),
-		"volumetricMoistureContent" : $("#volumetricMoistureContent").val(),
-		"workingFluidLevel" : $("#workingFluidLevel").val(),
-		"sternTubeLength" : $("#sternTubeLength").val(),
-	}, function(data) {
-		if (data != null) {
-			information(data == true ? "succes" : "fail");
-		}
-	}, "json").error()
-	{
-		information("There is something wrong when get all the well base data!")
-	}
-}
+	select.options[0].selected = true;
+};
 function deleteWellBaseData(id, row) {
-}
+};
