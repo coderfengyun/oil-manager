@@ -7,10 +7,10 @@ import org.oil.manager.entity.FluidPhysicalParameter;
 import org.oil.manager.entity.IndicatorWeightDistribution;
 import org.oil.manager.entity.RodStringDesignParameter;
 import org.oil.manager.entity.RodStructureParameter;
+import org.oil.manager.entity.WellBaseData;
 import org.oil.manager.entity.WellDesignParameter;
 import org.oil.manager.entity.WellProductData;
 import org.oil.manager.model.FluidPhysicalParameterModel;
-import org.oil.manager.model.WellBaseDataModel;
 import org.oil.manager.model.WellProductDataModel;
 import org.oil.manager.service.FluidPhysicalParameterService;
 import org.oil.manager.service.IndicatorWeightDistributionService;
@@ -21,10 +21,13 @@ import org.oil.manager.service.WellDesignParameterService;
 import org.oil.manager.service.WellProductDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/well")
@@ -60,11 +63,32 @@ public class BaseDataController {
 						tubingOutterDiameter, tubingInnerDiameter);
 	}
 
+	@RequestMapping(value = "/{wellId}/updateProductData", method = { RequestMethod.POST })
+	@ResponseBody
+	public boolean updateProductData(@PathVariable int wellId,
+			@RequestParam String pumpingMachineType,
+			@RequestParam double producingOilRate,
+			@RequestParam double production, @RequestParam double pumpDiameter,
+			@RequestParam double stroke, @RequestParam int bluntTimes,
+			@RequestParam double wellHeadCasingPressure,
+			@RequestParam double pumpDepth,
+			@RequestParam double volumetricMoistureContent,
+			@RequestParam double workingFluidLevel,
+			@RequestParam double sternTubeLength) {
+		return this.wellBaseDataService.updateProductData(wellId,
+				pumpingMachineType, producingOilRate, production, pumpDiameter,
+				stroke, bluntTimes, wellHeadCasingPressure, pumpDepth,
+				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
+	}
+
 	@RequestMapping(value = "/baseData", method = RequestMethod.GET)
 	@ResponseBody
-	public List<WellBaseDataModel> queryAllWellBaseData() {
+	public List<WellBaseData> queryAllWellBaseData() {
 		System.out.println("enter queryAllWellBaseData");
-		return this.wellBaseDataService.queryAllWellBaseData();
+		List<WellBaseData> result = this.wellBaseDataService
+				.queryAllWellBaseData();
+		System.out.println(new Gson().toJson(result.get(0)));
+		return result;
 	}
 
 	@RequestMapping(value = "/insertWellProductData", method = {

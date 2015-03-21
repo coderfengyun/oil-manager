@@ -14,6 +14,14 @@ $(document).ready(function() {
 	loadWellBaseDatas(table);
 });
 
+var wellDataList = new Array();
+function get(id) {
+	return wellDataList[id];
+}
+function put(id, instance) {
+	wellDataList[id] = instance;
+}
+
 $("#wellBaseDataTable").dataTable(
 		{
 			"language" : {
@@ -57,18 +65,19 @@ function submitWellBaseData() {
 	});
 }
 function loadWellBaseDatas(table) {
+	var jsInstance = this;
 	var checkbox = "<input id='checkAll' type='checkbox'>";
-	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option>"
+	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option value=WellProductData>"
 			+ "油井生产数据-WellProductData"
-			+ "</option><option>"
+			+ "</option><option value=FluidPhysicalParameter>"
 			+ "流体物性参数-FluidPhysicalParameter"
-			+ "</option><option>"
+			+ "</option><option value=WellDesignParameter>"
 			+ "油井设计工作参数-WellDesignParameter"
-			+ "</option><option>"
+			+ "</option><option value=RodStringDesignParameter>"
 			+ "抽油杆柱设计工作参数-RodStringDesignParameter"
-			+ "</option><option>"
+			+ "</option><option value=RodStructureParameter>"
 			+ "抽油杆结构参数-RodStructureParameter"
-			+ "</option><option>"
+			+ "</option><option value=IndicatorWeightDistribution>"
 			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
 	$
 			.get(
@@ -91,7 +100,7 @@ function loadWellBaseDatas(table) {
 														allowedOperations ])
 										.draw().node();
 								$(tr).attr("id", wellBaseData.id);
-								$(tr).attr("instance", wellBaseData);
+								put(wellBaseData.id, wellBaseData);
 							}
 						} else {
 							information("data is null!")
@@ -105,13 +114,14 @@ function loadWellBaseDatas(table) {
 
 function onSelectChange(select) {
 	var tr = select.closest("tr");
-	var id = tr.attr("id");
-	switch (value) {
+	var id = $(tr).attr("id");
+	var wellData = get(id);
+	switch (select.value) {
 	case "WellBaseData":
 		editWellBaseData();
 		break;
 	case "WellProductData":
-		editWellProductData();
+		editWellProductData(id, wellData.wellProductData);
 		break;
 	case "FluidPhysicalParameter":
 		editFluidPhysicalParameter();
@@ -129,10 +139,6 @@ function onSelectChange(select) {
 		editIndicatorWeightDistribution();
 		break;
 	}
-}
-
-function editWellProductData() {
-	$("#")
 }
 
 function deleteWellBaseData(id, row) {

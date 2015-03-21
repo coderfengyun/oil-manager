@@ -1,7 +1,6 @@
 package org.oil.manager.repository;
 
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -42,6 +41,29 @@ public abstract class AbstractRepository<Entity> {
 		} catch (Exception e) {
 			transaction.rollback();
 			this.getLogger().error(e, e);
+			return false;
+		} finally {
+			releaseSession(session);
+		}
+	}
+
+	public Entity find(int id, Class<?> clazz) {
+		Session session = this.getSessionHelper().openSession();
+		@SuppressWarnings("unchecked")
+		Entity result = (Entity) session.get(clazz, id);
+		return result;
+	}
+
+	public boolean updateCore(Entity well) {
+		Session session = this.getSessionHelper().openSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			session.update(well);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			this.getLogger().error(e, e);
+			transaction.rollback();
 			return false;
 		} finally {
 			releaseSession(session);
