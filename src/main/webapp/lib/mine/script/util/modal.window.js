@@ -8,9 +8,9 @@ function buildModalWindow(divId, parentDiv, wellId, paramNameList,
 		modalDiaglog += '<div class="control-group"><label class="control-label" for="focusedInput">'
 				+ paramName + '</label>';
 		modalDiaglog += '<div class="controls"><input class="input-xlarge focused" id='
-				+ buildDoubleQuoteVal(wellId + '-' + paramName)
+				+ buildDoubleQuoteVal(paramName)
 				+ ' type="text" value=""><div id='
-				+ buildDoubleQuoteVal(wellId + '-' + paramName + '-error')
+				+ buildDoubleQuoteVal(paramName + '-error')
 				+ ' style="display: none;color: red"></div></div>';
 		modalDiaglog += '</div>';
 	}

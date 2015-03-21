@@ -151,9 +151,19 @@ function editWellProductData(wellId, wellProductData) {
 	$("#WellProductParams").modal('show');
 }
 
-updateProductData = function(wellId, wellProductData) {
+updateProductData = function(wellId) {
 	$.post("/" + wellId + "/updateProductData", {
-		"productData" : JSON.stringify(wellProductData),
+		"pumpingMachineType" : $("#pumpingMachineType").val(),
+		"producingOilRate" : $("#producingOilRate").val(),
+		"production" : $("#production").val(),
+		"pumpDiameter" : $("#pumpDiameter").val(),
+		"stroke" : $("#stroke").val(),
+		"bluntTimes" : $("#bluntTimes").val(),
+		"wellHeadCasingPressure" : $("#wellHeadCasingPressure").val(),
+		"pumpDepth" : $("#pumpDepth").val(),
+		"volumetricMoistureContent" : $("#volumetricMoistureContent").val(),
+		"workingFluidLevel" : $("#workingFluidLevel").val(),
+		"sternTubeLength" : $("#sternTubeLength").val(),
 	}, function(data) {
 		if (data != null) {
 			information(data == true ? "succes" : "fail");

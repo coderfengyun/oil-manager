@@ -67,10 +67,20 @@ public class BaseDataController {
 	@RequestMapping(value = "/{wellId}/updateProductData", method = { RequestMethod.POST })
 	@ResponseBody
 	public boolean updateProductData(@PathVariable int wellId,
-			@RequestBody String productData) {
+			@RequestParam String pumpingMachineType,
+			@RequestParam double producingOilRate,
+			@RequestParam double production, @RequestParam double pumpDiameter,
+			@RequestParam double stroke, @RequestParam int bluntTimes,
+			@RequestParam double wellHeadCasingPressure,
+			@RequestParam double pumpDepth,
+			@RequestParam double volumetricMoistureContent,
+			@RequestParam double workingFluidLevel,
+			@RequestParam double sternTubeLength) {
 		System.out.println("enter updateProductData");
 		return this.wellBaseDataService.updateProductData(wellId,
-				new Gson().fromJson(productData, WellProductData.class));
+				pumpingMachineType, producingOilRate, production, pumpDiameter,
+				stroke, bluntTimes, wellHeadCasingPressure, pumpDepth,
+				volumetricMoistureContent, workingFluidLevel, sternTubeLength);
 	}
 
 	@RequestMapping(value = "/baseData", method = RequestMethod.GET)
