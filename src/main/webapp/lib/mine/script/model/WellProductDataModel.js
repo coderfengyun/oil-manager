@@ -10,6 +10,7 @@ productData_Parameters[7] = "pumpDepth";
 productData_Parameters[8] = "volumetricMoistureContent";
 productData_Parameters[9] = "workingFluidLevel";
 productData_Parameters[10] = "sternTubeLength";
+
 function WellProductDataModel() {
 }
 

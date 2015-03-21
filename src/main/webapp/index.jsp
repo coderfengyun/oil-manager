@@ -166,8 +166,10 @@
 	<script src="lib/mine/script/uiFactory.js"></script>
 	<script src="lib/mine/script/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
+
 	<script src="lib/mine/script/model/WellProductDataModel.js"></script>
 	<script src="lib/mine/script/model/FluidPhysicalParameterModel.js"></script>
+	<script src="lib/mine/script/model/WellDesignParameterModel.js"></script>
 	<script src="lib/mine/script/index.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
 </body>

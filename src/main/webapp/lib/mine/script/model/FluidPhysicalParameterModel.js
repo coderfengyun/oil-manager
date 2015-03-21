@@ -5,23 +5,21 @@ FluidPhysica_Parameters[2] = "crudeOilDensity";
 FluidPhysica_Parameters[3] = "crudeOilViscosity";
 FluidPhysica_Parameters[4] = "formationWaterDensity";
 FluidPhysica_Parameters[5] = "gasPhaseRelativeDensity";
+
 function FliudPhysicalParameterModel() {
 }
 
-FluidPhysicalParameterModel.prototype.getParamNames = function() {
-	return FluidPhysica_Parameters;
-}
-
-function editFluidPhysicalParameter(wellId, wellProductData) {
-	var windowName = "#FluidPhysicalParameterModel";
+function editFluidPhysicalParameter(wellId, fluidPhysicalParameter) {
+	var windowName = "FluidPhysicalParameterModel";
 	if ($(windowName).length <= 0) {
 		buildModalWindow(windowName, "#other-modal-window", wellId,
-				new FluidPhysicalParameterModel().getParamNames(),
-				wellProductData == undefined ? null : wellProductData,
+				FluidPhysica_Parameters,
+				fluidPhysicalParameter == undefined ? null
+						: fluidPhysicalParameter,
 				"updateFluidPhysicalParameter(" + wellId + ")");
 
 	}
-	$("#WellProductParams").modal('show');
+	$("#FluidPhysicalParameterModel").modal('show');
 }
 
 updateFluidPhysicalParameter = function(wellId) {
@@ -33,6 +31,11 @@ updateFluidPhysicalParameter = function(wellId) {
 		"formationWaterDensity" : $("#formationWaterDensity").val(),
 		"gasPhaseRelativeDensity" : $("#gasPhaseRelativeDensity").val(),
 	}, function(data) {
+		if (data != null) {
+			information(data == true ? "Success" : "Fail");
+		} else {
+			information("fail");
+		}
 	}, "json").error(function() {
 		information($.i18n.prop('failed-connect-server'));
 	});

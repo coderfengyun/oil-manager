@@ -81,7 +81,7 @@ function loadWellBaseDatas(table) {
 			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
 	$
 			.get(
-					"/well/baseData",
+					"/well/",
 					{},
 					function(data) {
 						if (data != null) {
@@ -127,7 +127,7 @@ function onSelectChange(select) {
 		editFluidPhysicalParameter(id, wellData.fluidPhysicalParameter);
 		break;
 	case "WellDesignParameter":
-		editWellDesignParameter();
+		editWellDesginParameter(id, wellData.wellDesignParameter);
 		break;
 	case "RodStringDesignParameter":
 		ediRodStringDesignParameter();
