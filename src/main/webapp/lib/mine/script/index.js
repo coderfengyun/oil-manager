@@ -124,7 +124,7 @@ function onSelectChange(select) {
 		editWellProductData(id, wellData.wellProductData);
 		break;
 	case "FluidPhysicalParameter":
-		editFluidPhysicalParameter();
+		editFluidPhysicalParameter(id, wellData.fluidPhysicalParameter);
 		break;
 	case "WellDesignParameter":
 		editWellDesignParameter();

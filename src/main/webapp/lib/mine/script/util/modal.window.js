@@ -10,8 +10,8 @@ function buildModalWindow(divId, parentDiv, wellId, paramNameList, paramHolder,
 		modalDiaglog += '<div class="controls"><input class="input-xlarge focused" id='
 				+ buildDoubleQuoteVal(paramName)
 				+ ' type="text" value="'
-				+ paramHolder != null ? paramHolder[paramName] : "";
-		+'"><div id=' + buildDoubleQuoteVal(paramName + '-error')
+				+ paramHolder != null ? paramHolder[paramName] : ""
+				+ '"><div id=' + buildDoubleQuoteVal(paramName + '-error')
 				+ ' style="display: none;color: red"></div></div>';
 		modalDiaglog += '</div>';
 	}

@@ -1,17 +1,15 @@
-var parameters = new Array();
-parameters[0] = "id";
-parameters[1] = "pumpingMachineType";
-parameters[2] = "producingOilRate";
-parameters[3] = "production";
-parameters[4] = "pumpDiameter";
-parameters[5] = "stroke";
-parameters[6] = "bluntTimes";
-parameters[7] = "wellHeadCasingPressure";
-parameters[8] = "pumpDepth";
-parameters[9] = "volumetricMoistureContent";
-parameters[10] = "workingFluidLevel";
-parameters[11] = "sternTubeLength";
-
+var productData_Parameters = new Array();
+productData_Parameters[0] = "pumpingMachineType";
+productData_Parameters[1] = "producingOilRate";
+productData_Parameters[2] = "production";
+productData_Parameters[3] = "pumpDiameter";
+productData_Parameters[4] = "stroke";
+productData_Parameters[5] = "bluntTimes";
+productData_Parameters[6] = "wellHeadCasingPressure";
+productData_Parameters[7] = "pumpDepth";
+productData_Parameters[8] = "volumetricMoistureContent";
+productData_Parameters[9] = "workingFluidLevel";
+productData_Parameters[10] = "sternTubeLength";
 function WellProductDataModel() {
 }
 
@@ -49,5 +47,5 @@ function updateProductData(wellId) {
 }
 
 WellProductDataModel.prototype.getParamNames = function() {
-	return parameters;
+	return productData_Parameters;
 }
