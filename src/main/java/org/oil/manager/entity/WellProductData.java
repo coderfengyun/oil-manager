@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wellProductData")
-public class WellProductData implements Aggregate {
+public class WellProductData {
 	private int id;
 	private String pumpingMachineType;
 	private double producingOilRate;

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "rodStructureParameter")
-public class RodStructureParameter implements Aggregate {
+public class RodStructureParameter {
 	private int id;
 	private byte poleLevel;
 	private double rodDiameter;

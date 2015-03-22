@@ -10,7 +10,6 @@
 	rel="stylesheet">
 <link href="lib/chrisma/css/opa-icons.css" rel="stylesheet">
 <link href="lib/chrisma/css/charisma-app.css" rel="stylesheet">
-<link rel="shortcut icon" href="images/bench4q.png">
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
 <link href="lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
@@ -161,10 +160,11 @@
 	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
 	<script src="lib/chrisma/js/theme.js"></script>
-	<script src="lib/mine/script/base.js"></script>
+
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
-	<script src="lib/mine/script/uiFactory.js"></script>
-	<script src="lib/mine/script/oil.table.js"></script>
+	<script src="lib/mine/script/util/base.js"></script>
+	<script src="lib/mine/script/util/uiFactory.js"></script>
+	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
 
 	<script src="lib/mine/script/model/WellProductDataModel.js"></script>

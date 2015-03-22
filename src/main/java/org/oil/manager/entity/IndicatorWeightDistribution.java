@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "indicatorWeightDistribution")
-public class IndicatorWeightDistribution implements Aggregate {
+public class IndicatorWeightDistribution {
 	private int id;
 	private String productionCoordination;
 	private double pumpEffeciency;

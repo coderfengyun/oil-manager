@@ -1,7 +1,9 @@
 package org.oil.manager.repository;
 
+import java.util.Collections;
 import java.util.List;
 
+import org.hibernate.criterion.Criterion;
 import org.oil.manager.entity.WellBaseData;
 import org.springframework.stereotype.Component;
 
@@ -22,5 +24,10 @@ public class WellBaseDataRepository extends AbstractRepository<WellBaseData> {
 
 	public boolean update(WellBaseData well) {
 		return updateCore(well);
+	}
+
+	@Override
+	public List<WellBaseData> findAllBy(Criterion specification) {
+		return Collections.emptyList();
 	}
 }

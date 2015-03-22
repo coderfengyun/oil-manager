@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wellDesignParameter")
-public class WellDesignParameter implements Aggregate {
+public class WellDesignParameter {
 	private int id;
 	private double producedFluidVolume;
 	private double moistureRatio;

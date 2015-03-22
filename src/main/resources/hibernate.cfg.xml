@@ -23,5 +23,6 @@
 		<mapping class="org.oil.manager.entity.RodStructureParameter" />
 		<mapping class="org.oil.manager.entity.WellProductData" />
 		<mapping class="org.oil.manager.entity.WellDesignParameter" />
+		<mapping class="org.oil.manager.entity.WellInflowTrend" />
 	</session-factory>
 </hibernate-configuration>

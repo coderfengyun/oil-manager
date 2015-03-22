@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "fluidPhysicalParameter")
-public class FluidPhysicalParameter implements Aggregate {
+public class FluidPhysicalParameter {
 	private int id;
 	private double saturationPressure;
 	private double reservoirPressure;

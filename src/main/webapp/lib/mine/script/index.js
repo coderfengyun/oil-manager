@@ -84,7 +84,8 @@ function loadWellBaseDatas(table) {
 			+ "</option><option value=RodStructureParameter>"
 			+ "抽油杆结构参数-RodStructureParameter"
 			+ "</option><option value=IndicatorWeightDistribution>"
-			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
+			+ "指标权重分配-IndicatorWeightDistribution"
+			+ "</option><option value=WellInflowTrend>查看油井流入动态->产能预测</option</select>";
 	$
 			.get(
 					"/well/",
@@ -145,8 +146,17 @@ function onSelectChange(select) {
 		editIndicatorWeightDistribution(id,
 				wellData.indicatorWeightDistribution);
 		break;
+	case "WellInflowTrend":
+		viewWellInflowTrend(id);
+		break;
 	}
 	select.options[0].selected = true;
 };
 function deleteWellBaseData(id, row) {
 };
+
+viewWellInflowTrend = function(wellId) {
+	window.open("wellInflowTrend.jsp", "油井流入动态->产能预测",
+			'menubar=yes,resizable=yes,titlebar=yes,toolbar=yes,' + 'wellId='
+					+ wellId);
+}
