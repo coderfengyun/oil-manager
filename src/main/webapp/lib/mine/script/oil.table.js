@@ -1,12 +1,3 @@
-/*$('.datatable')
-		.dataTable(
-				{
-					"sDom" : "<'row-fluid'<'span6'l><'span6'f>>t<'row-fluid'<'span12 center'p>>",
-					"sPaginationType" : "bootstrap",
-					"oLanguage" : {
-						"sLengthMenu" : "_MENU_ records per page",
-					}
-				});*/
 function getRow(obj) {
 	return obj.parentNode.parentNode;
 }
@@ -39,7 +30,7 @@ function extractRowDataActionBefore(data, tableModel, actionButton) {
 	return dataArray;
 }
 function getRowData(data, tableModel, dataArray) {
-	for ( var i = 0; i < tableModel.length; i++) {
+	for (var i = 0; i < tableModel.length; i++) {
 		for ( var key in data) {
 			if (key == tableModel[i]) {
 				dataArray.push(formatToData(key, data[key]));
@@ -56,6 +47,6 @@ function formatToData(key, data) {
 		var time = new Date(data);
 		time.setTime(data);
 		return time;
-	}
-	else return data;F
+	} else
+		return data;
 }

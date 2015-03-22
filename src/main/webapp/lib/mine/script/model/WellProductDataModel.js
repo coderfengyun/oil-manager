@@ -10,7 +10,21 @@ productData_Parameters[7] = "pumpDepth";
 productData_Parameters[8] = "volumetricMoistureContent";
 productData_Parameters[9] = "workingFluidLevel";
 productData_Parameters[10] = "sternTubeLength";
+productData_Parameters[11] = "wellHeadOilPressure";
 
+var productData_Labels = new Array();
+productData_Labels[0] = "抽油机型号";
+productData_Labels[1] = "生产气油比(m3/t)";
+productData_Labels[2] = "产量(t/d)";
+productData_Labels[3] = "泵径(mm)";
+productData_Labels[4] = "冲程(m)";
+productData_Labels[5] = "冲次(min-1)";
+productData_Labels[6] = "井口套压(MPa)";
+productData_Labels[7] = "井口油压(MPa)";
+productData_Labels[8] = "体积含水率(%)";
+productData_Labels[9] = "动液面(m)";
+productData_Labels[10] = "尾管长度(m)";
+productData_Labels[11] = "井口油压(MPa)";
 function WellProductDataModel() {
 }
 
@@ -19,7 +33,7 @@ function editWellProductData(wellId, wellProductData) {
 		buildModalWindow("WellProductParams", "#other-modal-window", wellId,
 				new WellProductDataModel().getParamNames(),
 				wellProductData == undefined ? null : wellProductData,
-				"updateProductData(" + wellId + ")");
+				productData_Labels, "updateProductData(" + wellId + ")");
 
 	}
 	$("#WellProductParams").modal('show');

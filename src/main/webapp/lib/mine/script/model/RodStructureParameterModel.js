@@ -2,6 +2,11 @@ var RodStructure_Parameters = new Array();
 RodStructure_Parameters[0] = "poleLevel";
 RodStructure_Parameters[1] = "rodDiameter";
 RodStructure_Parameters[2] = "rodLength";
+
+var RodStructure_Labels = new Array();
+RodStructure_Labels[0] = "杆柱级次（1,2,3）";
+RodStructure_Labels[1] = "杆径（m）";
+RodStructure_Labels[2] = "杆长（m）";
 function RodStructureParameterModel() {
 }
 
@@ -11,8 +16,8 @@ function editRodStructureParameter(wellId, rodStructureParameter) {
 		buildModalWindow(windowName, "#other-modal-window", wellId,
 				RodStructure_Parameters,
 				rodStructureParameter == undefined ? null
-						: rodStructureParameter, "updateRodStructureParameter("
-						+ wellId + ")");
+						: rodStructureParameter, RodStructure_Labels,
+				"updateRodStructureParameter(" + wellId + ")");
 
 	}
 	$("#RodStructureParameterModel").modal('show');

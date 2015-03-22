@@ -2,7 +2,6 @@ package org.oil.manager.api;
 
 import java.util.List;
 import org.oil.manager.entity.WellBaseData;
-import org.oil.manager.service.IndicatorWeightDistributionService;
 import org.oil.manager.service.WellBaseDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BaseDataController {
 	@Autowired
 	private WellBaseDataService wellBaseDataService;
-	@Autowired
-	private IndicatorWeightDistributionService indicatorWeightDistributionService;
 
 	@RequestMapping(value = "/insertWellBaseData", method = {
 			RequestMethod.POST, RequestMethod.PUT })

@@ -6,6 +6,14 @@ FluidPhysica_Parameters[3] = "crudeOilViscosity";
 FluidPhysica_Parameters[4] = "formationWaterDensity";
 FluidPhysica_Parameters[5] = "gasPhaseRelativeDensity";
 
+var FluidPhysical_Label = new Array();
+FluidPhysical_Label[0] = "饱和压力(MPa)";
+FluidPhysical_Label[1] = "油层压力(MPa)";
+FluidPhysical_Label[2] = "原油密度(kg/m^3)";
+FluidPhysical_Label[3] = "原油粘度(mPa.s)";
+FluidPhysical_Label[4] = "地层水密度(kg/m^3)";
+FluidPhysical_Label[5] = "气相相对密度(小数)";
+
 function FliudPhysicalParameterModel() {
 }
 
@@ -15,7 +23,7 @@ function editFluidPhysicalParameter(wellId, fluidPhysicalParameter) {
 		buildModalWindow(windowName, "#other-modal-window", wellId,
 				FluidPhysica_Parameters,
 				fluidPhysicalParameter == undefined ? null
-						: fluidPhysicalParameter,
+						: fluidPhysicalParameter, FluidPhysical_Label,
 				"updateFluidPhysicalParameter(" + wellId + ")");
 
 	}

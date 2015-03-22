@@ -18,6 +18,7 @@ public class WellProductData implements Aggregate {
 	private double stroke;
 	private int bluntTimes;
 	private double wellHeadCasingPressure;
+	private double wellHeadOilPressure;
 	private double pumpDepth;
 	private double volumetricMoistureContent;
 	private double workingFluidLevel;
@@ -95,6 +96,15 @@ public class WellProductData implements Aggregate {
 
 	public void setWellHeadCasingPressure(double wellHeadCasingPressure) {
 		this.wellHeadCasingPressure = wellHeadCasingPressure;
+	}
+
+	@Column(name = "wellHeadOilPressure")
+	public double getWellHeadOilPressure() {
+		return wellHeadOilPressure;
+	}
+
+	public void setWellHeadOilPressure(double wellHeadOilPressure) {
+		this.wellHeadOilPressure = wellHeadOilPressure;
 	}
 
 	@Column(name = "pumpDepth")

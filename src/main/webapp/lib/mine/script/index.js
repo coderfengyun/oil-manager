@@ -54,8 +54,13 @@ function submitWellBaseData() {
 		"tubingOutterDiameter" : $("#tubingOutterDiameter").val(),
 		"tubingInnerDiameter" : $("#tubingInnerDiameter").val(),
 	}, function(data) {
-		if (data.success) {
-			loadWellBaseDatas(table.DataTable());
+		if (data != null) {
+			if (data == true) {
+				loadWellBaseDatas(table.DataTable());
+				information("Success!");
+			} else {
+				informatin("insert fails!")
+			}
 		} else {
 			information(data.failedMessage);
 		}
@@ -66,6 +71,7 @@ function submitWellBaseData() {
 
 function loadWellBaseDatas(table) {
 	var jsInstance = this;
+	// table.fnClearTable();
 	var checkbox = "<input id='checkAll' type='checkbox'>";
 	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option value=WellProductData>"
 			+ "油井生产数据-WellProductData"
