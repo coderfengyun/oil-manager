@@ -13,6 +13,7 @@
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
 <link href="lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
 </head>
 <body>
 	<fmt:bundle basename="i18n">
@@ -28,16 +29,6 @@
 						<a class="btn btn-round" id="agentList"><i class="icon-list"></i></a>
 						<a class="btn btn-minimize btn-round"><i
 							class="icon-chevron-up"></i></a>
-						<!-- <select class='selectpicker'
-							onchange='onSelectChange(this.value)'>
-							<option>operations</option>
-							<option value="WellProductData">油井生产数据</option>
-							<option value="FluidPhysicalParameter">流体物性参数</option>
-							<option value="WellDesignParameter">油井设计工作参数</option>
-							<option value="RodStringDesignParameter">抽油杆柱设计工作参数</option>
-							<option value="RodStructureParameter">抽油杆结构参数</option>
-							<option value="IndicatorWeightDistribution">指标权重分配</option>
-						</select> -->
 					</div>
 				</div>
 				<div class="box-content">
@@ -156,12 +147,11 @@
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
 	<script src="lib/bootstrap/js/bootstrap-modal.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="lib/bootstrap/js/bootstrap-modal.js"></script>
 	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
 	<script src="lib/chrisma/js/theme.js"></script>
-
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
+
 	<script src="lib/mine/script/util/base.js"></script>
 	<script src="lib/mine/script/util/uiFactory.js"></script>
 	<script src="lib/mine/script/util/oil.table.js"></script>
@@ -174,6 +164,6 @@
 	<script src="lib/mine/script/model/RodStructureParameterModel.js"></script>
 	<script src="lib/mine/script/model/IndicatorWeightDistributionModel.js"></script>
 	<script src="lib/mine/script/index.js"></script>
-	<script src="lib/other/jquery.noty.packaged.min.js"></script>
+
 </body>
 </html>

@@ -21,24 +21,6 @@ function put(id, instance) {
 	wellDataList[id] = instance;
 };
 
-$("#wellBaseDataTable").dataTable(
-		{
-			"language" : {
-				"search" : $.i18n.prop('dataTable.search'),
-				"lengthMenu" : "_MENU_"
-						+ $.i18n.prop('dataTable.number_per_page'),
-				"emptyTable" : $.i18n.prop('dataTable.no_data_in_table'),
-				"info" : "_START_" + $.i18n.prop('dataTable.to') + "_END_"
-						+ $.i18n.prop('dataTable.total') + "_TOTAL_"
-						+ $.i18n.prop('dataTable.record'),
-				"paginate" : {
-					"previous" : $.i18n.prop('dataTable.previous-page'),
-					"next" : $.i18n.prop('dataTable.next-page'),
-				},
-				"infoEmpty" : $.i18n.prop('no-entries'),
-			}
-		});
-
 $('.btn-setting').click(function(e) {
 	e.preventDefault();
 	$("#WellBaseDataParams").modal('show');
@@ -156,7 +138,6 @@ function deleteWellBaseData(id, row) {
 };
 
 viewWellInflowTrend = function(wellId) {
-	window.open("wellInflowTrend.jsp", "油井流入动态->产能预测",
-			'menubar=yes,resizable=yes,titlebar=yes,toolbar=yes,' + 'wellId='
-					+ wellId);
+	window.open("wellInflowTrend.jsp?wellId=" + wellId, "油井流入动态->产能预测",
+			'menubar=yes,resizable=yes,titlebar=yes,toolbar=yes');
 }

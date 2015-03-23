@@ -12,7 +12,7 @@ WellDesign_Labels[3] = "最低泵效(小数)";
 
 function editWellDesginParameter(wellId, wellDesginParameter) {
 	if ($("#WellDesignParams").length <= 0) {
-		buildModalWindow("WellDesignParams", "#other-modal-window", wellId,
+		buildModalWindow("WellDesignParams", "#other-modal-window",
 				WellDesign_Parameters, wellDesginParameter == undefined ? null
 						: wellDesginParameter, WellDesign_Labels,
 				"updateDesginParameter(" + wellId + ")");

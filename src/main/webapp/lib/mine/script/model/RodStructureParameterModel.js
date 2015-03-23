@@ -13,7 +13,7 @@ function RodStructureParameterModel() {
 function editRodStructureParameter(wellId, rodStructureParameter) {
 	var windowName = "RodStructureParameterModel";
 	if ($(windowName).length <= 0) {
-		buildModalWindow(windowName, "#other-modal-window", wellId,
+		buildModalWindow(windowName, "#other-modal-window",
 				RodStructure_Parameters,
 				rodStructureParameter == undefined ? null
 						: rodStructureParameter, RodStructure_Labels,

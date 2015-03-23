@@ -20,7 +20,7 @@ function FliudPhysicalParameterModel() {
 function editFluidPhysicalParameter(wellId, fluidPhysicalParameter) {
 	var windowName = "FluidPhysicalParameterModel";
 	if ($(windowName).length <= 0) {
-		buildModalWindow(windowName, "#other-modal-window", wellId,
+		buildModalWindow(windowName, "#other-modal-window",
 				FluidPhysica_Parameters,
 				fluidPhysicalParameter == undefined ? null
 						: fluidPhysicalParameter, FluidPhysical_Label,

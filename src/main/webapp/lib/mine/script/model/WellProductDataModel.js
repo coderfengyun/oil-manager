@@ -30,7 +30,7 @@ function WellProductDataModel() {
 
 function editWellProductData(wellId, wellProductData) {
 	if ($("#WellProductParams").length <= 0) {
-		buildModalWindow("WellProductParams", "#other-modal-window", wellId,
+		buildModalWindow("WellProductParams", "#other-modal-window",
 				new WellProductDataModel().getParamNames(),
 				wellProductData == undefined ? null : wellProductData,
 				productData_Labels, "updateProductData(" + wellId + ")");

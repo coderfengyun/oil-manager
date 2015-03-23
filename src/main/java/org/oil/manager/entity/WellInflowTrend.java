@@ -15,7 +15,7 @@ import org.hibernate.criterion.Restrictions;
 @Entity
 @Table(name = "wellInflowTrend")
 public class WellInflowTrend implements Aggregate {
-	private static final String WELL_ID = "wellId";
+	private static final String WELL_COLUMN_NAME = "well";
 	private int id;
 	private double producedFluidVolume;
 	private double wellBotomFlowPressure;
@@ -58,8 +58,8 @@ public class WellInflowTrend implements Aggregate {
 		this.well = well;
 	}
 
-	public static Criterion createEqualsToWellIdSpecification(int wellId) {
-		return Restrictions.eq(WELL_ID, wellId);
+	public static Criterion createEqualsToWellIdSpecification(WellBaseData well) {
+		return Restrictions.eq(WELL_COLUMN_NAME, well);
 	}
 
 	public static WellInflowTrend buildWithoutId(WellBaseData well,

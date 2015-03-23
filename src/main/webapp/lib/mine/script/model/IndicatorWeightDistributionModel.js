@@ -20,7 +20,7 @@ function IndicatorWeightDistributionModel() {
 function editIndicatorWeightDistribution(wellId, indicatorWeightDistribution) {
 	var windowName = "IndicatorWeightDistribution";
 	if ($(windowName).length <= 0) {
-		buildModalWindow(windowName, "#other-modal-window", wellId,
+		buildModalWindow(windowName, "#other-modal-window",
 				IndicatorWeightDistribution_Parameters,
 				indicatorWeightDistribution == undefined ? null
 						: indicatorWeightDistribution,

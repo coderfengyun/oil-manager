@@ -14,7 +14,7 @@ function RodStringDesignParameterModel() {
 function editRodStringDesignParameter(wellId, rodStringDesignParameter) {
 	var windowName = "RodStringDesignParameterModel";
 	if ($(windowName).length <= 0) {
-		buildModalWindow(windowName, "#other-modal-window", wellId,
+		buildModalWindow(windowName, "#other-modal-window",
 				RodStringDesign_Parameters,
 				rodStringDesignParameter == undefined ? null
 						: rodStringDesignParameter, RodStringDesign_Labels,

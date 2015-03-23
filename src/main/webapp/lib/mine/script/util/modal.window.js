@@ -1,5 +1,5 @@
-function buildModalWindow(divId, parentDiv, wellId, paramNameList,
-		paramValueMap, paramLabels, onSubmitMethodString) {
+function buildModalWindow(divId, parentDiv, paramNameList, paramValueMap,
+		paramLabels, onSubmitMethodString) {
 	var modalDiaglog = '<div class="modal hide fade" id="'
 			+ divId
 			+ '"><div class="modal-body"><form class="form-horizontal"><fieldset>';
