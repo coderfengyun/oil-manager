@@ -19,7 +19,7 @@
 	<fmt:bundle basename="i18n">
 		<h2>Hello World!</h2>
 		<div class="row-fluid sortable">
-			<div class="box span12 ">
+			<div class="box span4 ">
 				<div class="box-header well" data-original-title>
 					<h2>
 						<i><fmt:message key="wellInflowTrend.title" /></i>
@@ -36,7 +36,6 @@
 						class="table table-striped table-bordered bootstrap-datatable datatable">
 						<thead>
 							<tr>
-								<th><input type="checkbox" id="checkAll"></th>
 								<th><fmt:message key="wellInflowTrend.jsp.number" /></th>
 								<th><fmt:message key="wellInflowTrend.producedFluidVolume" /></th>
 								<th><fmt:message
@@ -47,6 +46,9 @@
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div class="box span8">
+				<div id="highchartsPlot"></div>
 			</div>
 		</div>
 		<div id="other-modal-window">"hah"</div>
@@ -61,7 +63,7 @@
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
 	<script src="lib/chrisma/js/theme.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
-
+	<script src="lib/highcharts/js/highcharts.js"></script>
 	<!-- 3rd party script end! -->
 	<!-- My own util script start! -->
 	<script src="lib/mine/script/util/base.js"></script>

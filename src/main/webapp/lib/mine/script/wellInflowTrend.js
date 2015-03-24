@@ -30,7 +30,7 @@ WellInflowTrend.prototype = function() {
 						for (var i = 0; i < data.length; i++) {
 							var inflowTrend = data[i];
 							var tr = table.row.add(
-									[ , i + 1, inflowTrend.producedFluidVolume,
+									[ i + 1, inflowTrend.producedFluidVolume,
 											inflowTrend.wellBotomFlowPressure,
 											operations ]).draw().node();
 							$(tr).attr("id", inflowTrend.id);
