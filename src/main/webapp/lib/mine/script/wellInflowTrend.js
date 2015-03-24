@@ -29,10 +29,10 @@ WellInflowTrend.prototype = function() {
 					} else {
 						for (var i = 0; i < data.length; i++) {
 							var inflowTrend = data[i];
-							var tr = table.row.add([ i,
-									inflowTrend.producedFluidVolume,
-									inflowTrend.wellBotomFlowPressure,
-									operations ]);
+							var tr = table.row.add(
+									[ , i + 1, inflowTrend.producedFluidVolume,
+											inflowTrend.wellBotomFlowPressure,
+											operations ]).draw().node();
 							$(tr).attr("id", inflowTrend.id);
 						}
 					}
@@ -75,7 +75,7 @@ var WellInflowTrend_Instance = new WellInflowTrend();
 
 $(document).ready(
 		function() {
-			var table = $("#wellInflowTrendTable").dataTable();
+			var table = $("#wellInflowTrendTable").DataTable();
 			var tbody = table.table().body();
 			$(tbody).on(
 					'click',
@@ -93,8 +93,8 @@ $(document).ready(
 
 			WellInflowTrend_Instance.wellId = WellInflowTrend_Instance
 					.getWellIdFromUri("wellId");
-			WellInflowTrend_Instance
-					.loadWellInflowTrend(WellInflowTrend_Instance.wellId);
+			WellInflowTrend_Instance.loadWellInflowTrend(
+					WellInflowTrend_Instance.wellId, table);
 		});
 
 $("#" + WellInflowTrend_Instance.tableName).dataTable(
