@@ -34,12 +34,94 @@ WellInflowTrend.prototype = function() {
 											inflowTrend.wellBotomFlowPressure,
 											operations ]).draw().node();
 							$(tr).attr("id", inflowTrend.id);
+							drawChartWithTheDataIn(table);
 						}
 					}
 				}, "json").error(function() {
 			information($.i18n.prop('failed-connect-server'));
 		});
 	},
+
+	drawChartWithTheDataIn = function(table) {
+		var options = {
+			chart : {
+				renderTo : 'highchartsPlot',
+				defaultSeriesType : 'line',
+				type : 'area',
+				height : 300,
+			},
+			plotOptions : {
+				series : {
+					fillOpacity : 0.85,
+					color : '#369bd7'
+				}
+			},
+			credits : {
+				enabled : false
+			},
+			legend : {
+				enabled : false
+			},
+			title : {
+				text : $.i18n.prop('test-loadSchedule'),
+				align : "center",
+				style : {
+					fontSize : '13px',
+					fontWeight : "bold",
+				},
+				margin : 20,
+			},
+			xAxis : {
+				plotLines : [ {
+					width : 10,
+					color : '#808080'
+				} ],
+				min : 0,
+				title : {
+					text : $.i18n.prop('times'),
+					style : {
+						fontSize : '13px',
+						fontWeight : "bold",
+					},
+				},
+				gridLineWidth : 1,
+			},
+			yAxis : {
+				plotLines : [ {
+					value : 0,
+					width : 1,
+					color : '#808080'
+				} ],
+				title : {
+					text : $.i18n.prop('users'),
+					style : {
+						fontSize : '13px',
+						fontWeight : "bold",
+					},
+				},
+				min : 0,
+				gridLineWidth : 1,
+			},
+			tooltip : {
+				formatter : function() {
+					var formatStr = '<b>' + this.y
+							+ $.i18n.prop('userNumbetPlot') + this.x
+							+ $.i18n.prop('timePlot');
+					return formatStr;
+				}
+			},
+			series : [ {
+				data : [ [ 0, 0 ] ]
+			} ]
+		}
+
+		// var rowCount = table.row.size();
+		var rowCount = 4;
+		for (var i = 0; i < rowCount; i++) {
+			options.series[0].data.push([ i, i ]);
+		}
+		var chart = new Highcharts.Chart(options);
+	};
 
 	getWellIdFromUri = function(name) {
 		var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
