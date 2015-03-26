@@ -32,7 +32,7 @@ function editIndicatorWeightDistribution(wellId, indicatorWeightDistribution) {
 }
 
 updateIndicatorWeightDistribution = function(wellId) {
-	$.post("/well/" + wellId + "/updateIndicatorWeightDistribution", {
+	$.post("well/" + wellId + "/updateIndicatorWeightDistribution", {
 		"productionCoordination" : $("#productionCoordination").val(),
 		"pumpEffeciency" : $("#pumpEffeciency").val(),
 		"systemEffeciency" : $("#systemEffeciency").val(),

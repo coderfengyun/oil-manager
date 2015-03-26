@@ -24,7 +24,7 @@ function editRodStringDesignParameter(wellId, rodStringDesignParameter) {
 }
 
 updateRodStringDesignParameter = function(wellId) {
-	$.post("/well/" + wellId + "/updateRodStringDesignParameter", {
+	$.post("well/" + wellId + "/updateRodStringDesignParameter", {
 		"safetyFactor" : $("#safetyFactor").val(),
 		"poleLevel" : $("#poleLevel").val(),
 		"minRodDiameter" : $("#minRodDiameter").val(),

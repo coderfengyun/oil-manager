@@ -31,7 +31,7 @@ function editFluidPhysicalParameter(wellId, fluidPhysicalParameter) {
 }
 
 updateFluidPhysicalParameter = function(wellId) {
-	$.post("/well/" + wellId + "/updateFluidPhysicalParameter", {
+	$.post("well/" + wellId + "/updateFluidPhysicalParameter", {
 		"saturationPressure" : $("#saturationPressure").val(),
 		"reservoirPressure" : $("#reservoirPressure").val(),
 		"crudeOilDensity" : $("#crudeOilDensity").val(),

@@ -27,7 +27,7 @@ $('.btn-setting').click(function(e) {
 
 function submitWellBaseData() {
 	var table = $('#wellBaseDataTable');
-	$.post("/well/insertWellBaseData", {
+	$.post("well/insertWellBaseData", {
 		"wellDepth" : $("#wellDepth").val(),
 		"casingOutterDiameter" : $("#casingOutterDiameter").val(),
 		"casingInnerDiameter" : $("#casingInnerDiameter").val(),
@@ -69,7 +69,7 @@ function loadWellBaseDatas(table) {
 			+ "</option><option value=WellInflowTrend>查看油井流入动态->产能预测</option</select>";
 	$
 			.get(
-					"/well/",
+					"well/",
 					{},
 					function(data) {
 						if (data != null) {

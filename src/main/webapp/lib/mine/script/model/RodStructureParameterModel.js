@@ -24,7 +24,7 @@ function editRodStructureParameter(wellId, rodStructureParameter) {
 }
 
 updateRodStructureParameter = function(wellId) {
-	$.post("/well/" + wellId + "/updateRodStructureParameter", {
+	$.post("well/" + wellId + "/updateRodStructureParameter", {
 		"poleLevel" : $("#poleLevel").val(),
 		"rodDiameter" : $("#rodDiameter").val(),
 		"rodLength" : $("#rodLength").val(),

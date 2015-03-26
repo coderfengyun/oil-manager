@@ -22,7 +22,7 @@ function editWellDesginParameter(wellId, wellDesginParameter) {
 }
 
 function updateDesginParameter(wellId) {
-	$.post("/well/" + wellId + "/updateDesignParameter", {
+	$.post("well/" + wellId + "/updateDesignParameter", {
 		"producedFluidVolume" : $("#producedFluidVolume").val(),
 		"moistureRatio" : $("#moistureRatio").val(),
 		"minProducedFluidVolume" : $("#minProducedFluidVolume").val(),
