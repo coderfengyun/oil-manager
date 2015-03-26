@@ -92,7 +92,7 @@ WellInflowTrend.prototype = function() {
 		var operations = null;
 		var table = getTable();
 		$.get(
-				"/" + wellId + "/inflowTrend/",
+				wellId + "/inflowTrend/",
 				{},
 				function(data) {
 					if (data == null) {
@@ -219,7 +219,7 @@ addAWellInflowTrend = function(wellId) {
 			"#wellBotomFlowPressure").val();
 	$
 			.ajax({
-				url : "/" + wellId + "/inflowTrend/",
+				url : wellId + "/inflowTrend/",
 				type : 'PUT',
 				data : {
 					"wellId" : wellId,

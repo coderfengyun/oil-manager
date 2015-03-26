@@ -40,7 +40,7 @@ function editWellProductData(wellId, wellProductData) {
 }
 
 function updateProductData(wellId) {
-	$.post("/well/" + wellId + "/updateProductData", {
+	$.post("well/" + wellId + "/updateProductData", {
 		"pumpingMachineType" : $("#pumpingMachineType").val(),
 		"producingOilRate" : $("#producingOilRate").val(),
 		"production" : $("#production").val(),
