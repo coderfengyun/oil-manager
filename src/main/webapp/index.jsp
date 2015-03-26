@@ -16,6 +16,7 @@
 </head>
 <body style="border: 0px solid red;">
 	<fmt:bundle basename="i18n">
+		<jsp:include page="lib/mine/shareControl/navigateBar.jsp"></jsp:include>
 		<h2>Hello World!</h2>
 		<div class="row-fluid sortable">
 			<div class="box span12 ">
@@ -53,6 +54,9 @@
 				<!-- box span12 -->
 			</div>
 			<!-- fluid sortable -->
+		</div>
+		<div id="other-button">
+			<Button>压力分布计算</Button>
 		</div>
 		<div class="modal hide fade" id="WellBaseDataParams">
 			<div class="modal-header">
