@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
@@ -12,10 +11,10 @@
 <link href="lib/chrisma/css/charisma-app.css" rel="stylesheet">
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
-<link href="lib/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+
 
 </head>
-<body>
+<body style="border: 0px solid red;">
 	<fmt:bundle basename="i18n">
 		<h2>Hello World!</h2>
 		<div class="row-fluid sortable">
@@ -138,14 +137,13 @@
 				</button>
 			</div>
 		</div>
-		<div id="other-modal-window">"hah"</div>
 	</fmt:bundle>
+	<div id="other-modal-window"></div>
 	<!-- scripts start -->
 
 	<script src="lib/jquery/script/jquery-2.1.3.min.js"></script>
 	<script src="lib/jquery/script/jquery-ui.min.js"></script>
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
-	<script src="lib/bootstrap/js/bootstrap-modal.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
@@ -164,6 +162,5 @@
 	<script src="lib/mine/script/model/RodStructureParameterModel.js"></script>
 	<script src="lib/mine/script/model/IndicatorWeightDistributionModel.js"></script>
 	<script src="lib/mine/script/index.js"></script>
-
 </body>
 </html>

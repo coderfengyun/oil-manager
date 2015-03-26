@@ -22,7 +22,6 @@ function put(id, instance) {
 };
 
 $('.btn-setting').click(function(e) {
-	// e.preventDefault();
 	$("#WellBaseDataParams").modal('show');
 });
 

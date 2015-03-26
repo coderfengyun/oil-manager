@@ -57,7 +57,6 @@
 	<script src="lib/jquery/script/jquery-2.1.3.min.js"></script>
 	<script src="lib/jquery/script/jquery-ui.min.js"></script>
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
-	<script src="lib/bootstrap/js/bootstrap-modal.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
