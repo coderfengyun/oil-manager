@@ -66,7 +66,7 @@
 	<!-- 3rd party script end! -->
 	<!-- My own util script start! -->
 	<script src="lib/mine/script/util/base.js"></script>
-	<script src="lib/mine/script/util/uiFactory.js"></script>
+	<script src="lib/mine/script/util/information.js"></script>
 	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>

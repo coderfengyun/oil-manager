@@ -80,6 +80,7 @@ WellInflowTrend.prototype = function() {
 		} ]
 	};
 	var chart = new Highcharts.Chart(options);
+
 			get = function(id) {
 				return this.trendIdValueMap[id];
 			},

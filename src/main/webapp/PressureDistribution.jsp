@@ -16,9 +16,9 @@
 					<div class="box-header well">
 						<div class="box-icon">
 							<a class="btn btn-primary btn-lg btn-add"><i
-								class="icon-plus">添加</i></a> <a class="btn btn-lg btn-success"><i
-								class="icon-list"></i></a> <a class="btn btn-primary btn-lg"><i
-								class="icon-chevron-up"></i></a>
+								class="icon-plus">添加</i></a> <a class="btn btn-lg btn-success"
+								id="updateChart">更新曲线<i class="icon-list"></i></a> <a
+								class="btn btn-primary btn-lg"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
@@ -99,11 +99,13 @@
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
+	<script src="lib/highcharts/js/highcharts.js"></script>
 	<!-- 3rd Party Script End -->
 	<!-- My Own Util Start-->
 	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
-	<script src="lib/mine/script/util/uiFactory.js"></script>
+	<script src="lib/mine/script/util/information.js"></script>
+	<script src="lib/mine/script/util/ChartHelper.js"></script>
 	<!-- My Own Util End -->
 	<!-- My Own Script Begin -->
 	<script src="lib/mine/script/pressureDistribution.js"></script>

@@ -5,6 +5,9 @@ PressureDistribution.prototype = function() {
 	var table = $("#wellPressureDistributionTable").DataTable();
 	var urlParamParser = new UrlParamParser();
 	var wellId = urlParamParser.getParamFromUri('wellId');
+	var options = new ChartHelper().buildOptions('highchartsPlot');
+	var chart = new Highcharts.Chart(options);
+
 			appendRowToTable = function(data) {
 				new OilTable().appendRowToTable(table, data);
 			},
@@ -36,7 +39,24 @@ PressureDistribution.prototype = function() {
 					}
 				});
 			},
-
+			drawChartWithDataInTable = function() {
+				var rowCount = table.rows().indexes().length;
+				options.series[0].data.splice(0, rowCount - 1);
+				for (var i = 0; i < rowCount; i++) {
+					var data = table.row(i).data();
+					options.series[0].data.push([ data[1], data[2] ]);
+				}
+				options.series[0].data.sort(function(a, b) {
+					if (a[0] < b[0]) {
+						return -1;
+					} else if (a[0] > b[0]) {
+						return 1;
+					} else {
+						return 0;
+					}
+				});
+				this.chart = new Highcharts.Chart(options);
+			},
 			loadAll = function() {
 				var operations = null;
 				$
@@ -69,7 +89,8 @@ PressureDistribution.prototype = function() {
 
 	return {
 		addAWellPressureDistribution : addAWellPressureDistribution,
-		loadAll : loadAll
+		loadAll : loadAll,
+		drawChartWithDataInTable : drawChartWithDataInTable
 	};
 }();
 
@@ -79,6 +100,9 @@ $(".btn-add").click(function(e) {
 });
 $("#submitPressureDistribution").click(function(e) {
 	PressureDistribution_Instance.addAWellPressureDistribution();
+});
+$("#updateChart").click(function(e) {
+	PressureDistribution_Instance.drawChartWithDataInTable();
 });
 $(document).ready(function() {
 	PressureDistribution_Instance.loadAll();
