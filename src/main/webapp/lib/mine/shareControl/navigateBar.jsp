@@ -12,8 +12,12 @@
 	</div>
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
+			<li><a href="index.jsp">基础数据准备</a></li>
+			<li><a href="wellInflowTrend.jsp">油井流入动态</a></li>
 			<li><a href="PressureDistribution.jsp">压力分布计算</a></li>
-			<li><a href="index.jsp">油井数据</a></li>
+			<li><a href="PressureDistribution.jsp">抽油杆柱设计结果</a></li>
+			<li><a href="PressureDistribution.jsp">帮助</a></li>
+			<li><a href="PressureDistribution.jsp">退出</a></li>
 		</ul>
 	</div>
 	<!--/.nav-collapse -->

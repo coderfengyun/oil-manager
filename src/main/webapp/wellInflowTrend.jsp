@@ -62,13 +62,14 @@
 	<script src="lib/chrisma/js/jquery.cookie.js"></script>
 	<script src="lib/chrisma/js/theme.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
-	<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+	<script src="lib/highcharts/js/highcharts.js"></script>
 	<!-- 3rd party script end! -->
 	<!-- My own util script start! -->
 	<script src="lib/mine/script/util/base.js"></script>
 	<script src="lib/mine/script/util/uiFactory.js"></script>
 	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
+	<script src="lib/mine/script/util/UrlParamParser.js"></script>
 	<!-- My own util script end! -->
 	<!-- This page script start -->
 	<script src="lib/mine/script/wellInflowTrend.js"></script>

@@ -10,42 +10,103 @@
 <body>
 	<fmt:bundle basename="i18n">
 		<jsp:include page="lib/mine/shareControl/navigateBar.jsp"></jsp:include>
-		<div class="row-fluid sortable">
-			<div class="box span12 ">
-				<div class="box-header well" data-original-title>
-					<div class="box-icon">
-						<a class="btn btn-primary btn-lg"><i class="icon-plus">增加压力分布参数</i></a>
-						<a class="btn btn-primary btn-lg" id="agentList"><i
-							class="icon-list"></i></a> <a class="btn btn-primary btn-lg"><i
-							class="icon-chevron-up"></i></a>
+		<div class="container">
+			<div class="row-fluid sortable">
+				<div class="box span6">
+					<div class="box-header well">
+						<div class="box-icon">
+							<a class="btn btn-primary btn-lg btn-add"><i
+								class="icon-plus">添加</i></a> <a class="btn btn-lg btn-success"><i
+								class="icon-list"></i></a> <a class="btn btn-primary btn-lg"><i
+								class="icon-chevron-up"></i></a>
+						</div>
 					</div>
+					<div class="box-content">
+						<table id="wellPressureDistributionTable"
+							class="table table-striped table-bordered bootstrap-datatable datatable">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>下泵深度（m）</th>
+									<th>沉没压力(MPa)</th>
+									<th>充满系数</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+						<!-- box content -->
+					</div>
+					<!-- box span12 -->
 				</div>
-				<div class="box-content">
-					<table id="wellBaseDataTable"
-						class="table table-striped table-bordered bootstrap-datatable datatable">
-						<thead>
-							<tr>
-								<th><input type="checkbox" id="checkAll"></th>
-								<th></th>
-								<th>序号</th>
-								<th>下泵深度（m）</th>
-								<th>沉没压力(MPa)</th>
-								<th>充满系数</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-					<!-- box content -->
-				</div>
-				<!-- box span12 -->
+				<div class="span6" id="highchartsPlot"></div>
+				<!-- fluid sortable -->
 			</div>
-			<!-- fluid sortable -->
+			<div class="modal fade" id="PressureDistributionParams">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">×</button>
+							<h4 class="modal-title">压力分布参数</h4>
+						</div>
+						<div class="modal-body">
+							<div class="control-group">
+								<div class="span6">
+									<label class="control-label" for="focusedInput">下泵深度(m)</label>
+								</div>
+								<div class="span6">
+									<input class="input-xlarge focused" id="pumpDepth" type="text"
+										value="">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="span6">
+									<label class="control-label" for="focusedInput">沉没压力(MPa)</label>
+								</div>
+								<div class="span6">
+									<input class="input-xlarge focused" id="sinkingPressure"
+										type="text" value="">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="span6">
+									<label class="control-label" for="focusedInput">充满系数</label>
+								</div>
+								<div class="span6">
+									<input class="input-xlarge focused" id="fulfillCoefficient"
+										type="text" value="">
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="button" id="submitPressureDistribution"
+								class="btn btn-primary">Save changes</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
 		</div>
+		<!-- /.container -->
 	</fmt:bundle>
 	<!--3rd Party Script Begin -->
 	<script src="lib/jquery/script/jquery-2.1.3.min.js"></script>
+	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="lib/other/jquery.noty.packaged.min.js"></script>
 	<!-- 3rd Party Script End -->
+	<!-- My Own Util Start-->
+	<script src="lib/mine/script/util/oil.table.js"></script>
+	<script src="lib/mine/script/util/UrlParamParser.js"></script>
+	<script src="lib/mine/script/util/uiFactory.js"></script>
+	<!-- My Own Util End -->
+	<!-- My Own Script Begin -->
+	<script src="lib/mine/script/pressureDistribution.js"></script>
+	<!-- My Own Script End -->
 </body>
 </html>
