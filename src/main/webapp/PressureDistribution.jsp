@@ -15,8 +15,8 @@
 				<div class="box-header well" data-original-title>
 					<div class="box-icon">
 						<a class="btn btn-primary btn-lg"><i class="icon-plus">增加压力分布参数</i></a>
-						<a class="btn btn-round" id="agentList"><i class="icon-list"></i></a>
-						<a class="btn btn-minimize btn-round"><i
+						<a class="btn btn-primary btn-lg" id="agentList"><i
+							class="icon-list"></i></a> <a class="btn btn-primary btn-lg"><i
 							class="icon-chevron-up"></i></a>
 					</div>
 				</div>

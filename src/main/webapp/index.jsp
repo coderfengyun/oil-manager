@@ -9,6 +9,7 @@
 	rel="stylesheet">
 <link href="lib/chrisma/css/opa-icons.css" rel="stylesheet">
 <link href="lib/chrisma/css/charisma-app.css" rel="stylesheet">
+<!-- <link href='lib/bootstrap/css/bootstrap.min.css' rel="stylesheet"> -->
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
 
@@ -17,14 +18,11 @@
 <body style="border: 0px solid red;">
 	<fmt:bundle basename="i18n">
 		<jsp:include page="lib/mine/shareControl/navigateBar.jsp"></jsp:include>
-		<h2>Hello World!</h2>
 		<div class="row-fluid sortable">
 			<div class="box span12 ">
 				<div class="box-header well" data-original-title>
-					<h2>
-						<i><fmt:message key="well_base_data" /></i>
-					</h2>
-					<div class="box-icon">
+					<div class="span8"></div>
+					<div class="box-icon span4">
 						<a class="btn btn-setting btn-round"><i class="icon-plus"></i></a>
 						<a class="btn btn-round" id="agentList"><i class="icon-list"></i></a>
 						<a class="btn btn-minimize btn-round"><i
@@ -54,9 +52,6 @@
 				<!-- box span12 -->
 			</div>
 			<!-- fluid sortable -->
-		</div>
-		<div id="other-button">
-			<Button>压力分布计算</Button>
 		</div>
 		<div class="modal hide fade" id="WellBaseDataParams">
 			<div class="modal-header">
