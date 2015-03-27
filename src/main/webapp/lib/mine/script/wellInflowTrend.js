@@ -256,7 +256,7 @@ addPointToChart = function(data) {
 			.getTable());
 }
 
-$('.btn-setting').click(
+$('.btn-add').click(
 		function(e) {
 			e.preventDefault();
 			if ($("#" + WellInflowTrend_Instance.paramWindowName).length <= 0) {

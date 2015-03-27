@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 	loadWellBaseDatas(table);
 });
-
+var currentSelectWellId = -1;
 var wellDataList = new Array();
 function get(id) {
 	return wellDataList[id];
@@ -21,10 +21,20 @@ function put(id, instance) {
 	wellDataList[id] = instance;
 };
 
-$('.btn-setting').click(function(e) {
+$('.btn-add').click(function(e) {
 	$("#WellBaseDataParams").modal('show');
 });
-
+$(".oil-navigate-button").click(function(e) {
+	var target = e.target || e.srcElement;
+	target.href = target.href + '?wellId=1';
+});
+// $(".check").click(function(e) {
+// changeHref
+// });
+changeHref = function(source) {
+	currentSelectWellId = $(source).closest("tr").attr("id");
+	new UrlParamParser().setParamForUri('wellId', currentSelectWellId);
+};
 function submitWellBaseData() {
 	var table = $('#wellBaseDataTable');
 	$.post("well/insertWellBaseData", {
@@ -53,7 +63,7 @@ function submitWellBaseData() {
 function loadWellBaseDatas(table) {
 	var jsInstance = this;
 	// table.fnClearTable();
-	var checkbox = "<input id='checkAll' type='checkbox'>";
+	var checkbox = "<input class='check' onclick='changeHref(this)' type='checkbox'>";
 	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option value=WellProductData>"
 			+ "当前油井生产数据-WellProductData"
 			+ "</option><option value=FluidPhysicalParameter>"
@@ -66,7 +76,6 @@ function loadWellBaseDatas(table) {
 			+ "抽油杆结构参数-RodStructureParameter"
 			+ "</option><option value=IndicatorWeightDistribution>"
 			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
-	// <option value=WellInflowTrend>查看油井流入动态->产能预测</option>
 	$
 			.get(
 					"well/",

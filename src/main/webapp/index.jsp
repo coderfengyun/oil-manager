@@ -5,12 +5,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
 <title>杏北开发区抽油泵合理沉没压力研究</title>
-<!-- <link id="bs-css" href="lib/chrisma/css/bootstrap-cerulean.css"
-	rel="stylesheet">
-<link href="lib/chrisma/css/opa-icons.css" rel="stylesheet">
-<link href="lib/chrisma/css/charisma-app.css" rel="stylesheet">
-<link href='lib/mine/css/api.css' rel='stylesheet'>
-<link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet"> -->
 <link href='lib/bootstrap/css/bootstrap.min.css' rel="stylesheet">
 
 </head>
@@ -23,9 +17,9 @@
 					<div class="box-header well" data-original-title>
 						<div class="span8"></div>
 						<div class="box-icon span4">
-							<a class="btn btn-setting btn-round"><i class="icon-plus"></i></a>
-							<a class="btn btn-round" id="agentList"><i class="icon-list"></i></a>
-							<a class="btn btn-minimize btn-round"><i
+							<a class="btn btn-primary btn-lg btn-add">添加<i
+								class="icon-plus"></i></a> <a class="btn btn-round" id="agentList"><i
+								class="icon-list"></i></a> <a class="btn btn-minimize btn-round"><i
 								class="icon-chevron-up"></i></a>
 						</div>
 					</div>
@@ -53,89 +47,72 @@
 				</div>
 				<!-- fluid sortable -->
 			</div>
-			<div class="modal hide fade" id="WellBaseDataParams">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">x</button>
-					<h3>
-						<fmt:message key="index_add_well_base_data" />
-					</h3>
+			<div class="modal fade" id="WellBaseDataParams">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">x</button>
+							<h3>
+								<fmt:message key="index_add_well_base_data" />
+							</h3>
+						</div>
+						<div class="modal-body">
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="Well_Depth" /></label> <input class="input-xlarge focused"
+									id="wellDepth" type="text" value="">
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="casingOutterDiameter" /></label> <input
+									class="input-xlarge focused" id="casingOutterDiameter"
+									type="text" value="">
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="casingInnerDiameter" /></label> <input
+									class="input-xlarge focused" id="casingInnerDiameter"
+									type="text" value="">
+
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="reservoirTemperature" /></label> <input
+									class="input-xlarge focused" id="reservoirTemperature"
+									type="text" value="">
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="tubingOutterDiameter" /></label> <input
+									class="input-xlarge focused" id="tubingOutterDiameter"
+									type="text" value="">
+								<div id='tubingOutterDiameter_error'
+									style='display: none; color: red'></div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="focusedInput"><fmt:message
+										key="tubingInnerDiameter" /></label> <input
+									class="input-xlarge focused" id="tubingInnerDiameter"
+									type="text" value="">
+								<div id='tubingInnerDiameter_error'
+									style='display: none; color: red'></div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal" onClick="submitWellBaseData()">
+								<fmt:message key="well_base_data_add_submit" />
+							</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">
+								<fmt:message key="well_base_data_add_cancel" />
+							</button>
+						</div>
+					</div>
 				</div>
-				<div class="modal-body">
-					<form class="form-horizontal">
-						<fieldset>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="Well_Depth" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="wellDepth" type="text"
-										value="">
-									<div id='Well_Depth_error' style='display: none; color: red'>
-									</div>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="casingOutterDiameter" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="casingOutterDiameter"
-										type="text" value="">
-									<div id='casingOutterDiameter_error'
-										style='display: none; color: red'></div>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="casingInnerDiameter" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="casingInnerDiameter"
-										type="text" value="">
-									<div id='casingInnerDiameter_error'
-										style='display: none; color: red'></div>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="reservoirTemperature" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="reservoirTemperature"
-										type="text" value="">
-									<div id='reservoirTemperature_error'
-										style='display: none; color: red'></div>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="tubingOutterDiameter" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="tubingOutterDiameter"
-										type="text" value="">
-									<div id='tubingOutterDiameter_error'
-										style='display: none; color: red'></div>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="tubingInnerDiameter" /></label>
-								<div class="controls">
-									<input class="input-xlarge focused" id="tubingInnerDiameter"
-										type="text" value="">
-									<div id='tubingInnerDiameter_error'
-										style='display: none; color: red'></div>
-								</div>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal"
-						onClick="submitWellBaseData()">
-						<fmt:message key="well_base_data_add_submit" />
-					</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">
-						<fmt:message key="well_base_data_add_cancel" />
-					</button>
-				</div>
+				<!-- .modal-content -->
 			</div>
+			<!-- .modal-dialog -->
 			<div id="other-modal-window"></div>
 		</div>
 		<!-- container -->
@@ -148,14 +125,13 @@
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
-	<script src="lib/chrisma/js/jquery.cookie.js"></script>
-	<script src="lib/chrisma/js/theme.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
 
 	<script src="lib/mine/script/util/base.js"></script>
 	<script src="lib/mine/script/util/information.js"></script>
 	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
+	<script src="lib/mine/script/util/UrlParamParser.js"></script>
 
 	<script src="lib/mine/script/model/WellProductDataModel.js"></script>
 	<script src="lib/mine/script/model/FluidPhysicalParameterModel.js"></script>

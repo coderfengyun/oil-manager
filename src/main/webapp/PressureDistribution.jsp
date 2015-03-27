@@ -18,7 +18,7 @@
 						<div class="box-icon">
 							<a class="btn btn-primary btn-lg btn-add"><i
 								class="icon-plus">添加</i></a> <a class="btn btn-lg btn-success"
-								id="updateChart">更新曲线<i class="icon-list"></i></a> <a
+								id="updateChart"><i class="icon-list">更新曲线</i></a> <a
 								class="btn btn-primary btn-lg"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
