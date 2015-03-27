@@ -17,12 +17,12 @@
 </head>
 <body>
 	<fmt:bundle basename="i18n">
-		<h2>Hello World!</h2>
+		<jsp:include page="lib/mine/shareControl/navigateBar.jsp"></jsp:include>
 		<div class="row-fluid sortable">
 			<div class="box span4 ">
 				<div class="box-header well" data-original-title>
 					<h2>
-						<i><fmt:message key="wellInflowTrend.title" /></i>
+						<i><fmt:message key="wellInflowTrend.table.title" /></i>
 					</h2>
 					<div class="box-icon">
 						<a class="btn btn-setting btn-round"><i class="icon-plus"></i></a>

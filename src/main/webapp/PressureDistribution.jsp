@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,21 +40,22 @@
 					</div>
 					<!-- box span12 -->
 				</div>
-				<div class="span6" id="highchartsPlot"></div>
-				<!-- fluid sortable -->
+				<div id="sinkingPressurePlot"></div>
+				<div id="fulfillCoefficientPlot"></div>
 			</div>
+			<!-- fluid sortable -->
 			<div class="modal fade" id="PressureDistributionParams">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">×</button>
+							<button type="button" class="close">×</button>
 							<h4 class="modal-title">压力分布参数</h4>
 						</div>
 						<div class="modal-body">
 							<div class="control-group">
 								<div class="span6">
-									<label class="control-label" for="focusedInput">下泵深度(m)</label>
+									<label class="control-label" for="focusedInput"><fmt:message
+											key="PressureDistribution.params.pumpDepth" /></label>
 								</div>
 								<div class="span6">
 									<input class="input-xlarge focused" id="pumpDepth" type="text"
@@ -62,7 +64,8 @@
 							</div>
 							<div class="control-group">
 								<div class="span6">
-									<label class="control-label" for="focusedInput">沉没压力(MPa)</label>
+									<label class="control-label" for="focusedInput"><fmt:message
+											key="PressureDistribution.params.sinkingPressure" /></label>
 								</div>
 								<div class="span6">
 									<input class="input-xlarge focused" id="sinkingPressure"
@@ -71,7 +74,8 @@
 							</div>
 							<div class="control-group">
 								<div class="span6">
-									<label class="control-label" for="focusedInput">充满系数</label>
+									<label class="control-label" for="focusedInput"><fmt:message
+											key="PressureDistribution.params.sinkingPressure" /></label>
 								</div>
 								<div class="span6">
 									<input class="input-xlarge focused" id="fulfillCoefficient"
@@ -99,6 +103,7 @@
 	<script src="lib/dataTable/js/jquery.dataTables.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/other/jquery.noty.packaged.min.js"></script>
+	<script src="lib/jqueryi18n/jquery.i18n.properties-1.0.9.js"></script>
 	<script src="lib/highcharts/js/highcharts.js"></script>
 	<!-- 3rd Party Script End -->
 	<!-- My Own Util Start-->

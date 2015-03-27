@@ -1,7 +1,7 @@
 function ChartHelper() {
 }
 ChartHelper.prototype = function() {
-	buildOptions = function(chartDivId) {
+	buildOptions = function(chartDivId, chartTitle, XAxisName, YAxisName) {
 		var options = {
 			chart : {
 				renderTo : chartDivId,
@@ -20,7 +20,7 @@ ChartHelper.prototype = function() {
 				enabled : false
 			},
 			title : {
-				text : "Value",
+				text : chartTitle,
 				align : "center",
 				style : {
 					fontSize : '13px',
@@ -35,7 +35,7 @@ ChartHelper.prototype = function() {
 				} ],
 				min : 0,
 				title : {
-					text : "X",
+					text : XAxisName,
 					style : {
 						fontSize : '13px',
 						fontWeight : "bold",
@@ -50,7 +50,7 @@ ChartHelper.prototype = function() {
 					color : '#808080'
 				} ],
 				title : {
-					text : "Y",
+					text : YAxisName,
 					style : {
 						fontSize : '13px',
 						fontWeight : "bold",

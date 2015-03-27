@@ -55,7 +55,7 @@ function loadWellBaseDatas(table) {
 	// table.fnClearTable();
 	var checkbox = "<input id='checkAll' type='checkbox'>";
 	var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option value=WellProductData>"
-			+ "油井生产数据-WellProductData"
+			+ "当前油井生产数据-WellProductData"
 			+ "</option><option value=FluidPhysicalParameter>"
 			+ "流体物性参数-FluidPhysicalParameter"
 			+ "</option><option value=WellDesignParameter>"
@@ -65,8 +65,8 @@ function loadWellBaseDatas(table) {
 			+ "</option><option value=RodStructureParameter>"
 			+ "抽油杆结构参数-RodStructureParameter"
 			+ "</option><option value=IndicatorWeightDistribution>"
-			+ "指标权重分配-IndicatorWeightDistribution"
-			+ "</option><option value=WellInflowTrend>查看油井流入动态->产能预测</option</select>";
+			+ "指标权重分配-IndicatorWeightDistribution" + "</option></select>";
+	// <option value=WellInflowTrend>查看油井流入动态->产能预测</option>
 	$
 			.get(
 					"well/",

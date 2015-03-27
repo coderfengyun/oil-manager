@@ -4,15 +4,14 @@
 <head>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
-<title>石油数据管理系统</title>
+<title>杏北开发区抽油泵合理沉没压力研究</title>
 <link id="bs-css" href="lib/chrisma/css/bootstrap-cerulean.css"
 	rel="stylesheet">
 <link href="lib/chrisma/css/opa-icons.css" rel="stylesheet">
 <link href="lib/chrisma/css/charisma-app.css" rel="stylesheet">
-<!-- <link href='lib/bootstrap/css/bootstrap.min.css' rel="stylesheet"> -->
 <link href='lib/mine/css/api.css' rel='stylesheet'>
 <link href="lib/dataTable/css/jquery.dataTables.css" rel="stylesheet">
-
+<!-- <link href='lib/bootstrap/css/bootstrap.min.css' rel="stylesheet"> -->
 
 </head>
 <body style="border: 0px solid red;">
