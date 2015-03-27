@@ -16,12 +16,9 @@
 			<li><a class="oil-navigate-button" href="wellInflowTrend.jsp">油井流入动态</a></li>
 			<li><a class="oil-navigate-button"
 				href="PressureDistribution.jsp">压力分布</a></li>
-			<li><a class="oil-navigate-button"
-				href="PressureDistribution.jsp">抽油杆柱设计</a></li>
-			<li><a class="oil-navigate-button"
-				href="PressureDistribution.jsp">帮助</a></li>
-			<li><a class="oil-navigate-button"
-				href="PressureDistribution.jsp">退出</a></li>
+			<li><a class="oil-navigate-button" href="RodDesign.jsp">抽油杆柱设计</a></li>
+			<li><a class="oil-navigate-button">帮助</a></li>
+			<li><a class="oil-navigate-button">退出</a></li>
 		</ul>
 	</div>
 	<!--/.nav-collapse -->

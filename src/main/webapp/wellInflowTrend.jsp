@@ -62,6 +62,7 @@
 	<script src="lib/mine/script/util/oil.table.js"></script>
 	<script src="lib/mine/script/util/modal.window.js"></script>
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
+	<script src="lib/mine/shareControl/navigateBar.js"></script>
 	<!-- My own util script end! -->
 	<!-- This page script start -->
 	<script src="lib/mine/script/wellInflowTrend.js"></script>

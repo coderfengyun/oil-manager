@@ -24,13 +24,6 @@ function put(id, instance) {
 $('.btn-add').click(function(e) {
 	$("#WellBaseDataParams").modal('show');
 });
-$(".oil-navigate-button").click(function(e) {
-	var target = e.target || e.srcElement;
-	target.href = target.href + '?wellId=1';
-});
-// $(".check").click(function(e) {
-// changeHref
-// });
 changeHref = function(source) {
 	currentSelectWellId = $(source).closest("tr").attr("id");
 	new UrlParamParser().setParamForUri('wellId', currentSelectWellId);

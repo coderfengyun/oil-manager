@@ -111,6 +111,7 @@
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
 	<script src="lib/mine/script/util/information.js"></script>
 	<script src="lib/mine/script/util/ChartHelper.js"></script>
+	<script src="lib/mine/shareControl/navigateBar.js"></script>
 	<!-- My Own Util End -->
 	<!-- My Own Script Begin -->
 	<script src="lib/mine/script/pressureDistribution.js"></script>
