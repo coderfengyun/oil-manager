@@ -1,7 +1,3 @@
-/*var viewButton = "<a class='btn btn-success' href='#' ><i class='icon-zoom-in icon-white'></i>View</a>"+"  ";
- var editButton = "<a class='btn btn-success' href='#'  ><i class='icon-edit icon-white'></i>Edit</a>"+"  ";
- var deleteButton = "<a class='btn btn-info' href='#'><i class='icon-trash icon-white'></i>Delete</a>";*/
-
 $(document).ready(function() {
 	// highlight current / active link
 	$('ul.main-menu li a').each(function() {

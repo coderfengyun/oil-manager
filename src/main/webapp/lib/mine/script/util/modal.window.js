@@ -1,8 +1,7 @@
 function buildModalWindow(divId, parentDiv, paramNameList, paramValueMap,
 		paramLabels, onSubmitMethodString) {
-	var modalDiaglog = '<div class="modal hide fade" id="'
-			+ divId
-			+ '"><div class="modal-body"><form class="form-horizontal"><fieldset>';
+	var modalDiaglog = '<div class="modal fade" id="' + divId
+			+ '"><div class="modal-dialog"><div class="modal-content">';
 	for (var i = 0; i < paramNameList.length; i++) {
 		var paramName = paramNameList[i];
 		var paramLabel = paramLabels[i];
@@ -17,11 +16,11 @@ function buildModalWindow(divId, parentDiv, paramNameList, paramValueMap,
 				+ ' style="display: none;color: red"></div></div>';
 		modalDiaglog += '</div>';
 	}
-	modalDiaglog += '</fieldset></form></div>';
+	modalDiaglog += '</div>';
 	modalDiaglog += '<div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal" onClick="'
 			+ onSubmitMethodString
 			+ '">提交</button><button type="button" class="btn btn-primary" data-dismiss="modal">取消</button></div>';
-	modalDiaglog += '</div>'
+	modalDiaglog += '</div></div>'
 	$(parentDiv).append(modalDiaglog);
 }
 
