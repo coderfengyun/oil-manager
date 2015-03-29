@@ -15,7 +15,10 @@ import org.hibernate.criterion.Restrictions;
 @Table(name = "preferredPlan")
 public class PreferredPlan implements Aggregate {
 	private static final String WELL_COLUMN_NAME = "well";
+	private static final String[] scoreProperties = { "pumpEffeciency",
+			"systemEffeciency", "production", "econemicBenifits", "utilization" };
 	private int id;
+	private double pumpDepth;
 	private double pumpEffeciency;
 	private double systemEffeciency;
 	private double production;
@@ -31,6 +34,14 @@ public class PreferredPlan implements Aggregate {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public double getPumpDepth() {
+		return pumpDepth;
+	}
+
+	public void setPumpDepth(double pumpDepth) {
+		this.pumpDepth = pumpDepth;
 	}
 
 	public double getPumpEffeciency() {
@@ -87,10 +98,11 @@ public class PreferredPlan implements Aggregate {
 		return Restrictions.eq(WELL_COLUMN_NAME, well);
 	}
 
-	public static PreferredPlan buildWithoutId(double econemicBenifits,
-			double production, double pumpEffeciency, double systemEffeciency,
-			double utilization, WellBaseData well) {
+	public static PreferredPlan buildWithoutId(double pumpDepth,
+			double econemicBenifits, double production, double pumpEffeciency,
+			double systemEffeciency, double utilization, WellBaseData well) {
 		PreferredPlan result = new PreferredPlan();
+		result.setPumpDepth(pumpDepth);
 		result.setEconemicBenifits(econemicBenifits);
 		result.setProduction(production);
 		result.setPumpEffeciency(pumpEffeciency);
@@ -98,5 +110,9 @@ public class PreferredPlan implements Aggregate {
 		result.setUtilization(utilization);
 		result.setWell(well);
 		return result;
+	}
+
+	public static String[] propertiesToScore() {
+		return PreferredPlan.scoreProperties;
 	}
 }

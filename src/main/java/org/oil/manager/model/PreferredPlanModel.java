@@ -2,6 +2,7 @@ package org.oil.manager.model;
 
 public class PreferredPlanModel {
 	private int id;
+	private double pumpDepth;
 	private double pumpEffeciency;
 	private double systemEffeciency;
 	private double production;
@@ -15,6 +16,14 @@ public class PreferredPlanModel {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public double getPumpDepth() {
+		return pumpDepth;
+	}
+
+	public void setPumpDepth(double pumpDepth) {
+		this.pumpDepth = pumpDepth;
 	}
 
 	public double getPumpEffeciency() {
@@ -65,11 +74,12 @@ public class PreferredPlanModel {
 		this.wellId = wellId;
 	}
 
-	public static PreferredPlanModel build(int id, double econemicBenifits,
-			double production, double pumpEffeciency, double systemEffeciency,
-			double utilization, int wellId) {
+	public static PreferredPlanModel build(int id, double pumpDepth,
+			double econemicBenifits, double production, double pumpEffeciency,
+			double systemEffeciency, double utilization, int wellId) {
 		PreferredPlanModel result = new PreferredPlanModel();
 		result.setId(id);
+		result.setPumpDepth(pumpDepth);
 		result.setEconemicBenifits(econemicBenifits);
 		result.setProduction(production);
 		result.setPumpEffeciency(pumpEffeciency);

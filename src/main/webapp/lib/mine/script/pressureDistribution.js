@@ -78,7 +78,7 @@ PressureDistribution.prototype = function() {
 								{},
 								function(data) {
 									if (data == null) {
-										information("Get Inflow Trend Fails!")
+										information("Get Pressure Distribution Fails!")
 									} else {
 										for (var i = 0; i < data.length; i++) {
 											var pressureDistribution = data[i];

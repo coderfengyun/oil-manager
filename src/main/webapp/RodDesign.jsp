@@ -17,8 +17,9 @@
 					<div class="box-header well">
 						<div class="box-icon">
 							<a class="btn btn-primary btn-lg btn-add"><i
-								class="icon-plus">添加</i></a> <a class="btn btn-lg btn-success"
-								id="updateChart">计算<i class="icon-list"></i></a>
+								class="icon-plus">添加</i></a> <a
+								class="btn btn-lg btn-success btn-calculate" id="updateChart">计算<i
+								class="icon-list"></i></a>
 						</div>
 					</div>
 					<!-- box-header wel -->
@@ -38,6 +39,19 @@
 							</thead>
 							<tbody>
 							</tbody>
+						</table>
+					</div>
+					<!-- .box-content -->
+					<div class="box-content">
+						<table id="preferredPlanScoreTable"
+							class="table table-striped table-bordered bootstrap-datatable datatable">
+							<thead>
+								<tr>
+									<th><fmt:message key="wellInflowTrend.jsp.number" /></th>
+									<th><fmt:message key="RodDesign.params.pumpDepth" /></th>
+									<th><fmt:message key="RodDesign.params.score" /></th>
+								</tr>
+							</thead>
 						</table>
 					</div>
 					<!-- .box-content -->
