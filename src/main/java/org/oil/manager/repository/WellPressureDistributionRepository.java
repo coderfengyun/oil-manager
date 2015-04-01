@@ -11,18 +11,14 @@ public class WellPressureDistributionRepository extends
 		AbstractRepository<WellPressureDistribution> {
 
 	@Override
-	public boolean attach(WellPressureDistribution dumEntity) {
-		return this.attachCore(dumEntity);
-	}
-
-	@Override
 	public List<WellPressureDistribution> findAll() {
 		return this.findAll(WellPressureDistribution.class);
 	}
 
 	@Override
 	public List<WellPressureDistribution> findAllBy(Criterion specification) {
-		return this.findAllByCore(specification, WellPressureDistribution.class);
+		return this
+				.findAllByCore(specification, WellPressureDistribution.class);
 	}
 
 }

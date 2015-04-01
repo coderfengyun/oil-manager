@@ -33,6 +33,12 @@ public class BaseDataController {
 						tubingOutterDiameter, tubingInnerDiameter);
 	}
 
+	@RequestMapping(value = "/{wellId}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public boolean delete(@PathVariable int wellId) {
+		return this.wellBaseDataService.delete(wellId);
+	}
+
 	@RequestMapping(value = "/{wellId}/updateProductData", method = { RequestMethod.POST })
 	@ResponseBody
 	public boolean updateProductData(@PathVariable int wellId,
@@ -119,8 +125,7 @@ public class BaseDataController {
 	@ResponseBody
 	public List<WellBaseData> queryAllWellBaseData() {
 		System.out.println("enter queryAllWellBaseData");
-		List<WellBaseData> result = this.wellBaseDataService
-				.queryAllWellBaseData();
+		List<WellBaseData> result = this.wellBaseDataService.findAll();
 		return result;
 	}
 

@@ -10,11 +10,6 @@ import org.springframework.stereotype.Component;
 public class PreferredPlanRepository extends AbstractRepository<PreferredPlan> {
 
 	@Override
-	public boolean attach(PreferredPlan dumEntity) {
-		return this.attachCore(dumEntity);
-	}
-
-	@Override
 	public List<PreferredPlan> findAll() {
 		return this.findAll(PreferredPlan.class);
 	}

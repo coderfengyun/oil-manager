@@ -17,10 +17,8 @@
 					<div class="box-header well" data-original-title>
 						<div class="span8"></div>
 						<div class="box-icon span4">
-							<a class="btn btn-primary btn-lg btn-add">添加<i
-								class="icon-plus"></i></a> <a class="btn btn-round" id="agentList"><i
-								class="icon-list"></i></a> <a class="btn btn-minimize btn-round"><i
-								class="icon-chevron-up"></i></a>
+							<a class="btn btn-primary btn-lg btn-add">添加</a> <a
+								class="bbtn btn-lg btn-danger btn-delete" id="agentList">删除</a>
 						</div>
 					</div>
 					<div class="box-content">

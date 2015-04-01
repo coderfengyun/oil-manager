@@ -12,11 +12,6 @@ public class WellInflowTrendRepository extends
 		AbstractRepository<WellInflowTrend> {
 
 	@Override
-	public boolean attach(WellInflowTrend dumEntity) {
-		return attachCore(dumEntity);
-	}
-
-	@Override
 	public List<WellInflowTrend> findAll() {
 		return Collections.emptyList();
 	}

@@ -1,15 +1,5 @@
 $(document).ready(function() {
 	var table = $('#wellBaseDataTable').DataTable();
-	var tbody = table.table().body();
-	$(tbody).on('click', 'td a.delete', function(e) {
-		e.preventDefault();
-		var row = $(this).closest("tr");
-		var id = $(row).attr("id");
-		row = table.row(row);
-		if (confirm($.i18n.prop("sure_to_delete_this_well_base_data"))) {
-			deleteWellBaseData(id, row);
-		}
-	});
 	loadWellBaseDatas(table);
 });
 var currentSelectWellId = -1;
@@ -24,6 +14,32 @@ function put(id, instance) {
 $('.btn-add').click(function(e) {
 	$("#WellBaseDataParams").modal('show');
 });
+
+$('.btn-delete').click(function(e) {
+	var wellId = new UrlParamParser().getParamFromUri('wellId');
+	if (wellId == undefined || wellId == null) {
+		information("并未选中要删除行！");
+	} else {
+		deleteWellBaseData(wellId);
+	}
+});
+deleteWellBaseData = function(id, row) {
+	$.ajax({
+		url : 'well/' + id,
+		type : 'DELETE',
+		data : {},
+		success : function(data) {
+			if (data == null || data == undefined || data == false) {
+				information("connect server error!");
+			} else {
+				information("Sucess");
+			}
+		},
+		error : function() {
+			information("Connect Server ERROR");
+		}
+	});
+};
 changeHref = function(source) {
 	currentSelectWellId = $(source).closest("tr").attr("id");
 	new UrlParamParser().setParamForUri('wellId', currentSelectWellId);
@@ -134,8 +150,6 @@ function onSelectChange(select) {
 		break;
 	}
 	select.options[0].selected = true;
-};
-function deleteWellBaseData(id, row) {
 };
 
 viewWellInflowTrend = function(wellId) {

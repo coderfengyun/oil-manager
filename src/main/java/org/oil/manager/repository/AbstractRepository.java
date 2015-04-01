@@ -34,11 +34,27 @@ public abstract class AbstractRepository<Entity> {
 		return this.logger;
 	}
 
-	protected final boolean attachCore(Aggregate dumEntity) {
+	public final boolean attach(Aggregate dumEntity) {
 		Session session = this.sessionHelper.openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.save(dumEntity);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			transaction.rollback();
+			this.getLogger().error(e, e);
+			return false;
+		} finally {
+			releaseSession(session);
+		}
+	}
+
+	public final boolean detach(Aggregate dumEntity) {
+		Session session = this.sessionHelper.openSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			session.delete(dumEntity);
 			transaction.commit();
 			return true;
 		} catch (Exception e) {
@@ -88,8 +104,6 @@ public abstract class AbstractRepository<Entity> {
 		result = criteria.list();
 		return result;
 	}
-
-	public abstract boolean attach(Entity dumEntity);
 
 	public abstract List<Entity> findAll();
 

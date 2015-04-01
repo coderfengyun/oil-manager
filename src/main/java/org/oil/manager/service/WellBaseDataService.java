@@ -22,14 +22,18 @@ public class WellBaseDataService {
 			double casingOutterDiameter, double casingInnerDiameter,
 			double reservoirTemperature, double tubingOutterDiameter,
 			double tubingInnerDiameter) {
-		this.wellBaseDataReposity.attach(WellBaseData
+		return this.wellBaseDataReposity.attach(WellBaseData
 				.buildWithoutId(wellDepth, casingOutterDiameter,
 						casingInnerDiameter, reservoirTemperature,
 						tubingOutterDiameter, tubingInnerDiameter));
-		return true;
 	}
 
-	public List<WellBaseData> queryAllWellBaseData() {
+	public boolean delete(int wellId) {
+		return this.wellBaseDataReposity.detach(this.wellBaseDataReposity
+				.find(wellId));
+	}
+
+	public List<WellBaseData> findAll() {
 		return this.wellBaseDataReposity.findAll();
 	}
 
