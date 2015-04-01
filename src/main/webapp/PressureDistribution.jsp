@@ -75,7 +75,7 @@
 							<div class="control-group">
 								<div class="span6">
 									<label class="control-label" for="focusedInput"><fmt:message
-											key="PressureDistribution.params.sinkingPressure" /></label>
+											key="PressureDistribution.params.fulfillCoefficient" /></label>
 								</div>
 								<div class="span6">
 									<input class="input-xlarge focused" id="fulfillCoefficient"
