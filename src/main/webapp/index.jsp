@@ -45,72 +45,6 @@
 				</div>
 				<!-- fluid sortable -->
 			</div>
-			<div class="modal fade" id="WellBaseDataParams">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">x</button>
-							<h3>
-								<fmt:message key="index_add_well_base_data" />
-							</h3>
-						</div>
-						<div class="modal-body">
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="Well_Depth" /></label> <input class="input-xlarge focused"
-									id="wellDepth" type="text" value="">
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="casingOutterDiameter" /></label> <input
-									class="input-xlarge focused" id="casingOutterDiameter"
-									type="text" value="">
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="casingInnerDiameter" /></label> <input
-									class="input-xlarge focused" id="casingInnerDiameter"
-									type="text" value="">
-
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="reservoirTemperature" /></label> <input
-									class="input-xlarge focused" id="reservoirTemperature"
-									type="text" value="">
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="tubingOutterDiameter" /></label> <input
-									class="input-xlarge focused" id="tubingOutterDiameter"
-									type="text" value="">
-								<div id='tubingOutterDiameter_error'
-									style='display: none; color: red'></div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="focusedInput"><fmt:message
-										key="tubingInnerDiameter" /></label> <input
-									class="input-xlarge focused" id="tubingInnerDiameter"
-									type="text" value="">
-								<div id='tubingInnerDiameter_error'
-									style='display: none; color: red'></div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary"
-								data-dismiss="modal" onClick="submitWellBaseData()">
-								<fmt:message key="well_base_data_add_submit" />
-							</button>
-							<button type="button" class="btn btn-primary"
-								data-dismiss="modal">
-								<fmt:message key="well_base_data_add_cancel" />
-							</button>
-						</div>
-					</div>
-				</div>
-				<!-- .modal-content -->
-			</div>
-			<!-- .modal-dialog -->
 			<div id="other-modal-window"></div>
 		</div>
 		<!-- container -->
@@ -132,6 +66,7 @@
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
 	<script src="lib/mine/shareControl/navigateBar.js"></script>
 
+	<script src="lib/mine/script/api.js"></script>
 	<script src="lib/mine/script/model/WellProductDataModel.js"></script>
 	<script src="lib/mine/script/model/FluidPhysicalParameterModel.js"></script>
 	<script src="lib/mine/script/model/WellDesignParameterModel.js"></script>

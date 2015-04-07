@@ -1,4 +1,4 @@
-package org.pol.manager.valueobject;
+package org.oil.manager.valueobject;
 
 import java.util.Arrays;
 import java.util.LinkedList;

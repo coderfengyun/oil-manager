@@ -13,39 +13,50 @@ PressureDistribution.prototype = function() {
 			'fulfillCoefficientPlot', '沉没压力与充满系数关系曲线', '沉没压力(MPa)', '充满系数');
 	var fulfillCoefficientChart = new Highcharts.Chart(
 			fulfillCoefficientOptions);
+	var pressureDistribution_API = new PressureDistribution_API();
+	var modalWindowHelper = new ModalWindowHelper();
+	var PressureDistribution_Params = new Array();
+	PressureDistribution_Params[0] = "pumpDepth";
+	PressureDistribution_Params[1] = "sinkingPressure";
+	PressureDistribution_Params[2] = "fulfillCoefficient";
+
+	var PressureDistribution_Labels = new Array();
+	PressureDistribution_Labels[0] = "下泵深度(m)";
+	PressureDistribution_Labels[1] = "沉没压力(MPa)";
+	PressureDistribution_Labels[2] = "充满系数";
 
 			appendRowToTable = function(data) {
 				new OilTable().appendRowToTable(table, data);
 			},
 
 			addAWellPressureDistribution = function() {
-				var pumpDepth = $("#pumpDepth").val(), sinkingPressure = $(
-						"#sinkingPressure").val(), fulfillCoefficient = $(
-						"#fulfillCoefficient").val();
-				$.ajax({
-					url : wellId + "/pressureDistribution/",
-					type : 'PUT',
-					data : {
-						"pumpDepth" : pumpDepth,
-						"sinkingPressure" : sinkingPressure,
-						"fulfillCoefficient" : fulfillCoefficient,
-					},
-					dataType : 'json',
-					success : function(response) {
-						if (response == null || response == false) {
-							information("Add WellInflowTrend Fails!");
-						} else {
-							appendRowToTable([ pumpDepth, sinkingPressure,
-									fulfillCoefficient ]);
-							information("Success!");
-						}
-					},
-					error : function() {
-						information($.i18n.prop('failed-connect-server'));
-					}
-				});
+				var paramNameValueMap = _buildParamNameValueMap();
+				pressureDistribution_API.add(wellId, paramNameValueMap,
+						addPressureDistributionCallBack)
 			},
-			sortByFirst = function(a, b) {
+
+			_buildParamNameValueMap = function() {
+				var result = new Array();
+				for (var i = 0; i < PressureDistribution_Params.length; i++) {
+					result[PressureDistribution_Params[i]] = _getValByDomId(PressureDistribution_Params[i]);
+				}
+				return result;
+			},
+
+			_getValByDomId = function(id) {
+				return $("#" + id).val();
+			},
+
+			addPressureDistributionCallBack = function(rowData, response) {
+				if (response == null || response == false) {
+					information("Add WellInflowTrend Fails!");
+				} else {
+					appendRowToTable(rowData);
+					information("Success!");
+				}
+			},
+
+			sortByFirstColumn = function(a, b) {
 				if (a[0] < b[0]) {
 					return -1;
 				} else if (a[0] > b[0]) {
@@ -54,11 +65,13 @@ PressureDistribution.prototype = function() {
 					return 0;
 				}
 			},
+
 			drawAllChartWithDataInTable = function() {
 				_drawChart(sinkingPressureOptions, sinkingPressureChart, 1, 2);
 				_drawChart(fulfillCoefficientOptions, fulfillCoefficientChart,
 						2, 3);
 			},
+
 			_drawChart = function(options, targetChart, xIndex, yIndex) {
 				var rowCount = table.rows().indexes().length;
 				var seriesData = options.series[0].data;
@@ -67,55 +80,59 @@ PressureDistribution.prototype = function() {
 					var data = table.row(i).data();
 					seriesData.push([ data[xIndex], data[yIndex] ]);
 				}
-				seriesData.sort(sortByFirst);
+				seriesData.sort(sortByFirstColumn);
 				targetChart = new Highcharts.Chart(options);
 			},
+
 			loadAll = function() {
-				var operations = null;
-				$
-						.get(
-								wellId + "/pressureDistribution/",
-								{},
-								function(data) {
-									if (data == null) {
-										information("Get Pressure Distribution Fails!")
-									} else {
-										for (var i = 0; i < data.length; i++) {
-											var pressureDistribution = data[i];
-											var tr = table.row
-													.add(
-															[
-																	i + 1,
-																	pressureDistribution.pumpDepth,
-																	pressureDistribution.sinkingPressure,
-																	pressureDistribution.fulfillCoefficient ])
-													.draw().node();
-											$(tr).attr("id",
-													pressureDistribution.id);
-										}
-									}
-								}, "json").error(function() {
-							information($.i18n.prop('failed-connect-server'));
+				pressureDistribution_API.load(wellId, loadCallBack);
+			},
+
+			loadCallBack = function(data) {
+				if (data == null) {
+					information("Get Pressure Distribution Fails!")
+				} else {
+					for (var i = 0; i < data.length; i++) {
+						var pressureDistribution = data[i];
+						var tr = table.row
+								.add(
+										[
+												i + 1,
+												pressureDistribution.pumpDepth,
+												pressureDistribution.sinkingPressure,
+												pressureDistribution.fulfillCoefficient ])
+								.draw().node();
+						$(tr).attr("id", pressureDistribution.id);
+					}
+				}
+			},
+
+			pageInit = function() {
+				$(".btn-add").click(
+						function(e) {
+							modalWindowHelper.showWith(
+									'PressureDistributionParams', 'body',
+									PressureDistribution_Params, null,
+									PressureDistribution_Labels,
+									'addAWellPressureDistribution()');
 						});
+				$("#updateChart").click(
+						function(e) {
+							PressureDistribution_Instance
+									.drawAllChartWithDataInTable();
+						});
+				$(document).ready(function() {
+					PressureDistribution_Instance.loadAll();
+				});
 			}
 
 	return {
 		addAWellPressureDistribution : addAWellPressureDistribution,
 		loadAll : loadAll,
-		drawAllChartWithDataInTable : drawAllChartWithDataInTable
+		drawAllChartWithDataInTable : drawAllChartWithDataInTable,
+		pageInit : pageInit
 	};
 }();
 
 var PressureDistribution_Instance = new PressureDistribution();
-$(".btn-add").click(function(e) {
-	$("#PressureDistributionParams").modal('show');
-});
-$("#submitPressureDistribution").click(function(e) {
-	PressureDistribution_Instance.addAWellPressureDistribution();
-});
-$("#updateChart").click(function(e) {
-	PressureDistribution_Instance.drawAllChartWithDataInTable();
-});
-$(document).ready(function() {
-	PressureDistribution_Instance.loadAll();
-});
+PressureDistribution_Instance.pageInit();

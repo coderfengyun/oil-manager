@@ -43,58 +43,6 @@
 				<div id="sinkingPressurePlot"></div>
 				<div id="fulfillCoefficientPlot"></div>
 			</div>
-			<!-- fluid sortable -->
-			<div class="modal fade" id="PressureDistributionParams">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close">×</button>
-							<h4 class="modal-title">压力分布参数</h4>
-						</div>
-						<div class="modal-body">
-							<div class="control-group">
-								<div class="span6">
-									<label class="control-label" for="focusedInput"><fmt:message
-											key="PressureDistribution.params.pumpDepth" /></label>
-								</div>
-								<div class="span6">
-									<input class="input-xlarge focused" id="pumpDepth" type="text"
-										value="">
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="span6">
-									<label class="control-label" for="focusedInput"><fmt:message
-											key="PressureDistribution.params.sinkingPressure" /></label>
-								</div>
-								<div class="span6">
-									<input class="input-xlarge focused" id="sinkingPressure"
-										type="text" value="">
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="span6">
-									<label class="control-label" for="focusedInput"><fmt:message
-											key="PressureDistribution.params.fulfillCoefficient" /></label>
-								</div>
-								<div class="span6">
-									<input class="input-xlarge focused" id="fulfillCoefficient"
-										type="text" value="">
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-							<button type="button" id="submitPressureDistribution"
-								class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
 		</div>
 		<!-- /.container -->
 	</fmt:bundle>
@@ -108,12 +56,14 @@
 	<!-- 3rd Party Script End -->
 	<!-- My Own Util Start-->
 	<script src="lib/mine/script/util/oil.table.js"></script>
+	<script src="lib/mine/script/util/modal.window.js"></script>
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
 	<script src="lib/mine/script/util/information.js"></script>
 	<script src="lib/mine/script/util/ChartHelper.js"></script>
 	<script src="lib/mine/shareControl/navigateBar.js"></script>
 	<!-- My Own Util End -->
 	<!-- My Own Script Begin -->
+	<script src="lib/mine/script/api.js"></script>
 	<script src="lib/mine/script/pressureDistribution.js"></script>
 	<!-- My Own Script End -->
 </body>

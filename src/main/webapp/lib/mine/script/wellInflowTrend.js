@@ -1,84 +1,19 @@
 WellInflowTrend.prototype = function() {
-	var wellId = -1;
+	var wellId = new UrlParamParser().getParamFromUri('wellId');
 	var trendIdValueMap = new Array();
 	var paramWindowName = "WellInflowTrendParameters";
 	var tableName = "wellInflowTrendTable";
 	var chartDivId = "highchartsPlot";
 	var paramNameList = new Array();
 	var paramLabelList = new Array();
+	var table = $("#" + tableName).DataTable();
 	paramNameList[0] = "producedFluidVolume";
 	paramNameList[1] = "wellBotomFlowPressure";
 	paramLabelList[0] = "产液量(t\d)";
 	paramLabelList[1] = "井底流压(MPa)";
-	var options = {
-		chart : {
-			renderTo : chartDivId,
-			defaultSeriesType : 'line',
-		},
-		plotOptions : {
-			series : {
-				fillOpacity : 0.85,
-				color : '#369bd7'
-			}
-		},
-		credits : {
-			enabled : false
-		},
-		legend : {
-			enabled : false
-		},
-		title : {
-			text : $.i18n.prop('test-loadSchedule'),
-			align : "center",
-			style : {
-				fontSize : '13px',
-				fontWeight : "bold",
-			},
-			margin : 20,
-		},
-		xAxis : {
-			plotLines : [ {
-				width : 20,
-				color : '#808080'
-			} ],
-			min : 0,
-			title : {
-				text : $.i18n.prop('times'),
-				style : {
-					fontSize : '13px',
-					fontWeight : "bold",
-				},
-			},
-			gridLineWidth : 1,
-		},
-		yAxis : {
-			plotLines : [ {
-				value : 0,
-				width : 1,
-				color : '#808080'
-			} ],
-			title : {
-				text : $.i18n.prop('users'),
-				style : {
-					fontSize : '13px',
-					fontWeight : "bold",
-				},
-			},
-			min : 0,
-			gridLineWidth : 1,
-		},
-		tooltip : {
-			formatter : function() {
-				var formatStr = '<b>' + this.y + $.i18n.prop('userNumbetPlot')
-						+ this.x + $.i18n.prop('timePlot');
-				return formatStr;
-			}
-		},
-		series : [ {
-			id : 'default-serie',
-			data : []
-		} ]
-	};
+	var options = new ChartHelper().buildOptions(chartDivId, "油井流入动态",
+			paramLabelList[0], paramLabelList[1]);
+
 	var chart = new Highcharts.Chart(options);
 
 			get = function(id) {
@@ -89,9 +24,8 @@ WellInflowTrend.prototype = function() {
 				this.trendIdValueMap[id] = data;
 			},
 
-			loadWellInflowTrend = function(wellId) {
+			loadWellInflowTrend = function() {
 				var operations = null;
-				var table = getTable();
 				$
 						.get(
 								wellId + "/inflowTrend/",
@@ -119,12 +53,12 @@ WellInflowTrend.prototype = function() {
 						});
 			},
 
-			drawChartWithTheDataIn = function(table) {
+			drawChartWithTheDataIn = function() {
 				var rowCount = table.rows().indexes().length;
 				options.series[0].data.splice(0, rowCount - 1);
 				for (var i = 0; i < rowCount; i++) {
-					var data = table.row(i).data();
-					options.series[0].data.push([ data[1], data[2] ]);
+					var rowData = table.row(i).data();
+					options.series[0].data.push([ rowData[1], rowData[2] ]);
 				}
 				options.series[0].data.sort(function(a, b) {
 					if (a[0] < b[0]) {
@@ -137,16 +71,7 @@ WellInflowTrend.prototype = function() {
 				});
 				this.chart = new Highcharts.Chart(options);
 			},
-			getWellIdFromUri = function(name) {
-				return new UrlParamParser().getParamFromUri(name);
-			},
-			getTable = function() {
-				return $("#" + tableName).DataTable();
-			},
-			getChart = function() {
-				// return chart;
-				return $('#' + chartDivId).highcharts();
-			},
+
 			/**
 			 * append a row to the tail of the table;
 			 * 
@@ -155,8 +80,9 @@ WellInflowTrend.prototype = function() {
 			 * At the same time, will add a point to the chart;
 			 */
 			appendRowToTable = function(data) {
-				new OilTable().appendRowToTable(this.getTable(), data);
+				new OilTable().appendRowToTable(table, data);
 			},
+
 			init = function() {
 				$("#" + this.tableName)
 						.dataTable(
@@ -189,16 +115,13 @@ WellInflowTrend.prototype = function() {
 			}
 	return {
 		loadWellInflowTrend : loadWellInflowTrend,
-		getWellIdFromUri : getWellIdFromUri,
 		paramNameList : paramNameList,
 		paramLabelList : paramLabelList,
 		trendIdValueMap : trendIdValueMap,
-		wellId : wellId,
 		paramWindowName : paramWindowName,
-		getTable : getTable,
-		getChart : getChart,
 		drawChartWithTheDataIn : drawChartWithTheDataIn,
-		appendRowToTable : appendRowToTable
+		appendRowToTable : appendRowToTable,
+		wellId : wellId
 	};
 }();
 
@@ -209,56 +132,39 @@ function WellInflowTrend() {
 
 var WellInflowTrend_Instance = new WellInflowTrend();
 
-$(document).ready(
-		function() {
-			var table = WellInflowTrend_Instance.getTable();
-			WellInflowTrend_Instance.wellId = WellInflowTrend_Instance
-					.getWellIdFromUri("wellId");
-			WellInflowTrend_Instance
-					.loadWellInflowTrend(WellInflowTrend_Instance.wellId);
-		});
+$(document).ready(function() {
+	WellInflowTrend_Instance.loadWellInflowTrend();
+});
 
 addAWellInflowTrend = function(wellId) {
 	var producedFluidVolume = $("#producedFluidVolume").val(), wellBotomFlowPressure = $(
 			"#wellBotomFlowPressure").val();
-	$
-			.ajax({
-				url : wellId + "/inflowTrend/",
-				type : 'PUT',
-				data : {
-					"wellId" : wellId,
-					"producedFluidVolume" : producedFluidVolume,
-					"wellBotomFlowPressure" : wellBotomFlowPressure,
-				},
-				dataType : 'json',
-				success : function(response) {
-					if (response == null || response == false) {
-						information("Add WellInflowTrend Fails!");
-					} else {
-						WellInflowTrend_Instance.appendRowToTable([
-								producedFluidVolume, wellBotomFlowPressure ]);
-						addPointToChart([ producedFluidVolume,
-								wellBotomFlowPressure ]);
-						information("Success!");
-					}
-				},
-				error : function() {
-					information($.i18n.prop('failed-connect-server'));
-				}
-			});
-}
-
-addPointToChart = function(data) {
-	// var chart = WellInflowTrend_Instance.getChart();
-	// var serie = chart.get('default-serie');
-	// serie.addPoint(data);
-	WellInflowTrend_Instance.drawChartWithTheDataIn(WellInflowTrend_Instance
-			.getTable());
+	$.ajax({
+		url : wellId + "/inflowTrend/",
+		type : 'PUT',
+		data : {
+			"producedFluidVolume" : producedFluidVolume,
+			"wellBotomFlowPressure" : wellBotomFlowPressure,
+		},
+		dataType : 'json',
+		success : function(response) {
+			if (response == null || response == false) {
+				information("Add WellInflowTrend Fails!");
+			} else {
+				WellInflowTrend_Instance.appendRowToTable([
+						producedFluidVolume, wellBotomFlowPressure ]);
+				WellInflowTrend_Instance.drawChartWithTheDataIn();
+				information("Success!");
+			}
+		},
+		error : function() {
+			information($.i18n.prop('failed-connect-server'));
+		}
+	});
 }
 
 $('.btn-add').click(
 		function(e) {
-			e.preventDefault();
 			if ($("#" + WellInflowTrend_Instance.paramWindowName).length <= 0) {
 				buildModalWindow(WellInflowTrend_Instance.paramWindowName,
 						"#modal-windows",

@@ -1,3 +1,22 @@
+function ModalWindowHelper() {
+}
+
+ModalWindowHelper.prototype = function() {
+
+	showWith = function(divId, parentDiv, paramNameList, paramValueMap,
+			paramLabels, onSubmitMethodString) {
+		if ($('#' + divId).length <= 0) {
+			buildModalWindow(divId, parentDiv, paramNameList, paramValueMap,
+					paramLabels, onSubmitMethodString);
+		}
+		$('#' + divId).modal('show');
+	}
+
+	return {
+		showWith : showWith
+	};
+}();
+
 function buildModalWindow(divId, parentDiv, paramNameList, paramValueMap,
 		paramLabels, onSubmitMethodString) {
 	var modalDiaglog = '<div class="modal fade" id="' + divId

@@ -1,5 +1,6 @@
 package org.oil.manager.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -7,13 +8,17 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
-import org.oil.manager.entity.Aggregate;
 import org.oil.manager.helper.SessionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AbstractRepository<Entity> {
 	private SessionHelper sessionHelper;
 	private Logger logger = Logger.getLogger(this.getClass());
+	private final Class<?> clazz;
+
+	AbstractRepository(Class<?> clazz) {
+		this.clazz = clazz;
+	}
 
 	SessionHelper getSessionHelper() {
 		return sessionHelper;
@@ -34,7 +39,7 @@ public abstract class AbstractRepository<Entity> {
 		return this.logger;
 	}
 
-	public final boolean attach(Aggregate dumEntity) {
+	public final boolean attach(Entity dumEntity) {
 		Session session = this.sessionHelper.openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
@@ -50,7 +55,28 @@ public abstract class AbstractRepository<Entity> {
 		}
 	}
 
-	public final boolean detach(Aggregate dumEntity) {
+	public final boolean detach(Serializable id) {
+		Session session = this.sessionHelper.openSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			@SuppressWarnings("unchecked")
+			Entity result = (Entity) session.get(this.clazz, id);
+			if (result == null) {
+				return false;
+			}
+			session.delete(result);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			transaction.rollback();
+			this.logger.error(e, e);
+			return false;
+		} finally {
+			releaseSession(session);
+		}
+	}
+
+	public final boolean detach(Entity dumEntity) {
 		Session session = this.sessionHelper.openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
@@ -66,14 +92,7 @@ public abstract class AbstractRepository<Entity> {
 		}
 	}
 
-	public final Entity find(int id, Class<?> clazz) {
-		Session session = this.getSessionHelper().openSession();
-		@SuppressWarnings("unchecked")
-		Entity result = (Entity) session.get(clazz, id);
-		return result;
-	}
-
-	public boolean updateCore(Entity well) {
+	public boolean update(Entity well) {
 		Session session = this.getSessionHelper().openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
@@ -89,15 +108,22 @@ public abstract class AbstractRepository<Entity> {
 		}
 	}
 
-	protected List<Entity> findAll(Class<?> resultClazz) {
-		return findAllByCore(null, resultClazz);
+	public final Entity find(Serializable id) {
+		Session session = this.getSessionHelper().openSession();
+		@SuppressWarnings("unchecked")
+		Entity result = (Entity) session.get(this.clazz, id);
+		return result;
+	}
+
+	public List<Entity> findAll() {
+		return findAllBy(null);
 	}
 
 	@SuppressWarnings("unchecked")
-	protected List<Entity> findAllByCore(Criterion specification, Class<?> clazz) {
+	public List<Entity> findAllBy(Criterion specification) {
 		List<Entity> result = null;
 		Session session = this.getSessionHelper().openSession();
-		Criteria criteria = session.createCriteria(clazz);
+		Criteria criteria = session.createCriteria(this.clazz);
 		if (specification != null) {
 			criteria.add(specification);
 		}
@@ -105,7 +131,4 @@ public abstract class AbstractRepository<Entity> {
 		return result;
 	}
 
-	public abstract List<Entity> findAll();
-
-	public abstract List<Entity> findAllBy(Criterion specification);
 }

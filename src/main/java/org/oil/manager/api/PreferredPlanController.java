@@ -31,6 +31,7 @@ public class PreferredPlanController {
 			@RequestParam double pumpEffeciency,
 			@RequestParam double systemEffeciency,
 			@RequestParam double utilization) {
+		System.out.println("enter PreferredPlan.add with wellId " + wellId);
 		return this.service.add(wellId, pumpDepth, econemicBenifits,
 				production, pumpEffeciency, systemEffeciency, utilization);
 	}

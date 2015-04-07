@@ -80,6 +80,7 @@
 	<!-- My Own Util End-->
 
 	<!-- My Own Script Begin -->
+	<script src="lib/mine/script/api.js"></script>
 	<script src="lib/mine/script/PreferredPlan.js"></script>
 	<!-- My Own Script End -->
 </body>

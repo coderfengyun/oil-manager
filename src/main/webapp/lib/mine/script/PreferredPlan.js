@@ -7,6 +7,7 @@ PreferredPlan.prototype = function() {
 	var urlParamParser = new UrlParamParser();
 	var wellId = urlParamParser.getParamFromUri('wellId');
 	var oilTableHelper = new OilTable();
+	var preferredPlan_API = new PreferredPlan_API();
 	var PreferredPlan_Parameters = new Array();
 	PreferredPlan_Parameters[0] = "pumpDepth";
 	PreferredPlan_Parameters[1] = "systemEffeciency";
@@ -35,56 +36,36 @@ PreferredPlan.prototype = function() {
 				oilTableHelper.appendRowToTable(baseTable,
 						_convert2TableData(data));
 			},
+
 			_convert2TableData = function(data) {
 				return [ data["pumpDepth"], data["pumpEffeciency"],
 						data["systemEffeciency"], data["production"],
 						data["econemicBenifits"], data["utilization"] ];
 			},
+
 			loadAll = function() {
-				$.ajax({
-					url : wellId + "/preferredPlan/",
-					type : 'GET',
-					data : {},
-					dataType : 'json',
-					success : function(data) {
-						if (data == null) {
-							information("Get Pressure Distribution Fails!");
-						} else {
-							for (var i = 0; i < data.length; i++) {
-								var preferredPlan = data[i];
-								var tr = _appendRowToTable(preferredPlan);
-								$(tr).attr("id", preferredPlan.id);
-							}
-						}
-					},
-					error : function() {
-						information($.i18n.prop('failed-connect-server'));
-					}
-				});
+				preferredPlan_API.load(wellId, loadCallBack);
 			},
+
+			loadCallBack = function(data) {
+				if (data == null) {
+					information("Get Pressure Distribution Fails!");
+				} else {
+					for (var i = 0; i < data.length; i++) {
+						var preferredPlan = data[i];
+						var tr = _appendRowToTable(preferredPlan);
+						$(tr).attr("id", preferredPlan.id);
+					}
+				}
+			},
+
 			_addAPreferredPlan = function(data) {
-				$.ajax({
-					url : wellId + "/preferredPlan/",
-					type : 'PUT',
-					data : {
-						"pumpDepth" : data["pumpDepth"],
-						"systemEffeciency" : data["systemEffeciency"],
-						"production" : data["production"],
-						"econemicBenifits" : data["econemicBenifits"],
-						"utilization" : data["utilization"],
-						"pumpEffeciency" : data["pumpEffeciency"],
-					},
-					dataType : 'json',
-					success : function(response) {
-						if (response == null || response == false) {
-							information("Add WellInflowTrend Fails!");
-						} else {
-							_appendRowToTable(data);
-							information("Success!");
-						}
-					},
-					error : function() {
-						information($.i18n.prop('failed-connect-server'));
+				preferredPlan_API.add(wellId, data, function(data, response) {
+					if (response == null || response == false) {
+						information("Add WellInflowTrend Fails!");
+					} else {
+						_appendRowToTable(data);
+						information("Success!");
 					}
 				});
 			},
@@ -118,37 +99,37 @@ PreferredPlan.prototype = function() {
 			},
 
 			calculate = function() {
-				$.ajax({
-					url : wellId + "/preferredPlan/score",
-					type : 'GET',
-					data : {},
-					dataType : 'json',
-					success : function(data) {
-						if (data == undefined || data == null) {
-							information("preferredPlan score fails!")
-						} else {
-							for (var i = 0; i < data.length; i++) {
-								_addScoreToTabl(data[i]);
-							}
-						}
+				preferredPlan_API.calculate(wellId, calculateCallBack);
+			},
+
+			calculateCallBack = function(data) {
+				if (data == undefined || data == null) {
+					information("preferredPlan score fails!")
+				} else {
+					for (var i = 0; i < data.length; i++) {
+						_addScoreToTabl(data[i]);
 					}
+				}
+			},
+
+			pageInit = function() {
+				$(".btn-add").click(function(e) {
+					editPreferredPlanParams(null);
+				});
+				$(".btn-calculate").click(function(e) {
+					calculate();
+				});
+				$(document).ready(function() {
+					loadAll();
 				});
 			}
 	return {
 		editPreferredPlanParams : editPreferredPlanParams,
 		loadAll : loadAll,
-		calculate : calculate
+		calculate : calculate,
+		pageInit : pageInit
 	};
 }();
 
 var PreferredPlan_Instance = new PreferredPlan();
-
-$(".btn-add").click(function(e) {
-	PreferredPlan_Instance.editPreferredPlanParams(null);
-});
-$(".btn-calculate").click(function(e) {
-	PreferredPlan_Instance.calculate();
-});
-$(document).ready(function() {
-	PreferredPlan_Instance.loadAll();
-});
+PreferredPlan_Instance.pageInit();
