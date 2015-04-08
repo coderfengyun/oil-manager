@@ -75,10 +75,16 @@ public class PlanedScoreCalculator {
 	private Map<PreferredPlan, Double> calculateScoreByTheBaseScore(
 			List<PreferredPlan> orderedPlan, List<Double> originValues) {
 		Map<PreferredPlan, Double> result = new HashMap<PreferredPlan, Double>();
-		int minSize = Math.min(this.baseScore.size(), orderedPlan.size());
-		for (int i = 0; i < minSize; i++) {
+		List<Double> bonusScores = new LinkedList<Double>(this.baseScore);
+		if (orderedPlan.size() > bonusScores.size()) {
+			int difference = orderedPlan.size() - bonusScores.size();
+			for (int i = 0; i < difference; i++) {
+				bonusScores.add(0d);
+			}
+		}
+		for (int i = 0; i < orderedPlan.size(); i++) {
 			PreferredPlan item = orderedPlan.get(i);
-			Double bonusScore = this.baseScore.get(i);
+			Double bonusScore = bonusScores.get(i);
 			result.put(item, bonusScore * originValues.get(i));
 		}
 		return result;

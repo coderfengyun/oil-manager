@@ -124,7 +124,7 @@ $('.btn-delete').click(function(e) {
 changeHref = function(source) {
 	WellBaseData_Instance.currentSelectWellId = $(source).closest("tr").attr(
 			"id");
-	new UrlParamParser().setParamForUri('wellId',
+	 new UrlParamParser().setParamForUri('wellId',
 			WellBaseData_Instance.currentSelectWellId);
 };
 

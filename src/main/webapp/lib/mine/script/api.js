@@ -153,22 +153,23 @@ function WellInflowTrend() {
 
 WellInflowTrend.prototype = function() {
 	add = function(wellId, paramNameValueMap, CallBack) {
-		$.ajax({
-			url : wellId + "/inflowTrend/",
-			type : 'PUT',
-			data : {
-				"producedFluidVolume" : paramNameValueMap["producedFluidVolume"],
-				"wellBotomFlowPressure" : paramNameValueMap["wellBotomFlowPressure"],
-			},
-			dataType : 'json',
-			success : function(response) {
-				CallBack(response);
-			},
-			error : function() {
-				information($.i18n.prop('failed-connect-server'));
-			}
+		$
+				.ajax({
+					url : wellId + "/inflowTrend/",
+					type : 'PUT',
+					data : {
+						"producedFluidVolume" : paramNameValueMap["producedFluidVolume"],
+						"wellBotomFlowPressure" : paramNameValueMap["wellBotomFlowPressure"],
+					},
+					dataType : 'json',
+					success : function(response) {
+						CallBack(response);
+					},
+					error : function() {
+						information($.i18n.prop('failed-connect-server'));
+					}
+				});
 	}
-
 	return {
 		add : add
 	};

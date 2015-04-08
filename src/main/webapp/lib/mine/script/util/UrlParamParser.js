@@ -21,12 +21,17 @@ UrlParamParser.prototype = function() {
 	},
 
 	_buildRegexExp = function(name) {
-		return new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		return new RegExp(_buildRegexContent(name), "i");
+	},
+
+	_buildRegexContent = function(name) {
+		return "(^|&)" + name + "=([^&]*)(&|$)";
 	},
 
 	setParamForUri = function(name, value) {
 		var query = window.location.search;
 		var originValue = getParamFromUri(name);
+		var result = '';
 		if (originValue == undefined) {
 			// no parameter in url
 			query += '?' + name + '=' + value;
@@ -34,10 +39,14 @@ UrlParamParser.prototype = function() {
 			// has that parameter without value
 			query += '?' + name + '=' + value;
 		} else {
-			query = query.substring(1).replace(_buildRegexExp(name),
-					'$1=' + value);
+			query = '?'
+					+ query.substring(1).replace(_buildRegexExp(name),
+							name + '=' + value);
 		}
-		window.location += query;
+		if (location.href.indexOf('?') > -1) {
+			result = location.href.substring(0, location.href.indexOf('?'));
+		}
+		location.href = result + query;
 	}
 	return {
 		getParamFromUri : getParamFromUri,
