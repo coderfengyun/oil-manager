@@ -116,20 +116,16 @@ PressureDistribution.prototype = function() {
 									PressureDistribution_Labels,
 									'addAWellPressureDistribution()');
 						});
-				$("#updateChart").click(
-						function(e) {
-							PressureDistribution_Instance
-									.drawAllChartWithDataInTable();
-						});
+				$("#updateChart").click(function(e) {
+					drawAllChartWithDataInTable();
+				});
 				$(document).ready(function() {
-					PressureDistribution_Instance.loadAll();
+					loadAll();
 				});
 			}
 
 	return {
 		addAWellPressureDistribution : addAWellPressureDistribution,
-		loadAll : loadAll,
-		drawAllChartWithDataInTable : drawAllChartWithDataInTable,
 		pageInit : pageInit
 	};
 }();

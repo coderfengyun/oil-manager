@@ -20,21 +20,85 @@ WellBaseData_Page.prototype = function() {
 	var table = $('#wellBaseDataTable').DataTable();
 	var wellBaseData_API = new WellBaseData_API();
 	var wellDataList = new Array();
+			pageInit = function() {
+				$(document).ready(function() {
+					loadWellBaseDatas();
+				});
+				$('.btn-add').click(function(e) {
+					WellBaseData_Instance.showParamWindowWith(null);
+				});
+				$('.btn-delete').click(
+						function(e) {
+							var wellId = new UrlParamParser()
+									.getParamFromUri('wellId');
+							if (wellId == undefined || wellId == null) {
+								information("并未选中要删除行！");
+							} else {
+								deleteWellBaseData(wellId);
+							}
+						});
+			},
+
 			get = function(id) {
 				return wellDataList[id];
 			},
+
 			put = function(id, instance) {
 				wellDataList[id] = instance;
 			},
+
 			showParamWindowWith = function(paramNameValueMap) {
 				var modalWindowHelper = new ModalWindowHelper();
 				modalWindowHelper.showWith('WellBaseDataParams', "body",
 						WellBaseData_Params, paramNameValueMap,
 						WellBaseData_Labels, "addWellBaseData()");
 			},
+
 			loadWellBaseDatas = function() {
 				wellBaseData_API.load(loadWellBaseDataCallBack);
 			},
+
+			changeHref = function(source) {
+				WellBaseData_Instance.currentSelectWellId = $(source).closest(
+						"tr").attr("id");
+				new UrlParamParser().setParamForUri('wellId',
+						WellBaseData_Instance.currentSelectWellId);
+			},
+
+			onSelectChange = function(select) {
+				var tr = select.closest("tr");
+				var id = $(tr).attr("id");
+				var wellData = WellBaseData_Instance.get(id);
+				switch (select.value) {
+				case "WellBaseData":
+					editWellBaseData();
+					break;
+				case "WellProductData":
+					editWellProductData(id, wellData.wellProductData);
+					break;
+				case "FluidPhysicalParameter":
+					editFluidPhysicalParameter(id,
+							wellData.fluidPhysicalParameter);
+					break;
+				case "WellDesignParameter":
+					editWellDesginParameter(id, wellData.wellDesignParameter);
+					break;
+				case "RodStringDesignParameter":
+					editRodStringDesignParameter(id,
+							wellData.rodStringDesignParameter);
+					break;
+				case "RodStructureParameter":
+					editRodStructureParameter(id,
+							wellData.rodStructureParameter);
+					break;
+				case "IndicatorWeightDistribution":
+					editIndicatorWeightDistribution(id,
+							wellData.indicatorWeightDistribution);
+					break;
+				}
+				select.options[0].selected = true;
+			},
+
 			loadWellBaseDataCallBack = function(data) {
 				var checkbox = "<input class='check' onclick='changeHref(this)' type='checkbox'>";
 				var allowedOperations = "<select class='selectpicker'onchange='onSelectChange(this)'><option>operations</option><option value=WellProductData>"
@@ -105,56 +169,4 @@ WellBaseData_Page.prototype = function() {
 }();
 
 var WellBaseData_Instance = new WellBaseData_Page();
-
-$(document).ready(function() {
-	WellBaseData_Instance.loadWellBaseDatas();
-});
-$('.btn-add').click(function(e) {
-	WellBaseData_Instance.showParamWindowWith(null);
-});
-$('.btn-delete').click(function(e) {
-	var wellId = new UrlParamParser().getParamFromUri('wellId');
-	if (wellId == undefined || wellId == null) {
-		information("并未选中要删除行！");
-	} else {
-		deleteWellBaseData(wellId);
-	}
-});
-
-changeHref = function(source) {
-	WellBaseData_Instance.currentSelectWellId = $(source).closest("tr").attr(
-			"id");
-	 new UrlParamParser().setParamForUri('wellId',
-			WellBaseData_Instance.currentSelectWellId);
-};
-
-onSelectChange = function(select) {
-	var tr = select.closest("tr");
-	var id = $(tr).attr("id");
-	var wellData = WellBaseData_Instance.get(id);
-	switch (select.value) {
-	case "WellBaseData":
-		editWellBaseData();
-		break;
-	case "WellProductData":
-		editWellProductData(id, wellData.wellProductData);
-		break;
-	case "FluidPhysicalParameter":
-		editFluidPhysicalParameter(id, wellData.fluidPhysicalParameter);
-		break;
-	case "WellDesignParameter":
-		editWellDesginParameter(id, wellData.wellDesignParameter);
-		break;
-	case "RodStringDesignParameter":
-		editRodStringDesignParameter(id, wellData.rodStringDesignParameter);
-		break;
-	case "RodStructureParameter":
-		editRodStructureParameter(id, wellData.rodStructureParameter);
-		break;
-	case "IndicatorWeightDistribution":
-		editIndicatorWeightDistribution(id,
-				wellData.indicatorWeightDistribution);
-		break;
-	}
-	select.options[0].selected = true;
-};
+WellBaseData_Instance.pageInit();

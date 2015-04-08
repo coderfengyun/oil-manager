@@ -124,9 +124,6 @@ PreferredPlan.prototype = function() {
 				});
 			}
 	return {
-		editPreferredPlanParams : editPreferredPlanParams,
-		loadAll : loadAll,
-		calculate : calculate,
 		pageInit : pageInit
 	};
 }();

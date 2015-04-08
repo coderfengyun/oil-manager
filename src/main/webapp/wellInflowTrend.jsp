@@ -63,6 +63,7 @@
 	<script src="lib/mine/script/util/modal.window.js"></script>
 	<script src="lib/mine/script/util/ChartHelper.js"></script>
 	<script src="lib/mine/script/util/UrlParamParser.js"></script>
+	<script src="lib/mine/script/api.js"></script>
 	<script src="lib/mine/shareControl/navigateBar.js"></script>
 	<!-- My own util script end! -->
 	<!-- This page script start -->

@@ -148,29 +148,39 @@ PressureDistribution_API.prototype = function() {
 	};
 }();
 
-function WellInflowTrend() {
+function WellInflowTrend_API() {
 }
 
-WellInflowTrend.prototype = function() {
-	add = function(wellId, paramNameValueMap, CallBack) {
-		$
-				.ajax({
-					url : wellId + "/inflowTrend/",
-					type : 'PUT',
-					data : {
-						"producedFluidVolume" : paramNameValueMap["producedFluidVolume"],
-						"wellBotomFlowPressure" : paramNameValueMap["wellBotomFlowPressure"],
-					},
-					dataType : 'json',
-					success : function(response) {
-						CallBack(response);
-					},
-					error : function() {
-						information($.i18n.prop('failed-connect-server'));
-					}
+WellInflowTrend_API.prototype = function() {
+			add = function(wellId, paramNameValueMap, CallBack) {
+				$
+						.ajax({
+							url : wellId + "/inflowTrend/",
+							type : 'PUT',
+							data : {
+								"producedFluidVolume" : paramNameValueMap["producedFluidVolume"],
+								"wellBotomFlowPressure" : paramNameValueMap["wellBotomFlowPressure"],
+							},
+							dataType : 'json',
+							success : function(response) {
+								CallBack(response);
+							},
+							error : function() {
+								information($.i18n
+										.prop('failed-connect-server'));
+							}
+						});
+			},
+
+			get = function(wellId, CallBack) {
+				$.get(wellId + "/inflowTrend/", {}, function(data) {
+					CallBack(data);
+				}, "json").error(function() {
+					information($.i18n.prop('failed-connect-server'));
 				});
-	}
+			}
 	return {
-		add : add
+		add : add,
+		get : get
 	};
 }();
