@@ -1,5 +1,6 @@
 package org.oil.manager.entity;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "no_setter")
-public class NoSetter {
+public class TestEntity {
 	private int val;
+	@Column(unique = true)
 	private String name;
 	@EmbeddedId
 	private CompositeId compositeId;
-
 	@Autowired
 	@Transient
 	private WellBaseDataRepository repo;
@@ -40,16 +41,15 @@ public class NoSetter {
 		this.name = name;
 	}
 
-	@Transient
-	public WellBaseDataRepository getRepo() {
-		return this.repo;
-	}
-
-	public static NoSetter build(CompositeId compositeId, String name, int val) {
-		NoSetter result = new NoSetter();
+	public static TestEntity build(CompositeId compositeId, String name, int val) {
+		TestEntity result = new TestEntity();
 		result.setCompositeId(compositeId);
 		result.setName(name);
 		result.val = val;
 		return result;
+	}
+
+	public Object getRepo() {
+		return this.repo;
 	}
 }

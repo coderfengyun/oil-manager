@@ -27,6 +27,6 @@
 		<mapping class="org.oil.manager.entity.WellInflowTrend" />
 		<mapping class="org.oil.manager.entity.WellPressureDistribution" />
 		<mapping class="org.oil.manager.entity.PreferredPlan" />
-		<mapping class="org.oil.manager.entity.NoSetter" />
+		<mapping class="org.oil.manager.entity.TestEntity" />
 	</session-factory>
 </hibernate-configuration>
