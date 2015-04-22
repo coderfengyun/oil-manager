@@ -34,12 +34,6 @@ public abstract class AbstractRepository<Entity> {
 		return this.logger;
 	}
 
-	void releaseSession(Session session) {
-		if (session != null) {
-			session.close();
-		}
-	}
-
 	public final boolean attach(Entity dumEntity) {
 		Session session = this.sessionHelper.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -51,7 +45,6 @@ public abstract class AbstractRepository<Entity> {
 			transaction.rollback();
 			this.getLogger().error(e, e);
 			return false;
-		} finally {
 		}
 	}
 
@@ -72,7 +65,6 @@ public abstract class AbstractRepository<Entity> {
 			transaction.rollback();
 			this.logger.error(e, e);
 			return false;
-		} finally {
 		}
 	}
 
@@ -87,7 +79,6 @@ public abstract class AbstractRepository<Entity> {
 			transaction.rollback();
 			this.getLogger().error(e, e);
 			return false;
-		} finally {
 		}
 	}
 
@@ -102,7 +93,6 @@ public abstract class AbstractRepository<Entity> {
 			this.getLogger().error(e, e);
 			transaction.rollback();
 			return false;
-		} finally {
 		}
 	}
 
