@@ -65,4 +65,8 @@ public final class SessionHelper {
 		}
 	}
 
+	public Session getCurrentSession() {
+		return this.sessionFactory.getCurrentSession();
+	}
+
 }

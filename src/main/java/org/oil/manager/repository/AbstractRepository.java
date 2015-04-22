@@ -41,7 +41,7 @@ public abstract class AbstractRepository<Entity> {
 	}
 
 	public final boolean attach(Entity dumEntity) {
-		Session session = this.sessionHelper.openSession();
+		Session session = this.sessionHelper.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.save(dumEntity);
@@ -57,7 +57,7 @@ public abstract class AbstractRepository<Entity> {
 	}
 
 	public final boolean detach(Serializable id) {
-		Session session = this.sessionHelper.openSession();
+		Session session = this.sessionHelper.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
 			@SuppressWarnings("unchecked")
@@ -78,7 +78,7 @@ public abstract class AbstractRepository<Entity> {
 	}
 
 	public final boolean detach(Entity dumEntity) {
-		Session session = this.sessionHelper.openSession();
+		Session session = this.sessionHelper.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.delete(dumEntity);
@@ -94,7 +94,7 @@ public abstract class AbstractRepository<Entity> {
 	}
 
 	public boolean update(Entity well) {
-		Session session = this.getSessionHelper().openSession();
+		Session session = this.getSessionHelper().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.update(well);
@@ -110,7 +110,7 @@ public abstract class AbstractRepository<Entity> {
 	}
 
 	public final Optional<Entity> find(Serializable id) {
-		Session session = this.getSessionHelper().openSession();
+		Session session = this.getSessionHelper().getCurrentSession();
 		@SuppressWarnings("unchecked")
 		Entity result = (Entity) session.get(this.clazz, id);
 		return Optional.ofNullable(result);
@@ -123,7 +123,7 @@ public abstract class AbstractRepository<Entity> {
 	@SuppressWarnings("unchecked")
 	public List<Entity> findAllBy(Criterion specification) {
 		List<Entity> result = null;
-		Session session = this.getSessionHelper().openSession();
+		Session session = this.getSessionHelper().getCurrentSession();
 		Criteria criteria = session.createCriteria(this.clazz);
 		if (specification != null) {
 			criteria.add(specification);
