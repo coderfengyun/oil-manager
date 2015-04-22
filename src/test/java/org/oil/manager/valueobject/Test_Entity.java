@@ -19,7 +19,8 @@ public class Test_Entity {
 
 	@Test
 	public void testInit() {
-		assertNull(this.repo.find(CompositeId.buildId("133.13.13.12", "6565")));
+		assertFalse(this.repo.find(CompositeId.buildId("133.13.13.12", "6565"))
+				.isPresent());
 	}
 
 	@Test

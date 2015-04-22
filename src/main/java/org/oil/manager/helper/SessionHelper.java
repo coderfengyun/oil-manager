@@ -56,15 +56,6 @@ public final class SessionHelper {
 		}
 	}
 
-	public Session openSession() {
-		try {
-			return this.getSessionFactory().openSession();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 	public Session getCurrentSession() {
 		return this.sessionFactory.getCurrentSession();
 	}

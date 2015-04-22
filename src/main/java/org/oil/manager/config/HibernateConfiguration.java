@@ -12,7 +12,8 @@ public class HibernateConfiguration {
 			"connection.characterEncoding", "hibernate.dialect",
 			"hibernate.hbm2ddl.auto", "connection.autoReconnect",
 			"connection.autoReconnectForPools",
-			"connection.is-connection-validation-required" };
+			"connection.is-connection-validation-required",
+			"hibernate.current_session_context_class" };
 	private final Properties properties;
 
 	private HibernateConfiguration(Properties wholeProperties) {

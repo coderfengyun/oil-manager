@@ -30,14 +30,14 @@ public abstract class AbstractRepository<Entity> {
 		this.sessionHelper = sessionHelper;
 	}
 
+	Logger getLogger() {
+		return this.logger;
+	}
+
 	void releaseSession(Session session) {
 		if (session != null) {
 			session.close();
 		}
-	}
-
-	Logger getLogger() {
-		return this.logger;
 	}
 
 	public final boolean attach(Entity dumEntity) {
@@ -52,7 +52,6 @@ public abstract class AbstractRepository<Entity> {
 			this.getLogger().error(e, e);
 			return false;
 		} finally {
-			releaseSession(session);
 		}
 	}
 
@@ -63,6 +62,7 @@ public abstract class AbstractRepository<Entity> {
 			@SuppressWarnings("unchecked")
 			Entity result = (Entity) session.get(this.clazz, id);
 			if (result == null) {
+				transaction.commit();
 				return false;
 			}
 			session.delete(result);
@@ -73,7 +73,6 @@ public abstract class AbstractRepository<Entity> {
 			this.logger.error(e, e);
 			return false;
 		} finally {
-			releaseSession(session);
 		}
 	}
 
@@ -89,7 +88,6 @@ public abstract class AbstractRepository<Entity> {
 			this.getLogger().error(e, e);
 			return false;
 		} finally {
-			releaseSession(session);
 		}
 	}
 
@@ -105,14 +103,15 @@ public abstract class AbstractRepository<Entity> {
 			transaction.rollback();
 			return false;
 		} finally {
-			releaseSession(session);
 		}
 	}
 
 	public final Optional<Entity> find(Serializable id) {
 		Session session = this.getSessionHelper().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		Entity result = (Entity) session.get(this.clazz, id);
+		transaction.commit();
 		return Optional.ofNullable(result);
 	}
 
@@ -124,11 +123,13 @@ public abstract class AbstractRepository<Entity> {
 	public List<Entity> findAllBy(Criterion specification) {
 		List<Entity> result = null;
 		Session session = this.getSessionHelper().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
 		Criteria criteria = session.createCriteria(this.clazz);
 		if (specification != null) {
 			criteria.add(specification);
 		}
 		result = criteria.list();
+		transaction.commit();
 		return result;
 	}
 
