@@ -134,10 +134,6 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.0.3.v20130506</version>
 				<configuration>
-					<webDefaultXml>src/main/resources/webdefault.xml</webDefaultXml>
-					<webAppConfig>
-						<defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
-					</webAppConfig>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 							<port>8090</port>

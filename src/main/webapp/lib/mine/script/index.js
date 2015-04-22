@@ -164,7 +164,8 @@ WellBaseData_Page.prototype = function() {
 		showParamWindowWith : showParamWindowWith,
 		loadWellBaseDatas : loadWellBaseDatas,
 		deleteWellBaseData : deleteWellBaseData,
-		currentSelectWellId : currentSelectWellId
+		currentSelectWellId : currentSelectWellId,
+		pageInit : pageInit
 	};
 }();
 

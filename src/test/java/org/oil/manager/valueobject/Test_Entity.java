@@ -25,9 +25,10 @@ public class Test_Entity {
 	@Test
 	public void testInsertWithTheSameCompositeId() {
 		CompositeId compositeId = CompositeId.buildId("123.213.123.12", "4545");
-		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name", 1)));
+		this.repo.detach(compositeId);
+		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name2", 1)));
 		assertFalse(this.repo.attach(TestEntity.build(compositeId, "asdf", 12)));
-		this.repo.detach(this.repo.find(compositeId));
+		this.repo.detach(compositeId);
 	}
 
 	@Test
@@ -35,7 +36,7 @@ public class Test_Entity {
 		CompositeId compositeId = CompositeId
 				.buildId("133.133.123.12", "21300");
 		this.repo.detach(compositeId);
-		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name", 1)));
+		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name1", 1)));
 		TestEntity result = this.repo.find(compositeId);
 		assertNull(result.getRepo());
 	}
