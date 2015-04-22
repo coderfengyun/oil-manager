@@ -17,20 +17,15 @@ public class WellPressureDistributionService extends
 	@Autowired
 	private WellBaseDataRepository wellRepo;
 
-	@Override
-	public List<WellPressureDistribution> findAll() {
-		return this.repo.findAll();
-	}
-
 	public boolean add(double pumpDepth, double sinkingPressure,
 			double fulfillCoefficient, int wellId) {
-		WellBaseData well = this.wellRepo.find(wellId);
+		WellBaseData well = this.fetchWell(wellId).get();
 		return this.repo.attach(WellPressureDistribution.buildWithoutId(
 				pumpDepth, sinkingPressure, fulfillCoefficient, well));
 	}
 
 	public List<WellPressureDistribution> findAllByWellId(int wellId) {
-		WellBaseData well = this.wellRepo.find(wellId);
+		WellBaseData well = this.fetchWell(wellId).get();
 		return this.repo.findAllBy(WellPressureDistribution
 				.createEqualsToWellIdSpecification(well));
 	}

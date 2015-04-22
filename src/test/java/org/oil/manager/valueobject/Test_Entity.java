@@ -37,7 +37,7 @@ public class Test_Entity {
 				.buildId("133.133.123.12", "21300");
 		this.repo.detach(compositeId);
 		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name1", 1)));
-		TestEntity result = this.repo.find(compositeId);
+		TestEntity result = this.repo.find(compositeId).get();
 		assertNull(result.getRepo());
 	}
 

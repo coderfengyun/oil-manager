@@ -2,6 +2,7 @@ package org.oil.manager.repository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -108,11 +109,11 @@ public abstract class AbstractRepository<Entity> {
 		}
 	}
 
-	public final Entity find(Serializable id) {
+	public final Optional<Entity> find(Serializable id) {
 		Session session = this.getSessionHelper().openSession();
 		@SuppressWarnings("unchecked")
 		Entity result = (Entity) session.get(this.clazz, id);
-		return result;
+		return Optional.ofNullable(result);
 	}
 
 	public List<Entity> findAll() {

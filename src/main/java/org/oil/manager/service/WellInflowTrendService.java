@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WellInflowTrendService {
+public class WellInflowTrendService extends AbstractService<WellInflowTrend> {
 	@Autowired
 	private WellBaseDataRepository wellBaseDataRepo;
 	@Autowired
@@ -18,14 +18,16 @@ public class WellInflowTrendService {
 
 	public boolean addAInflowTrend(int wellId, double producedFluidVolume,
 			double wellBotomFlowPressure) {
-		WellBaseData well = this.wellBaseDataRepo.find(wellId);
+		WellBaseData well = this.fetchWell(wellId).get();
 		return this.repo.attach(WellInflowTrend.buildWithoutId(well,
 				producedFluidVolume, wellBotomFlowPressure));
 	}
 
 	public List<WellInflowTrend> queryAllByWellId(int wellId) {
-		return this.repo.findAllBy(WellInflowTrend
-				.createEqualsToWellIdSpecification(this.wellBaseDataRepo
-						.find(wellId)));
+		return this.repo
+				.findAllBy(WellInflowTrend
+						.createEqualsToWellIdSpecification(this.fetchWell(
+								wellId).get()));
 	}
+
 }

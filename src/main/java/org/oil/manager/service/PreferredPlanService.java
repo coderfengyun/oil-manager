@@ -1,8 +1,11 @@
 package org.oil.manager.service;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 import org.oil.manager.entity.PreferredPlan;
 import org.oil.manager.entity.WellBaseData;
 import org.oil.manager.entity.valueobject.PlanedScoreCalculator;
@@ -18,34 +21,37 @@ public class PreferredPlanService extends AbstractService<PreferredPlan> {
 	@Autowired
 	private WellBaseDataRepository wellRepo;
 
-	@Override
-	public List<PreferredPlan> findAll() {
-		return this.repo.findAll();
-	}
-
 	public List<PreferredPlan> findAllByWellId(int wellId) {
-		WellBaseData well = this.wellRepo.find(wellId);
+		Optional<WellBaseData> well = this.wellRepo.find(wellId);
+		if (!well.isPresent()) {
+			return Collections.emptyList();
+		}
 		return this.repo.findAllBy(PreferredPlan
-				.createEqualsToWellIdSpecification(well));
+				.createEqualsToWellIdSpecification(well.get()));
 	}
 
 	public boolean add(int wellId, double pumpDepth, double econemicBenifits,
 			double production, double pumpEffeciency, double systemEffeciency,
 			double utilization) {
-		WellBaseData well = this.wellRepo.find(wellId);
+		Optional<WellBaseData> nullableWell = this.wellRepo.find(wellId);
+		if (nullableWell.isPresent()) {
+			return false;
+		}
 		return this.repo.attach(PreferredPlan.buildWithoutId(pumpDepth,
 				econemicBenifits, production, pumpEffeciency, systemEffeciency,
-				utilization, well));
+				utilization, nullableWell.get()));
 	}
 
 	public Map<PreferredPlan, Double> calculateScore(int wellId) {
-		WellBaseData well = this.wellRepo.find(wellId);
+		Optional<WellBaseData> nullableWell = this.wellRepo.find(wellId);
+		if (nullableWell.isPresent()) {
+			return Collections.emptyMap();
+		}
 		List<PreferredPlan> allPlanInWell = this.repo.findAllBy(PreferredPlan
-				.createEqualsToWellIdSpecification(well));
+				.createEqualsToWellIdSpecification(nullableWell.get()));
 		Map<PreferredPlan, Double> scoreMap = new PlanedScoreCalculator(
 				allPlanInWell, Arrays.asList(10.0, 9.0, 8.0, 7.0, 6.0))
 				.calculateScore();
 		return scoreMap;
 	}
-
 }
