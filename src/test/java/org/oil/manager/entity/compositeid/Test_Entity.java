@@ -1,11 +1,10 @@
-package org.oil.manager.valueobject;
+package org.oil.manager.entity.compositeid;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.oil.manager.entity.CompositeId;
-import org.oil.manager.entity.TestEntity;
 import org.oil.manager.repository.NoSetterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,8 +26,8 @@ public class Test_Entity {
 	public void testInsertWithTheSameCompositeId() {
 		CompositeId compositeId = CompositeId.buildId("123.213.123.12", "4545");
 		this.repo.detach(compositeId);
-		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name2", 1)));
-		assertFalse(this.repo.attach(TestEntity.build(compositeId, "asdf", 12)));
+		assertTrue(this.repo.attach(EntityWithCompositeId.build(compositeId, "name2", 1)));
+		assertFalse(this.repo.attach(EntityWithCompositeId.build(compositeId, "asdf", 12)));
 		this.repo.detach(compositeId);
 	}
 
@@ -37,8 +36,8 @@ public class Test_Entity {
 		CompositeId compositeId = CompositeId
 				.buildId("133.133.123.12", "21300");
 		this.repo.detach(compositeId);
-		assertTrue(this.repo.attach(TestEntity.build(compositeId, "name1", 1)));
-		TestEntity result = this.repo.find(compositeId).get();
+		assertTrue(this.repo.attach(EntityWithCompositeId.build(compositeId, "name1", 1)));
+		EntityWithCompositeId result = this.repo.find(compositeId).get();
 		assertNull(result.getRepo());
 	}
 
@@ -49,8 +48,8 @@ public class Test_Entity {
 				.buildId("127.0.9.1", "12");
 		this.repo.detach(firstId);
 		this.repo.detach(secondId);
-		assertTrue(this.repo.attach(TestEntity.build(firstId, name, 123)));
-		assertFalse(this.repo.attach(TestEntity.build(secondId, name, 134)));
+		assertTrue(this.repo.attach(EntityWithCompositeId.build(firstId, name, 123)));
+		assertFalse(this.repo.attach(EntityWithCompositeId.build(secondId, name, 134)));
 		this.repo.detach(firstId);
 		this.repo.detach(secondId);
 	}

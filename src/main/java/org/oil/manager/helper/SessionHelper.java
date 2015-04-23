@@ -13,12 +13,14 @@ import org.oil.manager.entity.IndicatorWeightDistribution;
 import org.oil.manager.entity.PreferredPlan;
 import org.oil.manager.entity.RodStringDesignParameter;
 import org.oil.manager.entity.RodStructureParameter;
-import org.oil.manager.entity.TestEntity;
 import org.oil.manager.entity.WellBaseData;
 import org.oil.manager.entity.WellDesignParameter;
 import org.oil.manager.entity.WellInflowTrend;
 import org.oil.manager.entity.WellPressureDistribution;
 import org.oil.manager.entity.WellProductData;
+import org.oil.manager.entity.compositeid.EntityWithCompositeId;
+import org.oil.manager.jpa.Customer;
+import org.oil.manager.jpa.Deal;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,9 +30,10 @@ public final class SessionHelper {
 			FluidPhysicalParameter.class, CompositeId.class,
 			IndicatorWeightDistribution.class, PreferredPlan.class,
 			RodStringDesignParameter.class, RodStructureParameter.class,
-			TestEntity.class, WellBaseData.class, WellDesignParameter.class,
-			WellInflowTrend.class, WellPressureDistribution.class,
-			WellProductData.class };
+			EntityWithCompositeId.class, WellBaseData.class,
+			WellDesignParameter.class, WellInflowTrend.class,
+			WellPressureDistribution.class, WellProductData.class, Deal.class,
+			Customer.class };
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

@@ -1,4 +1,4 @@
-package org.oil.manager.entity;
+package org.oil.manager.entity.compositeid;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -6,12 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.oil.manager.entity.CompositeId;
 import org.oil.manager.repository.WellBaseDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-@Table(name = "no_setter")
-public class TestEntity {
+@Table(name = "entity_with_composite_id")
+public class EntityWithCompositeId {
 	private int val;
 	@Column(unique = true)
 	private String name;
@@ -41,8 +42,9 @@ public class TestEntity {
 		this.name = name;
 	}
 
-	public static TestEntity build(CompositeId compositeId, String name, int val) {
-		TestEntity result = new TestEntity();
+	public static EntityWithCompositeId build(CompositeId compositeId,
+			String name, int val) {
+		EntityWithCompositeId result = new EntityWithCompositeId();
 		result.setCompositeId(compositeId);
 		result.setName(name);
 		result.val = val;

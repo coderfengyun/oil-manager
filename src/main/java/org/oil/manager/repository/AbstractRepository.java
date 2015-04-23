@@ -17,7 +17,7 @@ public abstract class AbstractRepository<Entity> {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private final Class<?> clazz;
 
-	AbstractRepository(Class<?> clazz) {
+	protected AbstractRepository(Class<?> clazz) {
 		this.clazz = clazz;
 	}
 
@@ -82,11 +82,11 @@ public abstract class AbstractRepository<Entity> {
 		}
 	}
 
-	public boolean update(Entity well) {
+	public boolean update(Entity entity) {
 		Session session = this.getSessionHelper().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			session.update(well);
+			session.update(entity);
 			transaction.commit();
 			return true;
 		} catch (Exception e) {
