@@ -2,6 +2,7 @@ package org.oil.manager.jpa;
 
 import static org.junit.Assert.*;
 
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,22 +50,37 @@ public class Test_CascadeInJPAWithSession {
 	}
 
 	@Test
-	public void testNotCascadeDelete() {
-		long initiatorId = 1001, targetId = 1002, dealId = 1003;
-		// prepare for maybe collision
+	public void testManyToOne_And_WhosePropertyNameIsTheFieldName() {
+		long initiatorId = 10001, targetId = 10002, dealId = 10003;
 		this.clearUpCollision(initiatorId, targetId, dealId);
-		// construct the parameters
-		Customer initiator = new Customer(initiatorId, "initial-1001", 1000), target = new Customer(
-				targetId, "target-1002", 1000);
+		Customer initiator = new Customer(initiatorId, "initial-10001", 1000), target = new Customer(
+				targetId, "target-10002", 1000);
 		this.customerRepository.attach(initiator);
 		this.customerRepository.attach(target);
 		Deal deal = new Deal(dealId, initiator, target, 200);
 		assertTrue(this.dealRepository.attach(deal));
-		// delete the many counter-part
-		assertTrue(this.dealRepository.detach(dealId));
-		assertTrue(this.customerRepository.find(initiatorId).isPresent());
-		assertTrue(this.customerRepository.find(targetId).isPresent());
-		// assertTrue(this.customerRepository.detach(initiatorId));
-		// clear up the effect towards system
+		assertEquals(
+				1,
+				this.dealRepository.findAllBy(
+						Restrictions.eq(Deal.COLUMN_INITIATOR, initiator))
+						.size());
+	}
+
+	@Test
+	public void testManyToOne_WhosePropertyNameIsTheJoinName() {
+		long initiatorId = 100001, targetId = 100002, dealId = 100003;
+		this.clearUpCollision(initiatorId, targetId, dealId);
+		Customer initiator = new Customer(initiatorId,
+				Long.toString(initiatorId), 1000), target = new Customer(
+				targetId, Long.toString(targetId), 1000);
+		this.customerRepository.attach(initiator);
+		this.customerRepository.attach(target);
+		Deal deal = new Deal(dealId, initiator, target, 1000);
+		assertTrue(this.dealRepository.attach(deal));
+		assertEquals(
+				1,
+				this.dealRepository.findAllBy(
+						Restrictions.eq(Deal.COLUMN_INITIATOR, initiator))
+						.size());
 	}
 }

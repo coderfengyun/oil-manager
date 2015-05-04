@@ -9,15 +9,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "deal")
+@Table(name = "deal", uniqueConstraints = {})
 public class Deal {
+	public static final String COLUMN_INITIATOR = "initiator";
+	public static final String COLUMN_INITIATOR_ID = "initiatorId";
 	@Id
 	private long id;
 	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(nullable = true)
+	@JoinColumn(name = COLUMN_INITIATOR_ID, nullable = true, updatable = true)
 	private Customer initiator;
 	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(nullable = true)
+	@JoinColumn(nullable = true, updatable = true)
 	private Customer target;
 	@Column(nullable = false)
 	private double amount;
